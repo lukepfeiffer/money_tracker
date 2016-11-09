@@ -7,11 +7,12 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :email
   validates_uniqueness_of :email, on: :create
 
+  private
+
   def encrypt_password
     if password.present?
-      require 'pry'; binding.pry;
       self.password_salt = BCrypt::Engine.generate_salt
-      self.password_hash = Bcrypt::Engine.hash_secret(password, password_salt)
+      self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
   end
 

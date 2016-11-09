@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'adequate_exposure'
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt-ruby', require: 'bcrypt'
 gem 'bourbon'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'formal'
