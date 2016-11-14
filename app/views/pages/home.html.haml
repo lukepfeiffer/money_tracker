@@ -12,3 +12,15 @@
 
   %fieldset.actions
     = f.submit 'Sign Up'
+
+%h1 Sign Up
+= form_tag sessions_path do
+  %fieldset
+    %dt= label_tag :email
+    %dd= text_field_tag :email
+
+    %dt= label_tag :password
+    %dd= password_field_tag :password
+
+  %fieldset.actions
+    = submit_tag 'Log in'
