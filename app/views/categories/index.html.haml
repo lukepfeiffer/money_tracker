@@ -1,23 +1,23 @@
-%h1 Category
-- if categories.empty?
-  %h2 Looks like you don't have any categories to put money in...
+#category
+  %h1 Category
+  - if categories.empty?
+    %h2 Looks like you don't have any categories to put money in...
+
+  %button.success-button#add-category Add Category
+
+  .hidden-form
+    = form_for category do |f|
+      %fieldset
+
+        %dt= f.label :name
+        %dd= f.text_field :name, class: 'small-field', placeholder: 'Category Name'
+
+        %dt= f.label :amount
+        %dd= f.number_field :amount, class: 'number-field', step: '0.01', placeholder: '60.00'
+
+        %dt= f.label :description
+        %dd= f.text_area :description, placeholder: 'Optional'
 
 
-%button.success-button Add Category
-
-.hidden-form
-  = form_for category do |f|
-    %fieldset
-
-      %dt= f.label :name
-      %dd= f.text_field :name, class: 'small-field', placeholder: 'Category Name'
-
-      %dt= f.label :amount
-      %dd= f.number_field :amount, class: 'number-field', step: '0.01', placeholder: '60.00'
-
-      %dt= f.label :description
-      %dd= f.text_area :description, placeholder: 'Optional'
-
-
-    %fieldset.actions
-      = f.submit 'Create'
+      %fieldset.actions
+        = f.submit 'Create'
