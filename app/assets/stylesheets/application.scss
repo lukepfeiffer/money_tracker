@@ -26,7 +26,9 @@
     $field-border-radius: 8px;
     $default-border-radius: 10px;
     $field-height: 2.0em;
+    $textarea-height: 6.0em;
     $primary-color: #008B00;
+    $success-color: #28AADC;
 
     background-color: $background-color;
     font-family: $default_font;
@@ -38,6 +40,15 @@
     fieldset{
         border: none;
 
+        dt{
+            padding-bottom: 0.25em;
+        }
+
+        dd{
+            margin: 0;
+            padding-bottom: 1.0em;
+        }
+
         input{
             padding: 1.0em;
             border: 1px solid $border-field-color;
@@ -46,23 +57,67 @@
             border-radius: $field-border-radius;
             width: 100%;
         }
+
+        textarea{
+            padding: 1.0em;
+            border: 1px solid $border-field-color;
+            font-size: $font-size;
+            height: $textarea-height;
+            border-radius: $field-border-radius;
+            width: 100%;
+        }
+
+        .small-field{
+            width: 35%;
+        }
+
+    }
+
+    button{
+        padding: 10px;
+        font-size: $font-size;
+        background-color: white;
+        font-weight: 300;
+        text-transform: uppercase;
+        height: 2.9rem;
+        border-radius: 28px;
+    }
+
+    .success-button{
+        padding: 0 1.0em;
+        color: $success-color;
+        border: 0.14em solid $success-color;
+        &:hover{
+            color: darken($success-color, 10%);
+            border: 0.14em solid darken($success-color, 10%);
+            background-color: darken($background-color, 3%);
+        }
     }
 
     fieldset.actions{
         input{
-            width: 25%;
             padding: 10px;
             font-size: $font-size;
-            color: $primary-color;
             background-color: white;
             font-weight: 300;
             text-transform: uppercase;
             height: 2.9rem;
-            border: 0.14rem solid $primary-color;
             border-radius: 28px;
+            width: 25%;
+            color: $primary-color;
+            border: 0.14rem solid $primary-color;
         }
     }
 
+    .number-field{
+        width: 25%;
+        border-radius: 30px;
+    }
+
+    .hidden-form{
+        // display: none;
+        width: 50%;
+    }
 
     #sign_up{
 
