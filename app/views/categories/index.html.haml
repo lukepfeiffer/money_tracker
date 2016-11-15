@@ -2,6 +2,15 @@
   %h1 Category
   - if categories.empty?
     %h2 Looks like you don't have any categories to put money in...
+  .cards
+    .card
+      .card-image
+        %img{:alt => "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png"}/
+      .card-header
+        First Card
+      .card-copy
+        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.
+
 
   %button.success-button#add-category Add Category
 
