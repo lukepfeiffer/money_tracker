@@ -1,26 +1,31 @@
-%h1 Sign Up
-= form_for user do |f|
-  %fieldset
-    %dt= f.label :email
-    %dd= f.text_field :email
+#sign_up
+  .left
+    .content
+      %h1 Sign Up
+      = form_for user do |f|
+        %fieldset
+          %dt= f.label :email
+          %dd= f.text_field :email
 
-    %dt= f.label :password
-    %dd= f.password_field :password
+          %dt= f.label :password
+          %dd= f.password_field :password
 
-    %dt= f.label :password_confirmation
-    %dd= f.password_field :password_confirmation
+          %dt= f.label :password_confirmation
+          %dd= f.password_field :password_confirmation
 
-  %fieldset.actions
-    = f.submit 'Sign Up'
+        %fieldset.actions
+          = f.submit 'Sign Up'
 
-%h1 Sign Up
-= form_tag sessions_path do
-  %fieldset
-    %dt= label_tag :email
-    %dd= text_field_tag :email
+  .right
+    .content
+      %h1 Sign In
+      = form_tag sessions_path do
+        %fieldset
+          %dt= label_tag :email
+          %dd= text_field_tag :email
 
-    %dt= label_tag :password
-    %dd= password_field_tag :password
+          %dt= label_tag :password
+          %dd= password_field_tag :password
 
-  %fieldset.actions
-    = submit_tag 'Log in'
+        %fieldset.actions
+          = submit_tag 'Sign in'
