@@ -29,6 +29,7 @@
     $textarea-height: 6.0em;
     $primary-color: #008B00;
     $success-color: #28AADC;
+    $danger-color: #FA3434;
 
     background-color: $background-color;
     font-family: $default_font;
@@ -88,8 +89,21 @@
         color: $success-color;
         border: 0.14em solid $success-color;
         &:hover{
+            cursor: pointer;
             color: darken($success-color, 10%);
             border: 0.14em solid darken($success-color, 10%);
+            background-color: darken($background-color, 3%);
+        }
+    }
+
+    .danger-button{
+        padding: 0 1.0em;
+        color: $danger-color;
+        border: 0.14em solid $danger-color;
+        &:hover{
+            cursor: pointer;
+            color: darken($danger-color, 10%);
+            border: 0.14em solid darken($danger-color, 10%);
             background-color: darken($background-color, 3%);
         }
     }
@@ -106,12 +120,21 @@
             width: 25%;
             color: $primary-color;
             border: 0.14rem solid $primary-color;
+            &:hover{
+                cursor: pointer;
+                color: darken($primary-color, 10%);
+                border: 0.14em solid darken($primary-color, 10%);
+                background-color: darken($background-color, 3%);
+            }
+        }
+        #cancel{
+            display: none;
         }
     }
 
     .number-field{
         width: 25%;
-        border-radius: 30px;
+        border-radius: $default-border-radius;
     }
 
     .hidden-form{
