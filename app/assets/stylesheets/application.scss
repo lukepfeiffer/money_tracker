@@ -15,7 +15,7 @@
 @import "users";
 @import "neat";
 @import "base/base";
- */
+*/
 
 #main{
     $background-color: #fff !default;
@@ -143,12 +143,18 @@
         width: 50%;
     }
 
-    #category{
-	.cards {
+    #categories{
+        #add-category{
+            margin-bottom: 2em;
+            margin-left: 1.3em;
+        }
+
+	.category {
 	    width: 30%;
 	    display: flex;
 	    flex-wrap: wrap;
 	    justify-content: space-between;
+            float: left;
 	}
 
         .card {
@@ -162,10 +168,10 @@
             $card-border-color: $base-border-color;
             $card-border: 1px solid $card-border-color;
             $card-background: lighten($card-border-color, 10%);
-            $card-header-background: $card-background;
+            $amount-background: $card-background;
             $card-margin: 1em;
-            $card-image-hover-opacity: 0.7;
-            $card-image-hover-color: #F8F2B4;
+            $category-name-hover-opacity: 0.7;
+            $category-name-hover-color: #F8F2B4;
 
             background-color: $card-background;
             border: $card-border;
@@ -177,21 +183,16 @@
             margin: 0 $card-margin $base-spacing $card-margin;
             position: relative;
             transition: all 0.2s ease-in-out;
-	    .card-image {
-		background-color: $card-image-hover-color;
+	    .category-name {
+		background-color: $category-name-hover-color;
+                text-align: center;
 		height: 150px;
 		max-height: 150px;
 		overflow: hidden;
-
-		img {
-		    opacity: 1;
-		    transition: all 0.2s ease-in-out;
-		    width: 100%;
-		}
 	    }
 
-	    .card-header {
-		background-color: $card-header-background;
+	    .amount {
+		background-color: $amount-background;
 		border-bottom: $card-border;
 		border-radius: $base-border-radius $base-border-radius 0 0;
 		font-weight: bold;
@@ -208,19 +209,47 @@
 	        p {
 		    margin: 0 0 ($base-spacing / 2);
 		}
+
+                .actions{
+                    float: right;
+                    button{
+                        font-size: 0.9em;
+                        height: 2em;
+                        padding: 0px 15px;
+                        border-radius: 24px;
+                        margin-bottom: 5px;
+                    }
+
+                    .add-funds{
+                        color: $success-color;
+                        border: 0.14em solid $success-color;
+                        &:hover{
+                            cursor: pointer;
+                            color: darken($success-color, 10%);
+                            background-color: darken($background-color, 3%);
+                        }
+                    }
+
+                    .remove-funds{
+                        color: $danger-color;
+                        border: 0.14em solid $danger-color;
+                        &:hover{
+                            cursor: pointer;
+                            color: darken($success-color, 10%);
+                            border: 0.14em solid darken($danger-color, 10%);
+                            background-color: darken($background-color, 3%);
+                        }
+                    }
+                }
 	    }
 	    &:focus, &:hover {
 	        cursor: pointer;
-
-		img {
-		  opacity: $card-image-hover-opacity;
-		}
 	    }
 
 	    &:active {
 	        background-color: $card-background;
 
-		.card-header {
+		.amount {
 		  background-color: $card-background;
 		}
 	    }

@@ -1,23 +1,13 @@
-#category
-  %h1 Category
-  - if categories.empty?
-    %h2 Looks like you don't have any categories to put money in...
-  .cards
-    .card
-      .card-image
-        %img{:alt => "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png"}/
-      .card-header
-        First Card
-      .card-copy
-        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.
+#categories
 
-
-  %button.success-button#add-category Add Category
+  %div
+    %button.success-button#add-category Add Category
 
   .hidden-form
-    = form_for category do |f|
+    = form_for category, html: {id: 'new'} do |f|
       %fieldset
 
+        = hidden_field :user_id, value: current_user.id
         %dt= f.label :name
         %dd= f.text_field :name, class: 'small-field', placeholder: 'Category Name'
 
@@ -31,3 +21,5 @@
       %fieldset.actions
         = f.submit 'Create'
         %button.danger-button#cancel Cancel
+  .category-container
+    = render partial: 'category_container', collection: categories, as: :category
