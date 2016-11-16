@@ -5,6 +5,7 @@ class CreateCategories < ActiveRecord::Migration
       t.string :name
       t.integer :user_id
       t.decimal :amount
+      t.datetime :archived_at
       t.timestamps
     end
   end

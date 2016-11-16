@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   expose :category
-  expose :categories do
-    current_user.categories
+  expose :active_categories do
+    current_user.categories.active
   end
 
   def index
@@ -29,7 +29,10 @@ class CategoriesController < ApplicationController
     )
   end
 
-  def show
+  def destroy
+    category = Category.find(params[:id])
+    category.update(archived_at: DateTime.now)
+    head :no_content
   end
 
 end
