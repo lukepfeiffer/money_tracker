@@ -27,4 +27,9 @@ $(document).ready(function(){
     })
   });
 
+  // $('#categoires').on('click', '.delete', function(){
+  //   var button = $(this)
+  //   var categoryId = $(this).closest('')
+  // });
+
 });

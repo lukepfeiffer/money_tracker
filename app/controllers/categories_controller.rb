@@ -28,4 +28,8 @@ class CategoriesController < ApplicationController
       :description
     )
   end
+
+  def show
+  end
+
 end

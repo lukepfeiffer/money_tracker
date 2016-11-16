@@ -30,6 +30,7 @@
     $primary-color: #008B00;
     $success-color: #28AADC;
     $danger-color: #FA3434;
+    $warning-color: #FF9308;
 
     background-color: $background-color;
     font-family: $default_font;
@@ -211,7 +212,7 @@
 		}
 
                 .actions{
-                    float: right;
+                    width: 100%;
                     button{
                         font-size: 0.9em;
                         height: 2em;
@@ -221,23 +222,26 @@
                     }
 
                     .add-funds{
+                        float: left;
                         color: $success-color;
                         border: 0.14em solid $success-color;
                         &:hover{
                             cursor: pointer;
                             color: darken($success-color, 10%);
-                            background-color: darken($background-color, 3%);
+                            border: 1px solid darken($success-color, 8%);
+                            background-color: darken($background-color, 2%);
                         }
                     }
 
-                    .remove-funds{
+                    .delete{
+                        float: right;
                         color: $danger-color;
                         border: 0.14em solid $danger-color;
                         &:hover{
                             cursor: pointer;
-                            color: darken($success-color, 10%);
-                            border: 0.14em solid darken($danger-color, 10%);
-                            background-color: darken($background-color, 3%);
+                            color: darken($danger-color, 8%);
+                            border: 0.14em solid darken($danger-color, 8%);
+                            background-color: darken($background-color, 2%);
                         }
                     }
                 }

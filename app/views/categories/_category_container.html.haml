@@ -1,4 +1,4 @@
-.category
+.category{data: {id: category.id}}
   .card
     .category-name
       %h1= category.name
@@ -8,4 +8,5 @@
       %p= category.description
       .actions
         %button.add-funds Add
-        %button.remove-funds Minus
+        - if category.id.present?
+          %button.delete{data: {url: category_path(category.id)}} Delete
