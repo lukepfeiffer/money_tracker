@@ -50,4 +50,18 @@ $(document).ready(function(){
 
   // Show add money form
 
+  $('#categories').on('click', '.add-funds', function(event){
+    var button = $(this)
+    event.preventDefault();
+    button.closest('.money-record-form').show();
+    button.closest('.add-funds').hide();
+  })
+
+  $('#categories').on('click', '.cancel-funds', function(event){
+    var button = $(this)
+    event.preventDefault();
+    button.closest('.cancel-funds').hide();
+    button.closest('.money-record-form').hide();
+  })
+
 });

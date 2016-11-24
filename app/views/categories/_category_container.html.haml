@@ -7,6 +7,13 @@
     .card-copy
       %p= category.description
       .actions
-        %button.add-funds Add
+        %button.add-funds{id: category.id} Add
+        = form_for money_record, html: {class: 'money-record-form', id: category.id} do |f|
+          %fieldset
+            %dt= f.label :amount
+            %dd= f.number_field :amount, class: 'number-field', step: '0.01', placeholder: '60.00'
+          %fieldset.actions
+            = f.submit 'Edit Funds'
+            %button.cancel-funds.danger Cancel
         - if category.id.present?
-          %button.archive{data: {url: category_path(category.id), id: category.id}} Delete
+          %button.danger.archive{data: {url: category_path(category.id), id: category.id}} Delete

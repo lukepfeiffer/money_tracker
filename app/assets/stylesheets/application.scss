@@ -133,6 +133,29 @@
         }
     }
 
+    .money-record-form{
+      display: none;
+      float: left;
+
+      .number-field{
+        width: 50%;
+      }
+
+      .actions{
+        input{
+          width: 50%;
+          font-size: 15px;
+          padding: 5px 0;
+          height: 1.8em;
+        }
+
+        .cancel-funds{
+            float: left;
+        }
+
+      }
+    }
+
 
     .number-field{
         width: 25%;
@@ -233,7 +256,7 @@
                         }
                     }
 
-                    .archive{
+                    .danger, .archive{
                         float: right;
                         color: $danger-color;
                         border: 0.14em solid $danger-color;

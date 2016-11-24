@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   expose :category
+  expose :money_record
   expose :active_categories do
     current_user.categories.active
   end
