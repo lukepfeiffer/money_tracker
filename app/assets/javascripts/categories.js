@@ -29,7 +29,7 @@ $(document).ready(function(){
 
   $('#categories').on('click', '.archive', function(){
     var button = $(this)
-    var categoryId = $(this).closest('.category').data('id')
+    var categoryId = $(this).closest('.small-cards').data('id')
     $.ajax({type: 'delete',
       url: button.data('url'),
       success: function(){

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to categories_path
     else
-      render :root
+      redirect_to :root
     end
   end
 

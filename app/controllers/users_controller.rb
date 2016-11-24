@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to categories_path
     else
-      render :root
+      redirect_to :root
     end
   end
 
