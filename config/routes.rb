@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions
+  resources :money_records
   resources :categories
 
   get "log_out" => "sessions#destroy", :as => "log_out"

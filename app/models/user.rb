@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   attr_accessor :password
 
   has_many :categories
+  has_many :money_records, through: :categories
 
   before_save :encrypt_password
 

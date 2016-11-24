@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+  // Show create category form
+
   $('#categories').on('click', '#add-category', function(event) {
     event.preventDefault();
     $('#add-category').hide();
@@ -6,12 +9,17 @@ $(document).ready(function(){
     $('.hidden-form').show();
   });
 
+
+  // Hide create category form
+
   $('#categories').on('click', '#cancel', function(event) {
     event.preventDefault();
     $('#cancel').hide();
     $('#add-category').show();
     $('.hidden-form').hide();
   });
+
+  // Ajax create category
 
   $('#categories #new').submit(function(event){
     event.preventDefault();
@@ -27,6 +35,8 @@ $(document).ready(function(){
     })
   });
 
+  // Ajax archive category
+
   $('#categories').on('click', '.archive', function(){
     var button = $(this)
     var categoryId = $(this).closest('.small-cards').data('id')
@@ -37,5 +47,7 @@ $(document).ready(function(){
       }
     })
   });
+
+  // Show add money form
 
 });
