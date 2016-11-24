@@ -3,7 +3,7 @@
     .category-name
       %h1= category.name
     .amount
-      = category.amount
+      = number_to_currency(category.amount, format: "%n %u")
     .card-copy
       %p= category.description
       .actions
