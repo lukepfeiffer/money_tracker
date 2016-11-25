@@ -52,16 +52,19 @@ $(document).ready(function(){
 
   $('#categories').on('click', '.add-funds', function(event){
     var button = $(this)
+
     event.preventDefault();
-    button.closest('.money-record-form').show();
-    button.closest('.add-funds').hide();
+
+    button.hide();
+    button.parent().children('.money-record-form').show();
+    button.parent().children('cancel-funds').show();
   })
 
   $('#categories').on('click', '.cancel-funds', function(event){
     var button = $(this)
     event.preventDefault();
-    button.closest('.cancel-funds').hide();
     button.closest('.money-record-form').hide();
+    button.parent().parent().parent().children('.add-funds').show()
   })
 
 });
