@@ -1,4 +1,4 @@
-.category
+.category{data: {id: category.id}}
   .card
     .category-name
       %h1= category.name
@@ -7,7 +7,7 @@
     .card-copy
       %p= category.description
       .actions
-        %button.add-funds{id: category.id} Add
+        %button.edit-funds{id: category.id} Edit
         = form_for money_record, html: {class: 'money-record-form', id: category.id} do |f|
           %fieldset
             %dt= f.label :amount

@@ -39,7 +39,6 @@ $(document).ready(function(){
 
   $('#categories').on('click', '.archive', function(){
     var button = $(this)
-    var categoryId = $(this).closest('.small-cards').data('id')
     $.ajax({type: 'delete',
       url: button.data('url'),
       success: function(){
@@ -50,7 +49,7 @@ $(document).ready(function(){
 
   // Show add money form
 
-  $('#categories').on('click', '.add-funds', function(event){
+  $('#categories').on('click', '.edit-funds', function(event){
     var button = $(this)
 
     event.preventDefault();
@@ -60,11 +59,30 @@ $(document).ready(function(){
     button.parent().children('cancel-funds').show();
   })
 
+  // Hide add money form
+
   $('#categories').on('click', '.cancel-funds', function(event){
     var button = $(this)
     event.preventDefault();
     button.closest('.money-record-form').hide();
-    button.parent().parent().parent().children('.add-funds').show()
+    button.parent().parent().parent().children('.edit-funds').show()
+  })
+
+  // Adjust money on category
+
+  $('#categories').on('submit', '.money-record-form', function(event){
+    var form = $(this)
+    var categoryId = $(this).closest('.category').data('id')
+
+    event.preventDefault()
+
+    $.ajax({type: 'post',
+      url: form.attr('action') + '?category_id='+ categoryId,
+      data: form.serialize(),
+      success: function(response){
+        $('.category').replaceWith(response)
+      }
+    })
   })
 
 });
