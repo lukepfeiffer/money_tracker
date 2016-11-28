@@ -13,5 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require categories
-//= require alerts
 //= require_tree .
