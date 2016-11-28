@@ -30,7 +30,7 @@
     $primary-color: #008B00;
     $success-color: #28AADC;
     $danger-color: #FA3434;
-    $warning-color: #FF9308;
+    $warning-color: #FFC629;
     $alert-error-color: #fbe3e4;
     $alert-primary-color: #e6efc2;
     $base-spacing: 1.5em !default;
@@ -134,6 +134,25 @@
             color: darken($danger-color, 10%);
             border: 0.14em solid darken($danger-color, 10%);
             background-color: darken($background-color, 3%);
+        }
+    }
+
+    .primary-button{
+        padding: 0 1.0em;
+        color: $primary-color;
+        border: 0.14em solid $primary-color;
+        &:hover{
+            cursor: pointer;
+            color: darken($primary-color, 20%);
+            border: 0.14em solid darken($primary-color, 10%);
+            background-color: darken($background-color, 3%);
+        }
+        #primary-link{
+            color: $primary-color;
+            text-decoration: none;
+            &:hover{
+                color: darken($primary-color, 10%);
+            }
         }
     }
 

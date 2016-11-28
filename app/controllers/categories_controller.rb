@@ -4,11 +4,19 @@ class CategoriesController < ApplicationController
   expose :active_categories do
     current_user.categories.active.order(created_at: 'DESC')
   end
+  expose :archived_categories do
+    current_user.categories.archived.order(created_at: 'DESC')
+  end
 
   def index
+    @edit_link = true
   end
 
   def new
+  end
+
+  def archived
+    @edit_link = false
   end
 
   def create

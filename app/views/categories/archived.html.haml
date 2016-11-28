@@ -1,0 +1,7 @@
+#categories
+  %div
+    %button.primary-button= link_to 'Active', categories_path, id: 'primary-link'
+
+  %br
+  .category-container
+    = render partial: 'category_container', collection: archived_categories, as: :category
