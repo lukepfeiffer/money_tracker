@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   expose :category
   expose :money_record
   expose :active_categories do
-    current_user.categories.active
+    current_user.categories.active.order(created_at: 'DESC')
   end
 
   def index
