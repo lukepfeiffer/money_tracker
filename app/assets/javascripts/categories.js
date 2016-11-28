@@ -80,7 +80,7 @@ $(document).ready(function(){
       url: form.attr('action') + '?category_id='+ categoryId,
       data: form.serialize(),
       success: function(response){
-        $('.category').replaceWith(response)
+        form.closest('.category').replaceWith(response)
       }
     })
   })

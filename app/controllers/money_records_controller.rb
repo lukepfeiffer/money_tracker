@@ -1,5 +1,8 @@
 class MoneyRecordsController < ApplicationController
 
+  expose :category
+  expose :money_record
+
   def create
     money_record = MoneyRecord.new(money_record_params)
     money_record.category_id = params[:category_id]
