@@ -42,7 +42,7 @@ $(document).ready(function(){
     $.ajax({type: 'delete',
       url: button.data('url'),
       success: function(){
-        button.closest('.category').remove();
+        button.closest('.category').fadeOut(300, function(){ $(this).remove();});
         $('#categories').prepend("<div class= 'flash-primary alert'> <span> Archived </span></div>")
       },
       error: function(){
@@ -58,7 +58,7 @@ $(document).ready(function(){
     $.ajax({type: 'delete',
       url: button.data('url'),
       success: function(){
-        button.closest('.category').remove();
+        button.closest('.category').fadeOut(300, function(){ $(this).remove();});
         $('#categories').prepend("<div class= 'flash-primary alert'> <span> Unarchived </span></div>")
       },
       error: function(){

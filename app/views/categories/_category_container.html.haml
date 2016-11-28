@@ -20,4 +20,4 @@
           - if @edit_link == true
             %button.danger.archive{data: {url: category_path(category.id), id: category.id}} Archive
           - else
-            %button.danger.unarchive{data: {url: unarchive_path(id: category.id), id: category.id}} Unarchive
+            %button.danger.unarchive{data: {url: unarchive_categories_path(id: category.id), id: category.id}} Unarchive

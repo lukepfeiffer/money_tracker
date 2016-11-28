@@ -4,13 +4,17 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   resources :money_records
-  resources :categories
+  resources :categories do
+    collection do
+      get 'archived'
+      get 'unarchive'
+      get 'history'
+      delete 'unarchive'
+    end
+  end
 
-  get '/archived', to: 'categories#archived'
 
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
-
-  delete '/unarchive', to: 'categories#unarchive'
 
 end

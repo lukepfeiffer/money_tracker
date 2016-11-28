@@ -13,8 +13,8 @@
       %nav{:role => "navigation"}
         - if current_user.present?
           = link_to 'Active', categories_path, class: 'navigation-menu-button right'
-          = link_to 'Archived', archived_path, class: 'navigation-menu-button right'
-          = link_to 'History', root_path, class: 'navigation-menu-button right'
+          = link_to 'Archived', archived_categories_path, class: 'navigation-menu-button right'
+          = link_to 'History', history_categories_path, class: 'navigation-menu-button right'
           = link_to 'Contact', root_path, class: 'navigation-menu-button right'
           = link_to 'Sign Out', log_out_path, class: 'navigation-menu-button right', id: 'cancel'
         - else
