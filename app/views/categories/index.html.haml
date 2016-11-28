@@ -1,13 +1,13 @@
 #categories
   %div
     %button.success-button#add-category Add Category
-    %button.primary-button= link_to 'Archived', archived_path, id: 'primary-link'
+    = link_to archived_path do
+      %button.primary-button#archive-link Archived
 
   .hidden-form
     = form_for category, html: {id: 'new'} do |f|
       %fieldset
 
-        = hidden_field :user_id, value: current_user.id
         %dt= f.label :name
         %dd= f.text_field :name, class: 'small-field', placeholder: 'Category Name'
 

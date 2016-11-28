@@ -33,6 +33,7 @@
     $warning-color: #FFC629;
     $alert-error-color: #fbe3e4;
     $alert-primary-color: #e6efc2;
+    $alert-success-color: #e5edf8;
     $base-spacing: 1.5em !default;
 
     background-color: $background-color;
@@ -105,6 +106,12 @@
         background-color: $alert-primary-color;
         border: 1px solid darken($alert-primary-color, 16%);
         color: darken($alert-primary-color, 60%);
+    }
+
+    .flash-success{
+        background-color: $alert-success-color;
+        border: 1px solid darken($alert-success-color, 16%);
+        color: darken($alert-success-color, 60%);
     }
 
     .flash-danger{
@@ -224,6 +231,7 @@
 	    flex-wrap: wrap;
 	    justify-content: space-between;
             float: left;
+            padding-bottom: 1em;
 	}
 
         .card {

@@ -43,6 +43,26 @@ $(document).ready(function(){
       url: button.data('url'),
       success: function(){
         button.closest('.category').remove();
+        $('#categories').prepend("<div class= 'flash-primary alert'> <span> Archived </span></div>")
+      },
+      error: function(){
+        $('#categories').prepend("<div class= 'flash-danger alert'> <span> Archive Failed </span></div>")
+      }
+    })
+  });
+
+  // Ajax unarchive category
+
+  $('#categories').on('click', '.unarchive', function(){
+    var button = $(this)
+    $.ajax({type: 'delete',
+      url: button.data('url'),
+      success: function(){
+        button.closest('.category').remove();
+        $('#categories').prepend("<div class= 'flash-primary alert'> <span> Unarchived </span></div>")
+      },
+      error: function(){
+        $('#categories').prepend("<div class= 'flash-danger alert'> <span> Unarchive Failed</span></div>")
       }
     })
   });
@@ -81,23 +101,24 @@ $(document).ready(function(){
       data: form.serialize(),
       success: function(response){
         form.closest('.category').replaceWith(response)
-        $('#categories').prepend("<div class= 'flash-primary alert'> <span> Success </span></div>")
+        $('#categories').prepend("<div class= 'flash-primary alert'> <span> Adjusted Funds </span></div>")
       },
       error: function(){
-        $('#categories').prepend("<div class= 'flash-danger alert'> <span> Error</span></div>")
+        $('#categories').prepend("<div class= 'flash-danger alert'> <span> Unable to Adjust </span></div>")
       }
     })
-    setTimeout(function(){
-
-      var query = window.location.search.substring(1)
-
-      if(query.length) {
-        if(window.history != undefined && window.history.pushState != undefined) {
-          window.history.pushState({}, document.title, window.location.pathname);
-        }
-      }
-      $('.alert').fadeOut('slow');
-    }, 4000);
   })
+
+  setTimeout(function(){
+
+    var query = window.location.search.substring(1)
+
+    if(query.length) {
+      if(window.history != undefined && window.history.pushState != undefined) {
+        window.history.pushState({}, document.title, window.location.pathname);
+      }
+    }
+    $('.alert').fadeOut('slow');
+  }, 4000)
 
 });

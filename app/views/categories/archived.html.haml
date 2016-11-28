@@ -1,6 +1,7 @@
 #categories
   %div
-    %button.primary-button= link_to 'Active', categories_path, id: 'primary-link'
+    = link_to categories_path do
+      %button.primary-button#archive-link Active
 
   %br
   .category-container

@@ -38,6 +38,12 @@ class CategoriesController < ApplicationController
     )
   end
 
+  def unarchive
+    category = Category.find(params[:id])
+    category.update(archived_at: nil)
+    head :no_content
+  end
+
   def destroy
     category = Category.find(params[:id])
     category.update(archived_at: DateTime.now)
