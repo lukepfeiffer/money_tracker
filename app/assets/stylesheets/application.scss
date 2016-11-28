@@ -31,6 +31,9 @@
     $success-color: #28AADC;
     $danger-color: #FA3434;
     $warning-color: #FF9308;
+    $alert-error-color: #fbe3e4;
+    $alert-primary-color: #e6efc2;
+    $base-spacing: 1.5em !default;
 
     background-color: $background-color;
     font-family: $default_font;
@@ -83,6 +86,31 @@
         text-transform: uppercase;
         height: 2.9rem;
         border-radius: 28px;
+    }
+
+    .alert{
+        display: block;
+        margin-bottom: $base-spacing / 1.5;
+        padding: $base-spacing / 1.5;
+        text-align: center;
+        width: 95%;
+        border-radius: 5px;
+        margin-top: 4px;
+        margin-left: auto;
+        margin-right: auto;
+        text-transform: uppercase;
+    }
+
+    .flash-primary{
+        background-color: $alert-primary-color;
+        border: 1px solid darken($alert-primary-color, 16%);
+        color: darken($alert-primary-color, 60%);
+    }
+
+    .flash-danger{
+        background-color: $alert-error-color;
+        border: 1px solid darken($alert-error-color, 16%);
+        color: darken($alert-error-color, 60%);
     }
 
     .success-button{
