@@ -81,6 +81,10 @@ $(document).ready(function(){
       data: form.serialize(),
       success: function(response){
         form.closest('.category').replaceWith(response)
+        $('#categories').prepend("<div class= 'flash-success alert'> <span> Adjusted Funds Successfully!</span></div>")
+      },
+      error: function(){
+        $('#categories').prepend("<div class= 'flash-danger alert'> <span> Adjusting Funds Failed!</span></div>")
       }
     })
   })
