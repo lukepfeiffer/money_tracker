@@ -5,10 +5,20 @@
   = csrf_meta_tags
 
 %body#main
-  - if current_user.present?
-    %h1
-      Signed in as:
-      = current_user.email
-      %br
-      = link_to "Log out", log_out_path
+%body
+  %header.navigation{:role => "banner"}
+    .navigation-wrapper
+      = link_to root_path, class: 'logo' do
+        %img{:alt => "Logo Image", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png"}/
+      %nav{:role => "navigation"}
+        - if current_user.present?
+          = link_to 'Active', categories_path, class: 'navigation-menu-button right'
+          = link_to 'Archived', archived_path, class: 'navigation-menu-button right'
+          = link_to 'History', root_path, class: 'navigation-menu-button right'
+          = link_to 'Contact', root_path, class: 'navigation-menu-button right'
+          = link_to 'Sign Out', log_out_path, class: 'navigation-menu-button right', id: 'cancel'
+        - else
+          = link_to 'Contact', root_path, class: 'navigation-menu-button right'
+          = link_to 'About', root_path, class: 'navigation-menu-button right'
+          = link_to 'Sign Up', root_path, class: 'navigation-menu-button right', id: 'cancel'
   = yield

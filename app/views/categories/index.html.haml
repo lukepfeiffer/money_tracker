@@ -1,8 +1,7 @@
 #categories
+  %h1 Active
   %div
     %button.success-button#add-category Add Category
-    = link_to archived_path do
-      %button.primary-button#archive-link Archived
 
   .hidden-form
     = form_for category, html: {id: 'new'} do |f|
