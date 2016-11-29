@@ -1,8 +1,8 @@
 #history
   %h1 History
   .history-form
-    = link_to 'All Records', money_records_path(start_date: money_records.first.first.created_at.to_date, end_date: Date.today, filter: 'all')
-    = link_to 'Active Records', money_records_path(start_date: active_records.first.first.created_at.to_date, end_date: Date.today, filter: 'active')
+    = link_to 'All Records', money_records_path(start_date: money_records.first.created_at.to_date, end_date: Date.today, filter: 'all')
+    = link_to 'Active Records', money_records_path(start_date: active_records.first.created_at.to_date, end_date: Date.today, filter: 'active')
     = form_tag money_records_path, method: 'get' do
       %fieldset
         %dt= label_tag :category

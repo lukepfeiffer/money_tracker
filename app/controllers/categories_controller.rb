@@ -2,6 +2,12 @@ class CategoriesController < ApplicationController
 
   expose :category
   expose :money_record
+  expose :active_categories do
+    Category.active
+  end
+  expose :archived_categories do
+    Category.archived
+  end
 
   def index
     if current_user.nil?

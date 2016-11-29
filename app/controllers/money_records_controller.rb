@@ -6,7 +6,7 @@ class MoneyRecordsController < ApplicationController
   expose :money_records do
     records = []
     records << current_user.money_records
-    records
+    records.first
   end
 
   expose :active_records do
@@ -15,7 +15,7 @@ class MoneyRecordsController < ApplicationController
     categories.each do |c|
       records << c.money_records
     end
-    records
+    records.first
   end
 
   expose :filtered_money_records do
@@ -66,8 +66,8 @@ class MoneyRecordsController < ApplicationController
   end
 
   def filter_dates
-    @start_date = params[:start_date].present? ? params[:start_date].to_date : filtered_money_records.first.first.created_at.to_date
-    @end_date = params[:end_date].present? ? params[:end_date].to_date : filtered_money_records.first.last.created_at.to_date
+    @start_date = params[:start_date].present? ? params[:start_date].to_date : filtered_money_records.first.created_at.to_date
+    @end_date = params[:end_date].present? ? params[:end_date].to_date : filtered_money_records.last.created_at.to_date
   end
 
   private
