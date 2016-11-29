@@ -1,0 +1,26 @@
+#history
+  %h1 History
+  .history-form
+    = link_to 'All Records', history_categories_path(start_date: money_records.first.first.created_at.to_date, end_date: Date.today, filter: 'all')
+    = link_to 'Active Records', history_categories_path(start_date: active_records.first.first.created_at.to_date, end_date: Date.today, filter: 'active')
+    = form_tag history_categories_path, method: 'get' do
+      %fieldset
+        %dt= label_tag :category
+        %dd= select_tag :category_id, options_for_select(active_categories.collect { |category| [category.name.titleize, category.id] }, 1), {}
+
+        %dt= label_tag :start_date
+        %dd= date_field_tag :start_date
+
+        %dt= label_tag :end_date
+        %dd= date_field_tag :end_date
+
+        %dd= hidden_field_tag :filter, value: 'other'
+
+      %fieldset.actions
+        = submit_tag 'Search'
+
+- if params[:start_date].present?
+  %h1 #{params[:start_date].to_date} - #{params[:end_date].to_date}
+  %p
+    Total Spent
+    %span.amount= MoneyRecord.sum(filtered_money_records)
