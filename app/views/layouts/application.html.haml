@@ -14,7 +14,7 @@
         - if current_user.present?
           = link_to 'Active', categories_path, class: 'navigation-menu-button right'
           = link_to 'Archived', archived_categories_path, class: 'navigation-menu-button right'
-          = link_to 'History', history_categories_path, class: 'navigation-menu-button right'
+          = link_to 'History', money_records_path(filter: 'all'), class: 'navigation-menu-button right'
           = link_to 'Contact', root_path, class: 'navigation-menu-button right'
           = link_to 'Sign Out', log_out_path, class: 'navigation-menu-button right', id: 'cancel'
         - else

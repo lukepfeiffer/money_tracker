@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     collection do
       get 'archived'
       get 'unarchive'
-      get 'history'
       delete 'unarchive'
     end
   end

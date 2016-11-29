@@ -10,4 +10,18 @@ class MoneyRecord < ActiveRecord::Base
     end
     return sum
   end
+
+  def self.filter(user, start_date, end_date, category)
+    records = []
+    if params[:category_id].present?
+      # categories = current_user.categories.active
+      # categories.each do |c|
+      #   records << c.money_records
+      # end
+    elsif params[:start_date].present?
+    elsif params[:end_date].present?
+    end
+    records
+  end
+
 end
