@@ -39,8 +39,7 @@ class MoneyRecordsController < ApplicationController
     if current_user.nil?
       redirect_to :root
     end
-    @start_date = params[:start_date].present? ? params[:start_date].to_date : filtered_money_records.first.first.created_at.to_date
-    @end_date = params[:end_date].present? ? params[:end_date].to_date : filtered_money_records.first.last.created_at.to_date
+    filter_dates
   end
 
 
@@ -61,10 +60,14 @@ class MoneyRecordsController < ApplicationController
   end
 
   def filter_active_records
-    start_date = params[:start_date].present? ?  params[:start_date] : nil
-    end_date = params[:end_date].present? ? params[:end_date.present] : nil
-    category = params[:category].present? ? Category.find(id: params[:category]) : nil
-    MoneyRecord.filter(current_user, start_date, end_date, category)
+    filter_dates
+    @category = params[:category].present? ? Category.find(id: params[:category]) : nil
+    MoneyRecord.filter(current_user, @start_date, @end_date, @category)
+  end
+
+  def filter_dates
+    @start_date = params[:start_date].present? ? params[:start_date].to_date : filtered_money_records.first.first.created_at.to_date
+    @end_date = params[:end_date].present? ? params[:end_date].to_date : filtered_money_records.first.last.created_at.to_date
   end
 
   private

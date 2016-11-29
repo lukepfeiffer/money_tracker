@@ -3,7 +3,7 @@ class MoneyRecord < ActiveRecord::Base
 
   def self.sum(records)
     sum = 0
-    records.first.each do |record|
+    records.each do |record|
       if record.amount.present?
         sum = sum + record.amount
       end
@@ -13,15 +13,18 @@ class MoneyRecord < ActiveRecord::Base
 
   def self.filter(user, start_date, end_date, category)
     records = []
-    if params[:category_id].present?
-      # categories = current_user.categories.active
-      # categories.each do |c|
-      #   records << c.money_records
-      # end
-    elsif params[:start_date].present?
-    elsif params[:end_date].present?
+    if category.present?
+      records << category.money_records.where(created_at: start_date...end_date)
+      return records
+    else
+      category = user.categories.active
+      category.active.each do |category|
+        category.money_records.each do |money_record|
+          records << money_record
+        end
+      end
+      return records
     end
-    records
   end
 
 end
