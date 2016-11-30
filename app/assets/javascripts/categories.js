@@ -30,7 +30,7 @@ $(document).ready(function(){
       success: function(response){
         $('.hidden-form').hide();
         $('#add-category').show();
-        $('.category-container').prepend(response)
+        $('.category-container').append(response)
       }
     })
   });
