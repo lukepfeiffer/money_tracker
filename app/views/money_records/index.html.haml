@@ -1,25 +1,34 @@
 #history
-  %h1 History
-  .history-form
-    = link_to 'All Records', money_records_path(start_date: money_records.first.created_at.to_date, end_date: Date.today, filter: 'all')
-    = link_to 'Active Records', money_records_path(start_date: active_records.first.created_at.to_date, end_date: Date.today, filter: 'active')
-    = form_tag money_records_path, method: 'get' do
-      %fieldset
-        %dt= label_tag :category
-        %dd= select_tag :category_id, options_for_select(active_categories.collect { |category| [category.name.titleize, category.id] }, 1), {}
+  - if money_records.present? && active_categories.present?
+    %h1 History
+    .history-form
+      = link_to 'All Records', money_records_path(start_date: money_records.first.created_at.to_date, end_date: Date.today, filter: 'all')
+      = link_to 'Active Records', money_records_path(start_date: active_records.first.created_at.to_date, end_date: Date.today, active: true)
+      = form_tag money_records_path, method: 'get' do
+        %fieldset
+          %dt= label_tag :category
+          %dd= select_tag :category_id, options_for_select(active_categories.collect { |category| [category.name.titleize, category.id]}), {include_blank: "Select Category"}
 
-        %dt= label_tag :start_date
-        %dd= date_field_tag :start_date
+          %dt= label_tag :start_date
+          %dd= date_field_tag :start_date
 
-        %dt= label_tag :end_date
-        %dd= date_field_tag :end_date
+          %dt= label_tag :end_date
+          %dd= date_field_tag :end_date
 
-        = hidden_field_tag :filter, value: 'other'
+          = hidden_field_tag :filter, value: 'other'
 
-      %fieldset.actions
-        = submit_tag 'Search'
+        %fieldset.actions
+          = submit_tag 'Search'
 
-%h1 #{@start_date} - #{@end_date}
-%p
-  Total Spent:
-  %span.amount= number_to_currency(MoneyRecord.sum(filtered_money_records), format: "%n %u")
+    - if @category
+      %h1= @category.name
+    - elsif @title
+      %h1= @title
+    - elsif @active_title
+      %h1= @active_title
+    %h2 #{@start_date} - #{@end_date}
+    %p
+      Total Spent:
+      %span.amount= number_to_currency(MoneyRecord.sum(filtered_money_records), format: "%n %u")
+  - else
+    %h1 No Records

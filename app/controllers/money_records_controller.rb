@@ -27,10 +27,10 @@ class MoneyRecordsController < ApplicationController
   end
 
   expose :filtered_money_records do
-    if params[:filter] == 'all'
-      money_records
-    elsif params[:filter] == 'active'
+    if params[:active] == 'true'
       active_records
+    elsif params[:filter] == 'all'
+      money_records
     elsif params[:filter].include?('other')
       filter_active_records
     elsif params[:filter].nil?
@@ -48,6 +48,13 @@ class MoneyRecordsController < ApplicationController
   def index
     if current_user.nil?
       redirect_to :root
+    end
+    if params[:category_id].present?
+      @category = Category.find(params[:category_id])
+    elsif params[:filter] = 'all'
+      @title = 'All Records'
+    elsif params[:filter] = 'active'
+      @active_title = 'Active Records'
     end
     filter_dates
   end
