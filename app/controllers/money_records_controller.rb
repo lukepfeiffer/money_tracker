@@ -34,7 +34,7 @@ class MoneyRecordsController < ApplicationController
     elsif params[:filter].include?('other')
       filter_active_records
     elsif params[:filter].nil?
-      money_records
+      money_records.paginate(page: params[:page], per_page: 2)
     end
   end
 

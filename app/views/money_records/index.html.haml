@@ -35,5 +35,6 @@
             %th Actions
         %tbody
           = render partial: 'records_table', collection: filtered_money_records, as: :record
+        -# = will_paginate filtered_money_records.first
   - else
     %h1 No Records
