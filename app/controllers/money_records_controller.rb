@@ -12,10 +12,12 @@ class MoneyRecordsController < ApplicationController
   expose :active_records do
     records = []
     categories = current_user.categories.active
-    categories.each do |c|
-      records << c.money_records
+    categories.each do |category|
+      category.money_records.each do |record|
+        records << record
+      end
     end
-    records.first
+    records
   end
 
   expose :filtered_money_records do
