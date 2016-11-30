@@ -20,15 +20,20 @@
         %fieldset.actions
           = submit_tag 'Search'
 
-    - if @category
-      %h1= @category.name
-    - elsif @title
-      %h1= @title
-    - elsif @active_title
-      %h1= @active_title
+    %h1 Records
+    %h2= @category.name if @category
     %h2 #{@start_date} - #{@end_date}
     %p
       Total Spent:
       %span.amount= number_to_currency(MoneyRecord.sum(filtered_money_records), format: "%n %u")
+    .records-table
+      %table.tables
+        %thead
+          %tr
+            %th Date
+            %th Amount
+            %th Actions
+        %tbody
+          = render partial: 'records_table', collection: filtered_money_records, as: :record
   - else
     %h1 No Records

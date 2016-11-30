@@ -51,10 +51,6 @@ class MoneyRecordsController < ApplicationController
     end
     if params[:category_id].present?
       @category = Category.find(params[:category_id])
-    elsif params[:filter] = 'all'
-      @title = 'All Records'
-    elsif params[:filter] = 'active'
-      @active_title = 'Active Records'
     end
     filter_dates
   end
