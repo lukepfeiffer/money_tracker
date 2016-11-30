@@ -22,7 +22,7 @@ class MoneyRecordsController < ApplicationController
 
   expose :filter_active_records do
     filter_dates
-    @category = params[:category].present? ? Category.find(id: params[:category]) : nil
+    @category = params[:category_id].present? ? Category.find(params[:category_id].to_i) : nil
     MoneyRecord.filter(current_user, @start_date, @end_date, @category)
   end
 
@@ -70,8 +70,8 @@ class MoneyRecordsController < ApplicationController
   end
 
   def filter_dates
-    @start_date = params[:start_date].present? ? params[:start_date].to_date : active_records.first.created_at.to_date
-    @end_date = params[:end_date].present? ? params[:end_date].to_date : active_records.last.created_at.to_date
+    @start_date = params[:start_date].present? ? params[:start_date].to_date : Date.today.beginning_of_month
+    @end_date = params[:end_date].present? ? params[:end_date].to_date : Date.today.end_of_month
   end
 
   private

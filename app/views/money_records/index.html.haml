@@ -22,4 +22,4 @@
 %h1 #{@start_date} - #{@end_date}
 %p
   Total Spent:
-  %span.amount= MoneyRecord.sum(filtered_money_records)
+  %span.amount= number_to_currency(MoneyRecord.sum(filtered_money_records), format: "%n %u")
