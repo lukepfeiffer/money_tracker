@@ -20,13 +20,21 @@ class MoneyRecordsController < ApplicationController
     records
   end
 
+  expose :filter_active_records do
+    filter_dates
+    @category = params[:category].present? ? Category.find(id: params[:category]) : nil
+    MoneyRecord.filter(current_user, @start_date, @end_date, @category)
+  end
+
   expose :filtered_money_records do
     if params[:filter] == 'all'
       money_records
     elsif params[:filter] == 'active'
       active_records
-    elsif params[:filter].nil?
+    elsif params[:filter].include?('other')
       filter_active_records
+    elsif params[:filter].nil?
+      money_records
     end
   end
 
@@ -61,15 +69,9 @@ class MoneyRecordsController < ApplicationController
     category.update(amount: category.amount + money_record.amount)
   end
 
-  def filter_active_records
-    filter_dates
-    @category = params[:category].present? ? Category.find(id: params[:category]) : nil
-    MoneyRecord.filter(current_user, @start_date, @end_date, @category)
-  end
-
   def filter_dates
-    @start_date = params[:start_date].present? ? params[:start_date].to_date : filtered_money_records.first.created_at.to_date
-    @end_date = params[:end_date].present? ? params[:end_date].to_date : filtered_money_records.last.created_at.to_date
+    @start_date = params[:start_date].present? ? params[:start_date].to_date : active_records.first.created_at.to_date
+    @end_date = params[:end_date].present? ? params[:end_date].to_date : active_records.last.created_at.to_date
   end
 
   private

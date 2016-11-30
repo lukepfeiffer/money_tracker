@@ -19,7 +19,7 @@ class MoneyRecord < ActiveRecord::Base
     else
       category = user.categories.active
       category.active.each do |category|
-        category.money_records.each do |money_record|
+        category.money_records.where(created_at: start_date...end_date).each do |money_record|
           records << money_record
         end
       end
