@@ -28,14 +28,18 @@ class MoneyRecordsController < ApplicationController
 
   expose :filtered_money_records do
     if params[:active] == 'true'
-      active_records
+      paginate_and_order(active_records)
     elsif params[:filter] == 'all'
-      money_records
+      paginate_and_order(money_records)
     elsif params[:filter].include?('other')
-      filter_active_records
+      paginate_and_order(filter_active_records)
     elsif params[:filter].nil?
-      money_records.paginate(page: params[:page], per_page: 2)
+      paginate_and_order(money_records)
     end
+  end
+
+  def paginate_and_order(records)
+    records.paginate(page: params[:page], per_page: 15).order(created_at: 'DESC')
   end
 
   expose :active_categories do

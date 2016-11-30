@@ -90,6 +90,24 @@
         border-radius: 28px;
     }
 
+    .pagination{
+        $background-color: #D7DEF0;
+        $font-color: #4D4D4D;
+        text-align: center;
+        margin: 5em 0 30px 0;
+        a, .previous_page, .next_page, em{
+          background-color: $background-color;
+          text-decoration: none;
+          color: $font-color;
+          padding: 10px;
+          border-radius: 4px;
+        }
+
+        em, .disabled{
+          background-color: darken($background-color, 10%);
+        }
+    }
+
     .alert{
         display: block;
         margin-bottom: $base-spacing / 1.5;
