@@ -23,9 +23,6 @@
     %h1 Records
     %h2= @category.name if @category
     %h2 #{@start_date} - #{@end_date}
-    %p
-      Total Spent:
-      %span.amount= number_to_currency(MoneyRecord.sum(filtered_money_records), format: "%n %u")
     .records-table
       %table.tables
         %thead
@@ -33,10 +30,15 @@
             %th Date
             %th Amount
             %th Actions
+            %th Total
         %tbody
           = render partial: 'records_table', collection: filtered_money_records, as: :record
-        -# = will_paginate filtered_money_records.first
-    = will_paginate filtered_money_records
+          %tr
+            %td
+            %td
+            %td
+            %td= number_to_currency(MoneyRecord.sum(filtered_money_records), format: "%n %u")
+    = will_paginate filtered_money_records unless filtered_money_records == active_records
   - else
     %h1 No Records
 

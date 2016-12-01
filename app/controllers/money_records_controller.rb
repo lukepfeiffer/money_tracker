@@ -28,7 +28,7 @@ class MoneyRecordsController < ApplicationController
 
   expose :filtered_money_records do
     if params[:active] == 'true'
-      paginate_and_order(active_records)
+      active_records
     elsif params[:filter] == 'all'
       paginate_and_order(money_records)
     elsif params[:filter].include?('other')
