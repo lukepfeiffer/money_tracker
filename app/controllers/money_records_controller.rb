@@ -1,5 +1,7 @@
 class MoneyRecordsController < ApplicationController
 
+  require 'will_paginate/collection'
+
   expose :category
   expose :money_record
 
@@ -28,8 +30,10 @@ class MoneyRecordsController < ApplicationController
 
   expose :filtered_money_records do
     if params[:active] == 'true'
-      active_records
+      paginate_and_order(active_records)
     elsif params[:filter] == 'all'
+      paginate_and_order(money_records)
+    elsif params[:category_id].blank? && params[:start_date].blank? && params[:end_date].blank?
       paginate_and_order(money_records)
     elsif params[:filter].include?('other')
       paginate_and_order(filter_active_records)
@@ -39,7 +43,11 @@ class MoneyRecordsController < ApplicationController
   end
 
   def paginate_and_order(records)
-    records.paginate(page: params[:page], per_page: 15).order(created_at: 'DESC')
+    if params[:active] == 'true'
+      records.paginate(page: params[:page], per_page: 15)
+    else
+      records.paginate(page: params[:page], per_page: 15).order(created_at: 'DESC')
+    end
   end
 
   expose :active_categories do

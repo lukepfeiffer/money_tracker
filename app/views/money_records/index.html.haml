@@ -32,13 +32,14 @@
             %th Actions
             %th Total
         %tbody
-          = render partial: 'records_table', collection: filtered_money_records, as: :record
+          - if filtered_money_records
+            = render partial: 'records_table', collection: filtered_money_records, as: :record
           %tr
             %td
             %td
             %td
             %td= number_to_currency(MoneyRecord.sum(filtered_money_records), format: "%n %u")
-    = will_paginate filtered_money_records unless filtered_money_records == active_records
+    = will_paginate filtered_money_records
   - else
     %h1 No Records
 

@@ -16,6 +16,7 @@ class MoneyRecord < ActiveRecord::Base
     if category.present?
       records = category.money_records
     else
+      categories = user.categories.active
       categories.active.each do |category|
         category.money_records.where(created_at: start_date...end_date).each do |money_record|
           records << money_record
@@ -23,8 +24,11 @@ class MoneyRecord < ActiveRecord::Base
 
       end
     end
-
-    return records
+    if records == []
+      user.money_records.last
+    else
+      return records
+    end
   end
 
 end
