@@ -231,6 +231,7 @@
         text-decoration: underline;
         &:hover{
           cursor: pointer;
+          background-color: darken(#fff, 5%);
         }
       }
 
@@ -239,7 +240,6 @@
         border-color: $danger-color;
         &:hover{
           color: darken($danger-color, 5%);
-          background-color: darken($background-color, 5%);
           border-color: darken($danger-color, 5%);
         }
       }
@@ -249,7 +249,6 @@
         border-color: $warning-color;
         &:hover{
           color: darken($warning-color, 5%);
-          background-color: darken($background-color, 5%);
           border-color: darken($warning-color, 5%);
         }
       }
@@ -326,6 +325,42 @@
 
     #history{
       margin: 1em;
+
+      .category-search-form{
+        display: none;
+      }
+
+      .history-form{
+        a{
+          text-decoration: underline;
+          color: darken($success-color, 13%);
+
+          &:hover{
+            color: darken($success-color, 20%);
+            cursor: pointer;
+          }
+        }
+      }
+
+      .inline{
+          width: 20%;
+          margin-left: 1em;
+          float: left;
+          input, .category-select{
+            height: 2.0em;
+            border-radius: 0px;
+            padding: 5px 0 0 1em;
+            border: 1px solid $border-field-color;
+            background-color: darken(#fff, 4%);
+            &:hover{
+                background-color: darken(#fff, 8%)
+            }
+          }
+      }
+      .category-select{
+          font-size: $font-size;
+          width: 100%;
+      }
     }
 
     header.navigation {
@@ -438,11 +473,14 @@
                 cursor: pointer;
                 color: darken($primary-color, 10%);
                 border: 0.14em solid darken($primary-color, 10%);
-                background-color: darken($background-color, 3%);
             }
         }
         #cancel{
             display: none;
+        }
+
+        .category-submit{
+            width: 10%;
         }
     }
 
