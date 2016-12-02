@@ -30,7 +30,7 @@
     $primary-color: #008B00;
     $success-color: #28AADC;
     $danger-color: #FA3434;
-    $warning-color: #EB9500;
+    $warning-color: #FF7F00;
     $alert-error-color: #fbe3e4;
     $alert-primary-color: #e6efc2;
     $alert-success-color: #e5edf8;
@@ -225,31 +225,19 @@
 	}
       }
 
-      .edit, .delete{
+      .edit{
         width: 25%;
         height: 3em;
+        font-size: 12px;
         text-decoration: underline;
-        &:hover{
-          cursor: pointer;
-          background-color: darken(#fff, 5%);
-        }
-      }
-
-      .delete{
-        color: $danger-color;
-        border-color: $danger-color;
-        &:hover{
-          color: darken($danger-color, 5%);
-          border-color: darken($danger-color, 5%);
-        }
-      }
-
-      .edit{
-        color: $warning-color;
+        color: #fff;
+        border-radius: 2px;
+        text-decoration: none;
+        background-color: $warning-color;
         border-color: $warning-color;
         &:hover{
-          color: darken($warning-color, 5%);
-          border-color: darken($warning-color, 5%);
+          background-color: darken($warning-color, 2%);
+          cursor: pointer;
         }
       }
 
