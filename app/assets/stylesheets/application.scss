@@ -18,11 +18,11 @@
 */
 
 #main{
-    $background-color: #fff !default;
+    $white: #fff;
     $default-font: arial !default;
     $font-size: 18px;
-    $border-color: darken($background-color, 40%);
-    $border-field-color: darken($background-color, 55%);
+    $border-color: darken($white, 40%);
+    $border-field-color: darken($white, 55%);
     $field-border-radius: 8px;
     $default-border-radius: 10px;
     $field-height: 2.0em;
@@ -38,7 +38,6 @@
 
     width: 100%;
     margin: 0;
-    background-color: $background-color;
     font-family: $default_font;
 
     label{
@@ -163,7 +162,7 @@
             cursor: pointer;
             color: darken($danger-color, 10%);
             border: 0.14em solid darken($danger-color, 10%);
-            background-color: darken($background-color, 3%);
+            background-color: darken($white, 3%);
         }
     }
 
@@ -175,7 +174,7 @@
             cursor: pointer;
             color: darken($primary-color, 20%);
             border: 0.14em solid darken($primary-color, 10%);
-            background-color: darken($background-color, 3%);
+            background-color: darken($white, 3%);
         }
         #primary-link{
             color: $primary-color;
@@ -186,7 +185,13 @@
         }
     }
 
+    h1#recent{
+        padding: 14em 0 0 0;
+        width: 100%;
+        text-align: left;
+    }
     .categories-records .tables{
+        float: left;
         width: 50%;
     }
 
@@ -537,7 +542,6 @@
 
         .card {
             $base-border-color: gainsboro !default;
-            $base-border-radius: 3px !default;
             $base-background-color: white !default;
             $base-spacing: 1.5em !default;
             $action-color: #477DCA !default;
@@ -553,9 +557,8 @@
 
             background-color: $card-background;
             border: $card-border;
-            border-radius: $base-border-radius;
+            border-radius: 3px;
             box-shadow: 0 2px 4px darken($base-background-color, 10%);
-            cursor: pointer;
             flex-basis: 15em;
             flex-grow: 1;
             margin: 0 $card-margin $base-spacing $card-margin;
@@ -572,7 +575,7 @@
 	    .amount {
 		background-color: $amount-background;
 		border-bottom: $card-border;
-		border-radius: $base-border-radius $base-border-radius 0 0;
+		border-radius: 3px 3px 0 0;
 		font-weight: bold;
 		line-height: 1.5em;
 		padding: ($base-spacing / 3) ($base-spacing / 2);
@@ -623,7 +626,7 @@
                     }
                 }
 	    }
-	    &:focus, &:hover {
+	    &:focus{
 	        cursor: pointer;
 	    }
 
