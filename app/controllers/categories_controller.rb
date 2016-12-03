@@ -3,10 +3,14 @@ class CategoriesController < ApplicationController
   expose :category
   expose :money_record
   expose :active_categories do
-    Category.active
+    current_user.categories.active
   end
   expose :archived_categories do
-    Category.archived
+    current_user.categories.archived
+  end
+
+  expose :money_records do
+    current_user.money_records.first(10)
   end
 
   def index

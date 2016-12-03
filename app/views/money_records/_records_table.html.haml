@@ -1,10 +1,12 @@
 %tr.table-row
-  %td= record.created_at.strftime("%-m/%d/%y %I:%M %p")
-  %td= record.category.name
-  - if record.amount < 0
-    %td.red-record= record.amount
-  - elsif record.amount >= 0
-    %td.blue-record= record.amount
-  %td
-    %button.left.edit Edit
-  %td
+  = form_for record, html: {class: 'edit_form'} do |f|
+    %td
+      = record.created_at.strftime("%-m/%d/%y %I:%M %p")
+    %td= record.category.name
+    - if record.amount < 0
+      %td.red-record= record.amount
+    - elsif record.amount >= 0
+      %td.blue-record= record.amount
+    %td
+      %button.left.edit Edit
+    %td

@@ -27,15 +27,16 @@
     $default-border-radius: 10px;
     $field-height: 2.0em;
     $textarea-height: 6.0em;
-    $primary-color: #008B00;
-    $success-color: #28AADC;
-    $danger-color: #FA3434;
-    $warning-color: #FF7F00;
+    $primary-color: #2ecc71;
+    $success-color: #55acee;
+    $danger-color: #e74c3c;
+    $warning-color: #e67e22;
     $alert-error-color: #fbe3e4;
     $alert-primary-color: #e6efc2;
     $alert-success-color: #e5edf8;
     $base-spacing: 1.5em !default;
 
+    width: 100%;
     margin: 0;
     background-color: $background-color;
     font-family: $default_font;
@@ -81,13 +82,16 @@
     }
 
     button{
+        width: 25%;
         padding: 10px;
+        height: 2.9rem;
+        font-weight: 300;
         font-size: $font-size;
         background-color: white;
-        font-weight: 300;
         text-transform: uppercase;
-        height: 2.9rem;
-        border-radius: 28px;
+        &:hover{
+            cursor: pointer;
+        }
     }
 
     .pagination{
@@ -140,14 +144,14 @@
     }
 
     .success-button{
+        width: 15%;
+        color: #fff;
         padding: 0 1.0em;
-        color: $success-color;
+        background-color: $success-color;
         border: 0.14em solid $success-color;
         &:hover{
             cursor: pointer;
-            color: darken($success-color, 10%);
-            border: 0.14em solid darken($success-color, 10%);
-            background-color: darken($background-color, 3%);
+            background-color: darken($success-color, 4%);
         }
     }
 
@@ -180,6 +184,10 @@
                 color: darken($primary-color, 10%);
             }
         }
+    }
+
+    .categories-records .tables{
+        width: 50%;
     }
 
     .tables {
@@ -226,19 +234,16 @@
       }
 
       .edit{
-        width: 25%;
-        height: 3em;
-        font-size: 12px;
-        text-decoration: underline;
-        color: #fff;
-        border-radius: 2px;
-        text-decoration: none;
-        background-color: $warning-color;
-        border-color: $warning-color;
-        &:hover{
-          background-color: darken($warning-color, 2%);
-          cursor: pointer;
-        }
+          text-align: center;
+          color: $warning-color;
+          height: 2em;
+          width: 50%;
+          font-size: 12px;
+          border: 1px solid $warning-color;
+          &:hover{
+            background-color: darken(#fff, 2%);
+            cursor: pointer;
+          }
       }
 
       .red-record{
@@ -355,7 +360,7 @@
       $base-border-color: gainsboro !default;
       $action-color: #477DCA !default;
       $dark-gray: #333 !default;
-      $navigation-background: $dark-gray;
+      $navigation-background: rgb(13, 82, 255);
       $navigation-color: transparentize(white, 0.3);
       $navigation-color-hover: white;
       $navigation-height: 3em;
@@ -447,20 +452,19 @@
 
     fieldset.actions{
         input{
-            padding: 10px;
-            font-size: $font-size;
-            background-color: white;
-            font-weight: 300;
-            text-transform: uppercase;
-            height: 2.9rem;
-            border-radius: 28px;
             width: 25%;
-            color: $primary-color;
-            border: 0.14rem solid $primary-color;
+            color: #fff;
+            padding: 10px;
+            height: 2.9rem;
+            font-weight: 300;
+            border-radius: 5px;
+            font-size: $font-size;
+            background-color: $primary-color;
+            text-transform: uppercase;
+            box-shadow: 0px 1px 0px 0px darken($primary-color, 1%);
             &:hover{
                 cursor: pointer;
-                color: darken($primary-color, 10%);
-                border: 0.14em solid darken($primary-color, 10%);
+                background-color: darken($primary-color, 2%)
             }
         }
         #cancel{
@@ -505,19 +509,30 @@
     }
 
     #categories{
-        margin: 1em;
+        margin-left: 1em;
         #add-category{
             margin-bottom: 2em;
             margin-left: 1.3em;
         }
 
+        .view-more-link{
+          text-decoration: underline;
+          color: darken($success-color, 13%);
+
+          &:hover{
+            color: darken($success-color, 20%);
+            cursor: pointer;
+          }
+        }
+
 	.category {
-	    width: 30%;
+	    width: 32%;
 	    display: flex;
 	    flex-wrap: wrap;
 	    justify-content: space-between;
             float: left;
             padding-bottom: 1em;
+            margin-bottom: 2em;
 	}
 
         .card {
@@ -586,12 +601,13 @@
                     .edit-funds{
                         float: left;
                         color: $success-color;
+                        background-color: #fff;
+                        border-radius: 3px;
                         border: 0.14em solid $success-color;
                         &:hover{
                             cursor: pointer;
-                            color: darken($success-color, 10%);
                             border: 1px solid darken($success-color, 8%);
-                            background-color: darken($background-color, 2%);
+                            background-color: darken(#fff, 2%);
                         }
                     }
 
@@ -601,9 +617,8 @@
                         border: 0.14em solid $danger-color;
                         &:hover{
                             cursor: pointer;
-                            color: darken($danger-color, 8%);
                             border: 0.14em solid darken($danger-color, 8%);
-                            background-color: darken($background-color, 2%);
+                            background-color: darken(#fff, 2%);
                         }
                     }
                 }
