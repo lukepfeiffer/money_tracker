@@ -4,3 +4,23 @@
   %br
   .category-container
     = render partial: 'category_container', collection: archived_categories, as: :category
+  .table-container
+    %h1#recent Recent Records
+    .records-table.categories-records
+      %table.tables
+        %thead
+          %tr
+            %th Date
+            %th Category
+            %th Amount
+            %th Actions
+            %th Total
+        %tbody
+          - if money_records
+            = render partial: 'money_records/records_table', collection: money_records, as: :record
+          %tr
+            %td
+            %td
+            %td
+            %td= link_to 'More', money_records_path, class: 'view-more-link'
+            %td= number_to_currency(MoneyRecord.sum(money_records), format: "%n %u")

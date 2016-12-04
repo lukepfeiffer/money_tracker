@@ -185,14 +185,16 @@
         }
     }
 
-    h1#recent{
-        padding: 14em 0 0 0;
-        width: 100%;
-        text-align: left;
-    }
-    .categories-records .tables{
-        float: left;
+    .table-container{
         width: 50%;
+        float: left;
+        .categories-records .tables{
+            float: left;
+        }
+
+        h1#recent{
+            text-align: left;
+        }
     }
 
     .tables {
@@ -529,16 +531,25 @@
             cursor: pointer;
           }
         }
+        .category-container{
+            width: 100%;
+            min-height: 30em;
+            .category {
+                width: 30%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                margin-bottom: 2em;
+                float: left;
+                .card{
+                    margin-left: auto;
+                }
+            }
+        }
 
-	.category {
-	    width: 32%;
-	    display: flex;
-	    flex-wrap: wrap;
-	    justify-content: space-between;
-            float: left;
-            padding-bottom: 1em;
-            margin-bottom: 2em;
-	}
+        .category-container{
+            width: 100%;
+        }
 
         .card {
             $base-border-color: gainsboro !default;
