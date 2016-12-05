@@ -45,7 +45,9 @@ class MoneyRecordsController < ApplicationController
   def paginate_and_order(records)
     if params[:active] == 'true'
       records.paginate(page: params[:page], per_page: 15)
-    else
+    elsif records.amount
+      records
+    elsif
       records.paginate(page: params[:page], per_page: 15).order(created_at: 'DESC')
     end
   end
