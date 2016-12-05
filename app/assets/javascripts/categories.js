@@ -71,21 +71,27 @@ $(document).ready(function(){
 
   $('#categories').on('click', '.edit-funds', function(event){
     var button = $(this)
-
+    var form = button.parent().children('.money-record-form')
+    var cardCopy = button.parent().parent();
     event.preventDefault();
 
+    form.show();
     button.hide();
-    button.parent().children('.money-record-form').show();
+    cardCopy.addClass('extra-padding');
     button.parent().children('cancel-funds').show();
+    button.parent().children('.archive').hide();
   })
 
   // Hide add money form
 
   $('#categories').on('click', '.cancel-funds', function(event){
     var button = $(this)
+    var cardCopy = button.parent().parent().parent().parent();
     event.preventDefault();
+    cardCopy.removeClass('extra-padding');
     button.closest('.money-record-form').hide();
     button.parent().parent().parent().children('.edit-funds').show()
+    button.parent().parent().parent().children('.archive').show()
   })
 
   // Adjust money on category

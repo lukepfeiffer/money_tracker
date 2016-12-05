@@ -14,7 +14,7 @@
               %dt= f.label :amount
               %dd= f.number_field :amount, class: 'number-field', step: '0.01', placeholder: '60.00'
             %fieldset.actions
-              = f.submit 'Edit Funds'
+              = f.submit 'Confirm', class: 'edit-funds'
               %button.cancel-funds.danger Cancel
         - if category.id.present?
           - if @edit_link == true

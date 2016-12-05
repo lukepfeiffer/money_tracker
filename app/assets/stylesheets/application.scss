@@ -188,9 +188,6 @@
     .table-container{
         width: 50%;
         float: left;
-        .categories-records .tables{
-            float: left;
-        }
 
         h1#recent{
             text-align: left;
@@ -474,6 +471,7 @@
                 background-color: darken($primary-color, 2%)
             }
         }
+
         #cancel{
             display: none;
         }
@@ -486,6 +484,7 @@
     .money-record-form{
       display: none;
       float: left;
+      width: 70%;
 
       .number-field{
         width: 50%;
@@ -493,14 +492,24 @@
 
       .actions{
         input{
-          width: 50%;
+          width: 30%;
           font-size: 15px;
-          padding: 5px 0;
+          padding: 0 0 0 5px;
           height: 1.8em;
+          margin-right: 1em;
         }
 
         .cancel-funds{
             float: left;
+            color: $danger-color;
+            background-color: #fff;
+            border-radius: 3px;
+            border: 0.14em solid $danger-color;
+            &:hover{
+                cursor: pointer;
+                border: 1px solid darken($danger-color, 8%);
+                background-color: darken(#fff, 2%);
+            }
         }
       }
     }
@@ -540,7 +549,7 @@
                 flex-wrap: wrap;
                 justify-content: space-between;
                 margin-bottom: 2em;
-                float: left;
+                display: inline-block;
                 .card{
                     margin-left: auto;
                 }
@@ -593,10 +602,14 @@
 		transition: all 0.2s ease-in-out;
 	    }
 
+            .extra-padding{
+                padding: $base-spacing ($base-spacing/2) 10em ($base-spacing/2) !important;
+            }
+
 	    .card-copy {
 	        font-size: 0.9em;
 	        line-height: 1.5em;
-	        padding: ($base-spacing / 2) ($base-spacing / 2);
+	        padding: ($base-spacing + 1em) $base-spacing/2;
 
 	        p {
 		    margin: 0 0 ($base-spacing / 2);
@@ -607,14 +620,14 @@
                     button{
                         font-size: 0.9em;
                         height: 2em;
-                        padding: 0px 15px;
-                        border-radius: 24px;
+                        padding: 0px 15px 0 10px;
                         margin-bottom: 5px;
                     }
 
                     .edit-funds{
                         float: left;
                         color: $success-color;
+                        margin-right: 5px;
                         background-color: #fff;
                         border-radius: 3px;
                         border: 0.14em solid $success-color;
@@ -625,8 +638,7 @@
                         }
                     }
 
-                    .danger, .archive{
-                        float: right;
+                   .danger, .archive{
                         color: $danger-color;
                         border: 0.14em solid $danger-color;
                         &:hover{
