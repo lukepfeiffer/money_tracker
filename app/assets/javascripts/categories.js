@@ -69,7 +69,7 @@ $(document).ready(function(){
 
   // Show add money form
 
-  $('#categories').on('click', '.edit-funds', function(event){
+  $('#categories').on('click', '.add-padding', function(event){
     var button = $(this)
     var form = button.parent().children('.money-record-form')
     var cardCopy = button.parent().parent();
