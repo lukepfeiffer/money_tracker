@@ -37,7 +37,7 @@
             %th Actions
             %th Total
         %tbody
-          - if filtered_money_records.amount
+          - if !filtered_money_records.count
             %tr.table-row
               = form_for filtered_money_records, html: {class: 'edit_form'} do |f|
                 %td
@@ -57,11 +57,11 @@
             %td
             %td
             %td
-            - if filtered_money_records.amount?
+            - if !filtered_money_records.count
               %td= filtered_money_records.amount
             - else
               %td= number_to_currency(MoneyRecord.sum(filtered_money_records), format: "%n %u")
-    - unless filtered_money_records.amount
+    - if !filtered_money_records.amount
       = will_paginate filtered_money_records
   - else
     %h1 No Records
