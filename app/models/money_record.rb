@@ -14,7 +14,9 @@ class MoneyRecord < ActiveRecord::Base
   def self.filter(user, start_date, end_date, category)
     records = []
     if category.present?
-      records = category.money_records
+      if category.money_records.present?
+        records = category.money_records
+      end
     else
       categories = user.categories.active
       categories.active.each do |category|

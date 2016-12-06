@@ -43,13 +43,11 @@ class MoneyRecordsController < ApplicationController
   end
 
   def paginate_and_order(records)
-    temp_records = []
-    temp_records << records
-    if params[:active] == 'true'
+    if params[:active] == 'true' || params[:category_id].blank?
       records.paginate(page: params[:page], per_page: 15)
-    elsif temp_records.count == 1
-      records
-    elsif temp_records.count > 1
+    elsif records == MoneyRecord.last
+      records = []
+    else
       records.paginate(page: params[:page], per_page: 15).order(created_at: 'DESC')
     end
   end

@@ -1,5 +1,5 @@
 #history
-  - if money_records.present? && active_categories.present?
+  - if money_records && active_categories.present?
     .history-form
       = link_to 'All Records', money_records_path(start_date: money_records.first.created_at.to_date, end_date: Date.today, filter: 'all')
       = link_to 'Active Records', money_records_path(start_date: active_records.first.created_at.to_date, end_date: Date.today, active: true)
@@ -61,8 +61,8 @@
               %td= filtered_money_records.amount
             - else
               %td= number_to_currency(MoneyRecord.sum(filtered_money_records), format: "%n %u")
-    - if !filtered_money_records.amount
-      = will_paginate filtered_money_records
+    -# - if !filtered_money_records.amount
+    -#   = will_paginate filtered_money_records
   - else
     %h1 No Records
 
