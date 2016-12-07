@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require categories
+//= require money_records
 //= require_tree .

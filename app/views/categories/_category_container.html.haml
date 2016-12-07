@@ -7,17 +7,15 @@
     .card-copy
       %p= category.description
       .actions
-        - if @edit_link == true
-          %button.edit-funds.add-padding{id: category.id} Edit
-          = form_for money_record, html: {class: 'money-record-form', id: category.id} do |f|
-            %fieldset
-              %dt= f.label :amount
-              %dd= f.number_field :amount, class: 'number-field', step: '0.01', placeholder: '60.00'
-            %fieldset.actions
-              = f.submit 'Confirm', class: 'edit edit-funds'
-              %button.cancel-funds.danger Cancel
-        - if category.id.present?
-          - if @edit_link == true
-            %button.danger.archive{data: {url: category_path(category.id), id: category.id}} Archive
-          - else
-            %button.danger.unarchive{data: {url: unarchive_categories_path(id: category.id), id: category.id}} Unarchive
+        %button.edit-funds.add-padding{id: category.id} Edit
+        = form_for money_record, html: {class: 'money-record-form', id: category.id} do |f|
+          %fieldset
+            %dt= f.label :amount
+            %dd= f.number_field :amount, class: 'number-field', step: '0.01', placeholder: '60.00'
+          %fieldset.actions
+            = f.submit 'Confirm', class: 'edit edit-funds'
+            %button.cancel-funds.danger Cancel
+        - if @archive_link == true
+          %button.danger.archive{data: {url: category_path(category.id), id: category.id}} Archive
+        - else
+          %button.danger.unarchive{data: {url: unarchive_categories_path(id: category.id), id: category.id}} Unarchive

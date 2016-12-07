@@ -1,12 +1,19 @@
 %tr.table-row
   = form_for record, html: {class: 'edit_form'} do |f|
     %td
-      = record.created_at.strftime("%-m/%d/%y %I:%M %p")
-    %td= record.category.name
-    - if record.amount < 0
-      %td.red-record= record.amount
-    - elsif record.amount >= 0
-      %td.blue-record= record.amount
+      .text= record.created_at.strftime("%-m/%d/%y %I:%M %p")
+      .field= f.date_field :adjusted_date
+    %td
+      .text= record.category.name
+      .field= f.select :category_id, options_for_select(active_categories.collect { |category| [category.name.titleize, category.id]})
+    %td
+      - if record.amount < 0
+        %p.red-record.text= record.amount
+      - elsif record.amount >= 0
+        %p.blue-record.text= record.amount
+      .field= f.number_field :amount, class: 'number-field', step: '0.01'
     %td
       %button.left.edit Edit
+      %button.cancel Cancel
+      .field= f.submit 'Save'
     %td

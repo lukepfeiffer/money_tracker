@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
     if current_user.nil?
       redirect_to :root
     end
-    @edit_link = true
+    @archive_link = true
   end
 
   def archived
@@ -34,6 +34,7 @@ class CategoriesController < ApplicationController
     category = Category.new(category_params)
     category.user_id = current_user.id
     if category.save
+      MoneyRecord.create(amount: category.amount, category_id: category.id)
       render partial: 'category_container', locals: {categories: category}
     else
       head :no_content
