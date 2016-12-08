@@ -1,15 +1,14 @@
-#about
+.basic-page#about
   %h1 Welcome to the Money Tracker
   %p This is a web application that helps you budget you money. Some key features include:
   %ul
-    %li Create categories to "put" money into
-    %li Add and remove funds as needed
-    %li View history of spending
-  %p Feel free to check out an example here
-  %div= link_to 'Example', example_categories_path
+    %li Creating categories to "put" money into
+    %li Adding and remove funds as needed
+    %li Viewing history of spending
+  %p
+    Feel free to check out an example here
+    %span= link_to 'Example', example_categories_path
 
   %p
-    Click hear to
-    = link_to 'Sign up', new_user_path
-    or if you are already a user,
-    = link_to 'Sign in', new_user_path
+    = link_to 'Click', new_user_path
+    here to sign up or sign in

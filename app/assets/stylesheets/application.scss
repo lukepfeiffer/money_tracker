@@ -42,6 +42,7 @@
     width: 100%;
     margin: 0;
     font-family: $default_font;
+    font-size: $font-size;
     label{
         font-size: $font-size;
     }
@@ -422,8 +423,8 @@
       $base-border-color: gainsboro !default;
       $action-color: #477DCA !default;
       $dark-gray: #333 !default;
-      $navigation-background: rgb(13, 82, 255);
-      $navigation-color: transparentize(white, 0.3);
+      $navigation-background: #2378C8;
+      $navigation-color: transparentize(white, 0.15);
       $navigation-color-hover: white;
       $navigation-height: 3em;
 
@@ -720,23 +721,19 @@
 	    }
         }
     }
-    #sign_up{
-
+    #registration{
+        margin: 2em;
 	h1{
 	    border-bottom: 1px solid lighten($border-color, 35%);
 	    text-align: center;
 	}
 
 	.left{
-	    border: 1px solid $border-color;
-	    border-radius: $default-border-radius;
 	    float: left;
 	    width: 49%;
 	}
 
 	.right{
-	    border: 1px solid $border-color;
-	    border-radius: $default-border-radius;
 	    float: right;
 	    width: 49%;
 	}
