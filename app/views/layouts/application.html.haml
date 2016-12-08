@@ -3,6 +3,9 @@
   = stylesheet_link_tag    'application', media: 'all'
   = javascript_include_tag 'application'
   = csrf_meta_tags
+  = google_webfonts_init({              |
+      google: ['Varela Round', 'serif'] |
+    })                                  |
 
 %body#main
 %body
@@ -19,6 +22,6 @@
           = link_to 'Sign Out', log_out_path, class: 'navigation-menu-button right', id: 'cancel'
         - else
           = link_to 'Home', root_path, class: 'navigation-menu-button right'
-          = link_to 'Contact', root_path, class: 'navigation-menu-button right'
+          = link_to 'Contact', contact_path, class: 'navigation-menu-button right'
           = link_to 'Sign Up', new_user_path, class: 'navigation-menu-button right', id: 'cancel'
   = yield

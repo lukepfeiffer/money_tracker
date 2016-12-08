@@ -19,7 +19,10 @@
 
 #main{
     $white: #fff;
-    $default-font: arial !default;
+    $soft-gray: #999999;
+    $dark-gray: #111111;
+    $link-color: #517a9e;
+    $default-font: "Varela Round", sans-serif;
     $font-size: 18px;
     $border-color: darken($white, 40%);
     $border-field-color: darken($white, 55%);
@@ -342,12 +345,37 @@
       }
     }
 
-    #about{
+    .basic-page{
         width: 60%;
         margin-left: auto;
         margin-right: auto;
         h1{
             text-align: center;
+        }
+    }
+
+    #contact{
+        a, .details{
+          color: $link-color;
+          text-decoration: none;
+          &:hover{
+            color: darken($link-color, 8%);
+          }
+        }
+
+        .primary-contact{
+          text-align: left;
+          border-bottom: 1px solid $soft-gray;
+          padding-bottom: 3em;
+          p{
+            font-size: 18px;
+          }
+        }
+
+        .secondary-contact{
+          font-size: 18px;
+          text-align: left;
+          color: $dark-gray;
         }
     }
     #history{
