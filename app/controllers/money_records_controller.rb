@@ -68,7 +68,13 @@ class MoneyRecordsController < ApplicationController
     end
     filter_dates
   end
-
+  def update
+    if money_record.update(money_record_params)
+      render partial: 'records_table', locals: {record: money_record}
+    else
+      head :no_content
+    end
+  end
 
   def create
     money_record = MoneyRecord.new(money_record_params)
@@ -96,6 +102,7 @@ class MoneyRecordsController < ApplicationController
   def money_record_params
     params.require(:money_record).permit(
       :amount,
+      :adjusted_date,
       :category_id
     )
   end

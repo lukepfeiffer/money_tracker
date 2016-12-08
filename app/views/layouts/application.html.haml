@@ -18,7 +18,7 @@
           = link_to 'Contact', root_path, class: 'navigation-menu-button right'
           = link_to 'Sign Out', log_out_path, class: 'navigation-menu-button right', id: 'cancel'
         - else
+          = link_to 'Home', root_path, class: 'navigation-menu-button right'
           = link_to 'Contact', root_path, class: 'navigation-menu-button right'
-          = link_to 'About', root_path, class: 'navigation-menu-button right'
-          = link_to 'Sign Up', root_path, class: 'navigation-menu-button right', id: 'cancel'
+          = link_to 'Sign Up', new_user_path, class: 'navigation-menu-button right', id: 'cancel'
   = yield

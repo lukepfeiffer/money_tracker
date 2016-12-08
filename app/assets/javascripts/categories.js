@@ -69,7 +69,7 @@ $(document).ready(function(){
 
   // Show add money form
 
-  $('#categories').on('click', '.add-padding', function(event){
+  $('#categories').on('click', '.edit-funds', function(event){
     var button = $(this)
     var form = button.parent().children('.money-record-form')
     var cardCopy = button.parent().parent();
@@ -78,7 +78,7 @@ $(document).ready(function(){
     form.show();
     button.hide();
     cardCopy.addClass('extra-padding');
-    button.parent().children('cancel-funds').show();
+    button.parent().children('.cancel-funds').show();
     button.parent().children('.archive').hide();
   })
 

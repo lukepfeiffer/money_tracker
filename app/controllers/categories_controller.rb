@@ -13,6 +13,10 @@ class CategoriesController < ApplicationController
     current_user.money_records.first(10)
   end
 
+  def example
+    @archive_link = true
+  end
+
   def index
     if current_user.nil?
       redirect_to :root
