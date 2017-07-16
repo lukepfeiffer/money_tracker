@@ -10,12 +10,12 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
-@import "bourbon";
-@import "home";
-@import "users";
-@import "neat";
-@import "base/base";
-*/
+ @import "bourbon";
+ @import "home";
+ @import "users";
+ @import "neat";
+ @import "base/base";
+ */
 
 #main{
     $white: #fff;
@@ -102,15 +102,15 @@
         text-align: center;
         margin: 5em 0 30px 0;
         a, .previous_page, .next_page, em{
-          background-color: $background-color;
-          text-decoration: none;
-          color: $font-color;
-          padding: 10px;
-          border-radius: 4px;
+            background-color: $background-color;
+            text-decoration: none;
+            color: $font-color;
+            padding: 10px;
+            border-radius: 4px;
         }
 
         em, .disabled{
-          background-color: darken($background-color, 10%);
+            background-color: darken($background-color, 10%);
         }
     }
 
@@ -221,129 +221,129 @@
     }
 
     .tables {
-      $base-border-color: gainsboro !default;
-      $base-border-radius: 3px !default;
-      $base-line-height: 1.5em !default;
-      $base-spacing: 1.5em !default;
-      $action-color: #477DCA !default;
-      $dark-gray: #333 !default;
-      $light-gray: #DDD !default;
-      $medium-screen: 40em !default;
-      $large-screen: 53.75em !default;
-      $base-font-color: $dark-gray !default;
-      $table-border-color: $base-border-color;
-      $table-border: 1px solid $table-border-color;
-      $table-background: lighten($table-border-color, 12%);
-      $table-header-background: lighten($table-background, 10%);
-      $table-hover-background: darken($table-background, 5%);
-      $table-stripe-background: darken($table-background, 2%);
-      $table-stripe-background-hover: darken($table-stripe-background, 5%);
-      $table-padding: 0.75em 1em;
-      $red-record-color: #9C0000;
-      $blue-record-color: #005673;
+        $base-border-color: gainsboro !default;
+        $base-border-radius: 3px !default;
+        $base-line-height: 1.5em !default;
+        $base-spacing: 1.5em !default;
+        $action-color: #477DCA !default;
+        $dark-gray: #333 !default;
+        $light-gray: #DDD !default;
+        $medium-screen: 40em !default;
+        $large-screen: 53.75em !default;
+        $base-font-color: $dark-gray !default;
+        $table-border-color: $base-border-color;
+        $table-border: 1px solid $table-border-color;
+        $table-background: lighten($table-border-color, 12%);
+        $table-header-background: lighten($table-background, 10%);
+        $table-hover-background: darken($table-background, 5%);
+        $table-stripe-background: darken($table-background, 2%);
+        $table-stripe-background-hover: darken($table-stripe-background, 5%);
+        $table-padding: 0.75em 1em;
+        $red-record-color: #9C0000;
+        $blue-record-color: #005673;
 
-      border: $table-border;
-      border-collapse: separate;
-      border-left: 0;
-      border-radius: $base-border-radius;
-      border-spacing: 0;
-      width: 100%;
+        border: $table-border;
+        border-collapse: separate;
+        border-left: 0;
+        border-radius: $base-border-radius;
+        border-spacing: 0;
+        width: 100%;
 
-      tbody {
-	background-color: $table-background;
+        tbody {
+            background-color: $table-background;
 
-	tr:hover > td, tr:hover > th {
-	  background-color: $table-hover-background;
-	}
-	tr:nth-child(even) {
-	  background-color: $table-stripe-background;
-	  &:hover > td {
-	    background-color: $table-stripe-background-hover;
-	  }
-	}
-      }
+            tr:hover > td, tr:hover > th {
+                background-color: $table-hover-background;
+            }
+            tr:nth-child(even) {
+                background-color: $table-stripe-background;
+                &:hover > td {
+                    background-color: $table-stripe-background-hover;
+                }
+            }
+        }
 
-      .edit{
-          text-align: center;
-          color: $warning-color;
-          height: 2em;
-          width: 50%;
-          font-size: 12px;
-          border: 1px solid $warning-color;
-          &:hover{
-            background-color: darken(#fff, 2%);
-            cursor: pointer;
-          }
-      }
+        .edit{
+            text-align: center;
+            color: $warning-color;
+            height: 2em;
+            width: 50%;
+            font-size: 12px;
+            border: 1px solid $warning-color;
+            &:hover{
+                background-color: darken(#fff, 2%);
+                cursor: pointer;
+            }
+        }
 
-      .red-record{
-        color: $red-record-color;
-      }
+        .red-record{
+            color: $red-record-color;
+        }
 
-      .blue-record{
-        color: $blue-record-color;
-      }
+        .blue-record{
+            color: $blue-record-color;
+        }
 
-      thead:first-of-type {
-	tr:first-child > th:first-child {
-	  border-top-left-radius: $base-border-radius;
-	}
+        thead:first-of-type {
+            tr:first-child > th:first-child {
+                border-top-left-radius: $base-border-radius;
+            }
 
-	tr:first-child > th:last-child {
-	  border-top-right-radius: $base-border-radius;
-	}
-      }
+            tr:first-child > th:last-child {
+                border-top-right-radius: $base-border-radius;
+            }
+        }
 
-      tbody:last-child {
-	tr:last-child > td:first-child {
-	  border-bottom-left-radius: $base-border-radius;
-	}
+        tbody:last-child {
+            tr:last-child > td:first-child {
+                border-bottom-left-radius: $base-border-radius;
+            }
 
-	tr:last-child > td:last-child {
-	  border-bottom-right-radius: $base-border-radius;
-	}
-      }
+            tr:last-child > td:last-child {
+                border-bottom-right-radius: $base-border-radius;
+            }
+        }
 
-      thead {
-	th {
-	  background-color: $table-header-background;
-	  border-bottom: 0;
-	  border-left: 1px solid $table-border-color;
-	  padding: $table-padding;
-	  text-align: left;
+        thead {
+            th {
+                background-color: $table-header-background;
+                border-bottom: 0;
+                border-left: 1px solid $table-border-color;
+                padding: $table-padding;
+                text-align: left;
 
-	  &:first-child {
-	    border-left: 0;
-	  }
-	}
-      }
+                &:first-child {
+                    border-left: 0;
+                }
+            }
+        }
 
-      tbody {
-	background-color: $table-background;
+        tbody {
+            background-color: $table-background;
 
-	td {
-	  border-bottom: 0;
-	  border-left: 1px solid $table-border-color;
-	  border-top: 1px solid $table-border-color;
-	  padding: $table-padding;
+            td {
+                border-bottom: 0;
+                border-left: 1px solid $table-border-color;
+                border-top: 1px solid $table-border-color;
+                padding: $table-padding;
 
-	  &:first-child {
-	    border-left: 0;
-	  }
+                &:first-child {
+                    border-left: 0;
+                }
 
-	  button {
-	    display: inline-block;
-	    font-size: 0.7em;
-	    line-height: $base-line-height;
-	    margin-bottom: 0.3em;
-	    margin-right: 0.5em;
-	    outline: none;
-	    padding: 0.3em 1em;
-	    width: 100%;
+                button {
+                    display: inline-block;
+                    font-size: 0.7em;
+                    line-height: $base-line-height;
+                    margin-bottom: 0.3em;
+                    margin-right: 0.5em;
+                    outline: none;
+                    padding: 0.3em 1em;
+                    width: 100%;
 
-	  }
-	}
-      }
+                }
+            }
+        }
     }
 
     .basic-page{
@@ -357,160 +357,160 @@
 
     #contact{
         a, .details{
-          color: $link-color;
-          text-decoration: none;
-          &:hover{
-            color: darken($link-color, 8%);
-          }
+            color: $link-color;
+            text-decoration: none;
+            &:hover{
+                color: darken($link-color, 8%);
+            }
         }
 
         .primary-contact{
-          text-align: left;
-          border-bottom: 1px solid $soft-gray;
-          padding-bottom: 3em;
-          p{
-            font-size: 18px;
-          }
+            text-align: left;
+            border-bottom: 1px solid $soft-gray;
+            padding-bottom: 3em;
+            p{
+                font-size: 18px;
+            }
         }
 
         .secondary-contact{
-          font-size: 18px;
-          text-align: left;
-          color: $dark-gray;
+            font-size: 18px;
+            text-align: left;
+            color: $dark-gray;
         }
     }
     #history{
-      margin: 1em;
+        margin: 1em;
 
-      .category-search-form{
-        display: none;
-      }
-
-      .history-form{
-        a{
-          text-decoration: underline;
-          color: darken($success-color, 13%);
-
-          &:hover{
-            color: darken($success-color, 20%);
-            cursor: pointer;
-          }
+        .category-search-form{
+            display: none;
         }
-      }
 
-      .inline{
-          width: 20%;
-          margin-left: 1em;
-          float: left;
-          input, .category-select{
-            height: 2.0em;
-            border-radius: 0px;
-            padding: 5px 0 0 1em;
-            border: 1px solid $border-field-color;
-            background-color: darken(#fff, 4%);
-            &:hover{
-                background-color: darken(#fff, 8%)
+        .history-form{
+            a{
+                text-decoration: underline;
+                color: darken($success-color, 13%);
+
+                &:hover{
+                    color: darken($success-color, 20%);
+                    cursor: pointer;
+                }
             }
-          }
-      }
-      .category-select{
-          font-size: $font-size;
-          width: 100%;
-      }
+        }
+
+        .inline{
+            width: 20%;
+            margin-left: 1em;
+            float: left;
+            input, .category-select{
+                height: 2.0em;
+                border-radius: 0px;
+                padding: 5px 0 0 1em;
+                border: 1px solid $border-field-color;
+                background-color: darken(#fff, 4%);
+                &:hover{
+                    background-color: darken(#fff, 8%)
+                }
+            }
+        }
+        .category-select{
+            font-size: $font-size;
+            width: 100%;
+        }
     }
 
     header.navigation {
-      $base-border-color: gainsboro !default;
-      $action-color: #477DCA !default;
-      $dark-gray: #333 !default;
-      $navigation-background: #2378C8;
-      $navigation-color: transparentize(white, 0.15);
-      $navigation-color-hover: white;
-      $navigation-height: 3em;
+        $base-border-color: gainsboro !default;
+        $action-color: #477DCA !default;
+        $dark-gray: #333 !default;
+        $navigation-background: #2378C8;
+        $navigation-color: transparentize(white, 0.15);
+        $navigation-color-hover: white;
+        $navigation-height: 3em;
 
-      background-color: $navigation-background;
-      border-bottom: 1px solid darken($navigation-background, 10);
-      min-height: $navigation-height;
-      width: 100%;
-      z-index: 999;
-      padding: 5px;
+        background-color: $navigation-background;
+        border-bottom: 1px solid darken($navigation-background, 10);
+        min-height: $navigation-height;
+        width: 100%;
+        z-index: 999;
+        padding: 5px;
 
-      .navigation-wrapper {
-	position: relative;
-	z-index: 9999;
-      }
+        .navigation-wrapper {
+            position: relative;
+            z-index: 9999;
+        }
 
-      .logo {
-	float: left;
-	max-height: $navigation-height;
-        padding-left: 1em;
-	padding-right: 2em;
+        .logo {
+            float: left;
+            max-height: $navigation-height;
+            padding-left: 1em;
+            padding-right: 2em;
 
-	img {
-	  max-height: $navigation-height;
-	  // padding: 0.8em 0;
-	}
-      }
+            img {
+                max-height: $navigation-height;
+                // padding: 0.8em 0;
+            }
+        }
 
-      .navigation-menu-button {
-	color: $navigation-color;
-	display: block;
-	float: left;
-	line-height: $navigation-height;
-	margin: 0;
-	padding-right: 1em;
-	text-decoration: none;
-	text-transform: uppercase;
+        .navigation-menu-button {
+            color: $navigation-color;
+            display: block;
+            float: left;
+            line-height: $navigation-height;
+            margin: 0;
+            padding-right: 1em;
+            text-decoration: none;
+            text-transform: uppercase;
 
-	&:focus,
-	&:hover {
-	  color: $navigation-color-hover;
-	}
-      }
+            &:focus,
+            &:hover {
+                color: $navigation-color-hover;
+            }
+        }
 
 
-      nav {
-	float: none;
-	min-height: $navigation-height;
-	z-index: 9999999;
-      }
+        nav {
+            float: none;
+            min-height: $navigation-height;
+            z-index: 9999999;
+        }
 
-      ul.navigation-menu {
-	clear: both;
-	display: none;
-	margin: 0 auto;
-	overflow: visible;
-	padding: 0;
-	width: 100%;
-	z-index: 9999;
+        ul.navigation-menu {
+            clear: both;
+            display: none;
+            margin: 0 auto;
+            overflow: visible;
+            padding: 0;
+            width: 100%;
+            z-index: 9999;
 
-	&.show {
-	  display: block;
-	}
+            &.show {
+                display: block;
+            }
 
-      }
+        }
 
-      ul li.nav-link {
-	background: $navigation-background;
-	display: block;
-	line-height: $navigation-height;
-	overflow: hidden;
-	padding-right: 0.8em;
-	text-align: right;
-	width: 100%;
-	z-index: 9999;
+        ul li.nav-link {
+            background: $navigation-background;
+            display: block;
+            line-height: $navigation-height;
+            overflow: hidden;
+            padding-right: 0.8em;
+            text-align: right;
+            width: 100%;
+            z-index: 9999;
 
-	a {
-	  color: $navigation-color;
-	  display: inline-block;
-	  text-decoration: none;
+            a {
+                color: $navigation-color;
+                display: inline-block;
+                text-decoration: none;
 
-	  &:focus,
-	  &:hover {
-	    color: $navigation-color-hover;
-	  }
-	}
-      }
+                &:focus,
+                &:hover {
+                    color: $navigation-color-hover;
+                }
+            }
+        }
     }
 
     fieldset.actions{
@@ -541,36 +541,36 @@
     }
 
     .money-record-form{
-      display: none;
-      float: left;
-      width: 70%;
+        display: none;
+        float: left;
+        width: 70%;
 
-      .number-field{
-        width: 50%;
-      }
-
-      .actions{
-        input{
-          width: 30%;
-          font-size: 15px;
-          padding: 0 0 0 5px;
-          height: 1.8em;
-          margin-right: 1em;
+        .number-field{
+            width: 50%;
         }
 
-        .cancel-funds{
-            float: left;
-            color: $danger-color;
-            background-color: #fff;
-            border-radius: 3px;
-            border: 0.14em solid $danger-color;
-            &:hover{
-                cursor: pointer;
-                border: 1px solid darken($danger-color, 8%);
-                background-color: darken(#fff, 2%);
+        .actions{
+            input{
+                width: 30%;
+                font-size: 15px;
+                padding: 0 0 0 5px;
+                height: 1.8em;
+                margin-right: 1em;
+            }
+
+            .cancel-funds{
+                float: left;
+                color: $danger-color;
+                background-color: #fff;
+                border-radius: 3px;
+                border: 0.14em solid $danger-color;
+                &:hover{
+                    cursor: pointer;
+                    border: 1px solid darken($danger-color, 8%);
+                    background-color: darken(#fff, 2%);
+                }
             }
         }
-      }
     }
 
     .number-field{
@@ -591,13 +591,13 @@
         }
 
         .view-more-link{
-          text-decoration: underline;
-          color: darken($success-color, 13%);
+            text-decoration: underline;
+            color: darken($success-color, 13%);
 
-          &:hover{
-            color: darken($success-color, 20%);
-            cursor: pointer;
-          }
+            &:hover{
+                color: darken($success-color, 20%);
+                cursor: pointer;
+            }
         }
         .category-container{
             width: 100%;
@@ -643,36 +643,36 @@
             margin: 0 $card-margin $base-spacing $card-margin;
             position: relative;
             transition: all 0.2s ease-in-out;
-	    .category-name {
-		background-color: $category-name-hover-color;
+            .category-name {
+                background-color: $category-name-hover-color;
                 text-align: center;
-		height: 150px;
-		max-height: 150px;
-		overflow: hidden;
-	    }
+                height: 150px;
+                max-height: 150px;
+                overflow: hidden;
+            }
 
-	    .amount {
-		background-color: $amount-background;
-		border-bottom: $card-border;
-		border-radius: 3px 3px 0 0;
-		font-weight: bold;
-		line-height: 1.5em;
-		padding: ($base-spacing / 3) ($base-spacing / 2);
-		transition: all 0.2s ease-in-out;
-	    }
+            .amount {
+                background-color: $amount-background;
+                border-bottom: $card-border;
+                border-radius: 3px 3px 0 0;
+                font-weight: bold;
+                line-height: 1.5em;
+                padding: ($base-spacing / 3) ($base-spacing / 2);
+                transition: all 0.2s ease-in-out;
+            }
 
             .extra-padding{
                 padding: $base-spacing ($base-spacing/2) 10em ($base-spacing/2) !important;
             }
 
-	    .card-copy {
-	        font-size: 0.9em;
-	        line-height: 1.5em;
-	        padding: ($base-spacing + 1em) $base-spacing/2;
+            .card-copy {
+                font-size: 0.9em;
+                line-height: 1.5em;
+                padding: ($base-spacing + 1em) $base-spacing/2;
 
-	        p {
-		    margin: 0 0 ($base-spacing / 2);
-		}
+                p {
+                    margin: 0 0 ($base-spacing / 2);
+                }
 
                 .actions{
                     width: 100%;
@@ -697,7 +697,7 @@
                         }
                     }
 
-                   .danger, .archive{
+                    .danger, .archive{
                         color: $danger-color;
                         border: 0.14em solid $danger-color;
                         &:hover{
@@ -707,35 +707,35 @@
                         }
                     }
                 }
-	    }
-	    &:focus{
-	        cursor: pointer;
-	    }
+            }
+            &:focus{
+                cursor: pointer;
+            }
 
-	    &:active {
-	        background-color: $card-background;
+            &:active {
+                background-color: $card-background;
 
-		.amount {
-		  background-color: $card-background;
-		}
-	    }
+                .amount {
+                    background-color: $card-background;
+                }
+            }
         }
     }
     #registration{
         margin: 2em;
-	h1{
-	    border-bottom: 1px solid lighten($border-color, 35%);
-	    text-align: center;
-	}
+        h1{
+            border-bottom: 1px solid lighten($border-color, 35%);
+            text-align: center;
+        }
 
-	.left{
-	    float: left;
-	    width: 49%;
-	}
+        .left{
+            float: left;
+            width: 49%;
+        }
 
-	.right{
-	    float: right;
-	    width: 49%;
-	}
+        .right{
+            float: right;
+            width: 49%;
+        }
     }
 }
