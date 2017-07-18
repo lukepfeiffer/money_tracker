@@ -2,13 +2,7 @@ class MoneyRecord < ActiveRecord::Base
   belongs_to :category
 
   def self.sum(records)
-    sum = 0
-    records.each do |record|
-      if record.amount.present?
-        sum = sum + record.amount
-      end
-    end
-    return sum
+    records.sum { |r| r.amount.nil? ? 0 : r.amount.to_d }
   end
 
   def self.filter(user, start_date, end_date, category)
