@@ -38,7 +38,7 @@ class CategoriesController < ApplicationController
     category = Category.new(category_params)
     category.user_id = current_user.id
     if category.save
-      MoneyRecord.create(amount: category.amount, category_id: category.id)
+      MoneyRecord.create(amount: category.amount, category_id: category.id, adjusted_date: DateTime.now)
       render partial: 'category_container', locals: {categories: category}
     else
       head :no_content

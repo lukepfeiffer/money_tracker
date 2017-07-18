@@ -44,16 +44,12 @@ Given "I am on the home page" do
   visit root_path
 end
 
-And /^I am on a show post page$/ do
-  visit post_path(Post.last.id)
-end
-
-And /^I visit the course show page$/ do
-  visit course_path(Course.last.id)
-end
-
 And /^I am on the "(.+)" page$/ do |path|
   visit path
+end
+
+When /^I visit history path with start_date param of yesterday$/ do
+  visit money_records_path(filter: "other", start_date: (Date.today - 1.day))
 end
 
 When /^I fill in "(.+)" with "(.+)"$/ do |field, value|

@@ -15,6 +15,6 @@ end
 
 
 Fabricator(:old_money_record, from: :money_record) do
-  adjusted_date DateTime.now - 10.days
+  adjusted_date (DateTime.now - 10.days)
   amount "10.42"
 end

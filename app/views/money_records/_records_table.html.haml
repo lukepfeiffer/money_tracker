@@ -1,7 +1,7 @@
 %tr.table-row
   = form_for record, html: {class: 'edit_form'} do |f|
     %td
-      .text= record.created_at.strftime("%-m/%d/%y %I:%M %p")
+      .text= record.adjusted_date.strftime("%-m/%d/%y %I:%M %p")
       .field= f.date_field :adjusted_date
     %td
       .text= record.category.name

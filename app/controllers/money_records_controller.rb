@@ -48,7 +48,7 @@ class MoneyRecordsController < ApplicationController
     elsif records == MoneyRecord.last
       records = []
     else
-      records.paginate(page: params[:page], per_page: 15).order(created_at: 'DESC')
+      records.paginate(page: params[:page], per_page: 15).order(adjusted_date: 'DESC')
     end
   end
 
@@ -80,6 +80,7 @@ class MoneyRecordsController < ApplicationController
   def create
     money_record = MoneyRecord.new(money_record_params)
     money_record.category_id = params[:category_id]
+    money_record.adjusted_date = DateTime.now
     category = Category.find(params[:category_id])
     adjust_category_amount(category, money_record)
     if money_record.save

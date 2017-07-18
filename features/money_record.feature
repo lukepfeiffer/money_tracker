@@ -37,17 +37,13 @@ Feature: Money record
     Then I should see "50.44"
     And I should not see "40.22"
 
-  # @js
-  # Scenario: User views active money_records in date range
-  #   Given 1 user
-  #   And that user has 1 category
-  #   And that category has 1 money_record
-  #   And that category has 1 old_money_record
-  #   When I sign in as a user
-  #   And I follow "History"
-  #   And I click link with "show-category-filter" class
-  #   And I fill in start range
-  #   And I fill in end range
-  #   And I press "Search"
-  #   Then I should see "50.44"
-  #   And I should not see "10.42"
+  @js
+  Scenario: User views active money_records in date range
+    Given 1 user
+    And that user has 1 category
+    And that category has 1 money_record
+    And that category has 1 old_money_record
+    When I sign in as a user
+    And I visit history path with start_date param of yesterday
+    Then I should see "50.44"
+    And I should not see "10.42"

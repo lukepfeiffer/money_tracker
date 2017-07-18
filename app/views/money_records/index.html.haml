@@ -1,8 +1,8 @@
 #history
   - if money_records && active_categories.present?
     .history-form
-      = link_to 'All Records', money_records_path(start_date: money_records.first.created_at.to_date, end_date: Date.today, filter: 'all')
-      = link_to 'Active Records', money_records_path(start_date: active_records.first.created_at.to_date, end_date: Date.today, active: true)
+      = link_to 'All Records', money_records_path(start_date: money_records.first.adjusted_date.to_date, end_date: Date.today, filter: 'all')
+      = link_to 'Active Records', money_records_path(start_date: active_records.first.adjusted_date.to_date, end_date: Date.today, active: true)
       %a.show-category-filter Custom Filter
       .category-search-form
         = form_tag money_records_path, method: 'get' do
@@ -37,11 +37,11 @@
             %th Actions
             %th Total
         %tbody
-          - if !filtered_money_records.count
+          - if filtered_money_records.blank?
             %tr.table-row
               = form_for filtered_money_records, html: {class: 'edit_form'} do |f|
                 %td
-                  = filtered_money_records.created_at.strftime("%-m/%d/%y %I:%M %p")
+                  = filtered_money_records.adjusted_date.strftime("%-m/%d/%y %I:%M %p")
                 %td= filtered_money_records.category.name
                 - if filtered_money_records.amount < 0
                   %td.red-record= filtered_money_records.amount
