@@ -7,9 +7,9 @@
       .text= record.category.name
       .field= f.select :category_id, options_for_select(active_categories.collect { |category| [category.name.titleize, category.id]})
     %td
-      - if record.amount < 0
+      - if is_negative_amount?(money_record)
         %p.red-record.text= record.amount
-      - elsif record.amount >= 0
+      - else
         %p.blue-record.text= record.amount
       .field= f.number_field :amount, class: 'number-field', step: '0.01'
     %td
