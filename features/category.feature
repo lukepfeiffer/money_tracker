@@ -30,10 +30,8 @@ Feature: Category
 
   Scenario: User views archived 
     Given 1 user
-    And 1 category
-    And that category belongs to that user
-    And 1 archived_category
-    And that category belongs to that user
+    And that user has 1 category
+    And that user has 1 archived_category
     When I sign in as a user
     And I follow "Archived"
     Then I should see "ArchivedName"

@@ -68,6 +68,7 @@ class MoneyRecordsController < ApplicationController
     end
     filter_dates
   end
+
   def update
     if money_record.update(money_record_params)
       render partial: 'records_table', locals: {record: money_record}

@@ -10,3 +10,9 @@ Fabricator(:archived_category, from: :category) do
   amount "40"
   archived_at DateTime.now
 end
+
+Fabricator(:other_category, from: :category) do
+  description "Other Description"
+  name "OtherName"
+  amount "60"
+end

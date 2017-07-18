@@ -9,7 +9,7 @@
           %fieldset
             .inline
               %dt= label_tag :category
-              %dd= select_tag :category_id, options_for_select(active_categories.collect { |category| [category.name.titleize, category.id]}), {include_blank: "Select Category", class: 'field category-select'}
+              %dd= select_tag :category_id, options_for_select(active_categories.collect { |category| [category.name, category.id]}), {include_blank: "Select Category", class: 'field category-select'}
 
             .inline
               %dt= label_tag :start_date
