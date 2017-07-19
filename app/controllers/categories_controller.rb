@@ -39,9 +39,9 @@ class CategoriesController < ApplicationController
     category.user_id = current_user.id
     if category.save
       MoneyRecord.create(amount: category.amount, category_id: category.id, adjusted_date: DateTime.now)
-      render partial: 'category_container', locals: {categories: category}
+      redirect_to categories_path
     else
-      head :no_content
+      render :index
     end
   end
 

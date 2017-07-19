@@ -1,26 +1,9 @@
 #categories
   %h1 Active
-  %div
-    %button.success-button#add-category Add Category
-
+  = render "new_category_modal"
   .hidden-form
-    = form_for category, html: {id: 'new'} do |f|
-      %fieldset
 
-        %dt= f.label :name
-        %dd= f.text_field :name, class: 'small-field', placeholder: 'Category Name'
-
-        %dt= f.label :amount
-        %dd= f.number_field :amount, class: 'number-field', step: '0.01', placeholder: '60.00'
-
-        %dt= f.label :description
-        %dd= f.text_area :description, placeholder: 'Optional'
-
-
-      %fieldset.actions
-        = f.submit 'Create'
-        %button.danger.cancel Cancel
-  .category-container
+  .grid-items-lines
     = render partial: 'category_container', collection: active_categories, as: :category
   .table-container
     %h1#recent Recent Records

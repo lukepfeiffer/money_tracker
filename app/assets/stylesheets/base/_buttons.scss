@@ -39,12 +39,30 @@
   &:hover{
     background-color: shade($danger-color, 20%);
   }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    &:hover {
+      background-color: $danger-color;
+    }
+  }
 }
 
 .warning{
   background-color: $warning-color;
   &:hover{
     background-color: shade($warning-color, 20%);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    &:hover {
+      background-color: $warning-color;
+    }
   }
 }
 

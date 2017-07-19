@@ -13,7 +13,7 @@
         %p.blue-record.text= record.amount
       .field= f.number_field :amount, class: 'number-field', step: '0.01'
     %td
-      %button.left.edit.warning.small-button Edit
+      %button.warning.small-button Edit
       .field= f.submit 'Save', class: 'save buttons small-button'
-      %button.cancel.danger.buttons.small-button Cancel
+      %button.danger.buttons.small-button.hidden Cancel
     %td

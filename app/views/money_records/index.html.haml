@@ -1,28 +1,7 @@
 #history
   - if money_records && active_categories.present?
-    .history-form
-      = link_to 'All Records', money_records_path(start_date: money_records.first.adjusted_date.to_date, end_date: Date.today, filter: 'all')
-      = link_to 'Active Records', money_records_path(start_date: active_records.first.adjusted_date.to_date, end_date: Date.today, active: true)
-      %a.show-category-filter Custom Filter
-      .category-search-form
-        = form_tag money_records_path, method: 'get' do
-          %fieldset
-            .inline
-              %dt= label_tag :category
-              %dd= select_tag :category_id, options_for_select(active_categories.collect { |category| [category.name, category.id]}), {include_blank: "Select Category", class: 'field category-select'}
-
-            .inline
-              %dt= label_tag :start_date
-              %dd= date_field_tag :start_date
-
-            .inline
-              %dt= label_tag :end_date
-              %dd= date_field_tag :end_date
-
-            = hidden_field_tag :filter, value: 'other'
-
-          %fieldset.actions
-            = submit_tag 'Search', class: 'category-submit'
+    .history-filters
+      = render "custom_filter_modal"
 
     %h1 Records
     %h2= @category.name if @category

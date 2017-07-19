@@ -1,0 +1,30 @@
+.modal
+  = link_to 'All Records', money_records_path(start_date: money_records.first.adjusted_date.to_date, end_date: Date.today, filter: 'all')
+  = link_to 'Active Records', money_records_path(start_date: active_records.first.adjusted_date.to_date, end_date: Date.today, active: true)
+  %label{:for => "modal-1"}
+    .modal-trigger Custom Filter
+
+  %input#modal-1.modal-state{:type => "checkbox"}/
+  .modal-fade-screen
+    .modal-inner
+      .modal-close{:for => "modal-1"}
+      %h1 Custom Filter
+      = form_tag money_records_path, method: 'get' do
+        %fieldset
+          .inline
+            %dt= label_tag :category
+            %dd= select_tag :category_id, options_for_select(active_categories.collect { |category| [category.name, category.id]}), {include_blank: "Select Category", class: 'field category-select'}
+
+          .inline
+            %dt= label_tag :start_date
+            %dd= date_field_tag :start_date
+
+          .inline
+            %dt= label_tag :end_date
+            %dd= date_field_tag :end_date
+
+          = hidden_field_tag :filter, value: 'other'
+
+        %fieldset.actions
+          = submit_tag 'Search', class: 'category-submit'
+
