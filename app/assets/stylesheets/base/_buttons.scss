@@ -33,3 +33,21 @@
     }
   }
 }
+
+.danger{
+  background-color: $danger-color;
+  &:hover{
+    background-color: shade($danger-color, 20%);
+  }
+}
+
+.warning{
+  background-color: $warning-color;
+  &:hover{
+    background-color: shade($warning-color, 20%);
+  }
+}
+
+.small-button, input[type=submit].small-button{
+  font-size: 12px;
+}

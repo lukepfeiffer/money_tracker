@@ -9,19 +9,22 @@
 
 %body#main
 %body
+%body
   %header.navigation{:role => "banner"}
     .navigation-wrapper
-      = link_to root_path, class: 'logo' do
+      %a.logo{:href => "javascript:void(0)"}
         %img{:alt => "Logo Image", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png"}/
+      %a#js-mobile-menu.navigation-menu-button{:href => "javascript:void(0)"} MENU
       %nav{:role => "navigation"}
-        - if current_user.present?
-          = link_to 'Active', categories_path, class: 'navigation-menu-button right'
-          = link_to 'Archived', archived_categories_path, class: 'navigation-menu-button right'
-          = link_to 'History', money_records_path(filter: 'all'), class: 'navigation-menu-button right'
-          = link_to 'Contact', root_path, class: 'navigation-menu-button right'
-          = link_to 'Sign Out', log_out_path, class: 'navigation-menu-button right', id: 'cancel'
-        - else
-          = link_to 'Home', root_path, class: 'navigation-menu-button right'
-          = link_to 'Contact', contact_path, class: 'navigation-menu-button right'
-          = link_to 'Sign Up', new_user_path, class: 'navigation-menu-button right', id: 'cancel'
+        %ul#js-navigation-menu.navigation-menu.show
+          - if current_user.present?
+            %li.nav-link= link_to 'Active', categories_path
+            %li.nav-link= link_to 'Archived', archived_categories_path
+            %li.nav-link= link_to 'History', money_records_path(filter: 'all')
+            %li.nav-link= link_to 'Contact', root_path
+            %li.nav-link= link_to 'Sign Out', log_out_path
+          - else
+            %li.nav-link= link_to 'Home', root_path, class: 'navigation-menu-button right'
+            %li.nav-link= link_to 'Contact', contact_path, class: 'navigation-menu-button right'
+            %li.nav-link= link_to 'Sign Up', new_user_path, class: 'navigation-menu-button right', id: 'cancel'
   = yield

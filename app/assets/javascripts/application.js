@@ -15,3 +15,4 @@
 //= require categories
 //= require money_records
 //= require_tree .
+//= require resize_nav
