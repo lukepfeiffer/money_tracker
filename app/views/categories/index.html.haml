@@ -1,9 +1,14 @@
 #categories
-  = render "new_category_modal"
-
   .container
     %ul.categories
-      = render partial: 'category_container', collection: active_categories, as: :category
+      %h1 Categories
+      .list
+        = render partial: 'category_container', collection: active_categories, as: :category
+      .misc
+        %span.left= render "new_category_modal"
+        %span.right
+          %b Total:
+          = current_user.total_money
     %ul.selected-category
       %h1.records_for All Records
       %table.tables

@@ -20,6 +20,18 @@ class User < ActiveRecord::Base
     end
   end
 
+  def total_money
+    records = []
+
+    categories.each do |category|
+      category.money_records.each do |record|
+        records << record
+      end
+    end
+
+    MoneyRecord.sum(records)
+  end
+
   private
 
   def encrypt_password

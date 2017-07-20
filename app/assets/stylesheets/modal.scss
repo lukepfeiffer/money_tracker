@@ -17,7 +17,7 @@
   $modal-image-width: $modal-image-height;
   $modal-trigger-image-width: 300px;
 
-  label {
+  button.modal-trigger {
     cursor: pointer;
     margin-bottom: 0;
   }
@@ -30,10 +30,6 @@
 
   .modal-state {
     display: none;
-  }
-
-  .modal-trigger {
-    padding: 0.8em 1em;
   }
 
   .modal-fade-screen { // overlay
