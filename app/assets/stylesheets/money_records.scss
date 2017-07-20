@@ -1,12 +1,21 @@
 .history-filters{
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 20px;
   text-align: center;
   label{
     display: inline;
     .modal-trigger{
       display: inline;
-    padding: 0;
+      padding: 0;
+      color: #1565c0;
+      font-weight: normal;
     }
   }
+}
+
+.blue-record{
+  color: $blue-record-color;
+}
+
+.red-record{
+  color: $red;
 }

@@ -1,0 +1,44 @@
+.item{
+
+  margin-bottom: 5px;
+  box-shadow: 5px 5px 5px #ccc;
+  background-color: #fff;
+  padding: 5px 15px;
+  border: 1px solid #fff;
+  margin-right: 30px;
+
+  &:hover{
+    cursor: pointer;
+    background-color: darken(#fff, 1%);
+    border: 1px solid #ccc;
+  }
+
+  &:focus {
+    box-shadow: $form-box-shadow-focus;
+    outline: none;
+  }
+
+  .top-container{
+    h1{
+      font-size: 18px;
+      font-weight: normal;
+    }
+  }
+
+  .bottom-container{
+    text-align: right;
+  }
+
+  p{
+    margin-bottom: 0;
+  }
+
+  .balance{
+    font-size: 25px;
+    font-weight: 100;
+  }
+
+  .sub-text{
+    color: #666;
+  }
+}

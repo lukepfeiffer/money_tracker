@@ -1,27 +1,26 @@
 #categories
-  %h1 Active
   = render "new_category_modal"
-  .hidden-form
 
-  .grid-items-lines
-    = render partial: 'category_container', collection: active_categories, as: :category
-  .table-container
-    %h1#recent Recent Records
-    .records-table.categories-records
+  .container
+    %ul.categories
+      = render partial: 'category_container', collection: active_categories, as: :category
+    %ul.selected-category
+      %h1.records_for All Records
       %table.tables
         %thead
           %tr
             %th Date
             %th Category
+            %th Description
             %th Amount
-            %th Actions
-            %th Total
         %tbody
-          - if money_records
-            = render partial: 'money_records/records_table', collection: money_records, as: :record
-          %tr
-            %td
-            %td
-            %td
-            %td= link_to 'More', money_records_path, class: 'view-more-link'
-            %td= number_to_currency(MoneyRecord.sum(money_records), format: "%n %u")
+          - MoneyRecord.all.each do |record|
+            %tr.tables-row
+              %td.text= record.adjusted_date.strftime("%-m/%d/%y %I:%M %p")
+              %td.text= record.category.name
+              %td Some Description
+              %td
+                - if is_negative_amount?(record)
+                  %span.red-record.text= record.amount
+                - else
+                  %span.blue-record.text= record.amount

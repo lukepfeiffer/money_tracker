@@ -1,4 +1,10 @@
-%a.grid-item{data: {id: category.id}}
-  %h1= category.name
-  %p= number_to_currency(category.amount, format: "%n %u")
-  %p= category.description
+.item{data: {id: category.id}}
+  .top-container
+    %h1= category.name.titleize
+  .bottom-container
+    - if is_negative?(category.amount)
+      %p.red-record.balance= number_to_currency(category.amount)
+      %p.sub-text Availible Funds
+    - else
+      %p.blue-record.balance= number_to_currency(category.amount)
+      %p.sub-text Availible Funds

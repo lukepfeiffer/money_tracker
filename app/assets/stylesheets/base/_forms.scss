@@ -80,5 +80,25 @@ textarea {
 select {
   margin-bottom: $base-spacing;
   max-width: 100%;
-  width: auto;
+  width: 100%;
+  // width: auto;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+
+  &:focus {
+    border-color: $action-color;
+    box-shadow: $form-box-shadow-focus;
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: shade($base-background-color, 5%);
+    cursor: not-allowed;
+
+    &:hover {
+      border: $base-border;
+    }
+  }
 }

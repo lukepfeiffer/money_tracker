@@ -11,9 +11,8 @@
       %h1 Custom Filter
       = form_tag money_records_path, method: 'get' do
         %fieldset
-          .inline
-            %dt= label_tag :category
-            %dd= select_tag :category_id, options_for_select(active_categories.collect { |category| [category.name, category.id]}), {include_blank: "Select Category", class: 'field category-select'}
+          %dt= label_tag :category
+          %dd= select_tag :category_id, options_for_select(active_categories.collect { |category| [category.name, category.id]}), {include_blank: "Select Category", class: 'category-select'}
 
           .inline
             %dt= label_tag :start_date

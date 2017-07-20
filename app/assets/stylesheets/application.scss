@@ -5,10 +5,24 @@
 @import "nav";
 @import "table";
 @import "forms";
-@import "grid_items";
+@import "items";
 @import "modal";
+@import "categories";
 @import "money_records";
 
 body#main{
   margin: 0;
+  background-color: #F7F6F3;
+}
+
+#history{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#categories{
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
 }
