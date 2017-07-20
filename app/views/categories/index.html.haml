@@ -21,7 +21,7 @@
         %tbody
           - MoneyRecord.all.each do |record|
             %tr.tables-row
-              %td.text= record.adjusted_date.strftime("%-m/%d/%y %I:%M %p")
+              %td.text= record.adjusted_date.strftime("%-m/%d/%y")
               %td.text= record.category.name
               %td Some Description
               %td

@@ -13,6 +13,10 @@ class CategoriesController < ApplicationController
     current_user.money_records.first(10)
   end
 
+  expose :records_by_date do
+    records = []
+  end
+
   def example
     @archive_link = true
   end
