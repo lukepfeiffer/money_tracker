@@ -17,13 +17,13 @@ category_three = Category.create(name: "Category 2", user_id: user.id, amount: -
 
 puts "Creating money records"
 3.times do
-  MoneyRecord.create(amount: rand(-111.0...100.0).round(2), category_id: category_one.id, adjusted_date: Date.today - rand(0...6).days)
+  MoneyRecord.create(description: Faker::Lorem.sentence, amount: rand(-111.0...100.0).round(2), category_id: category_one.id, adjusted_date: Date.today - rand(0...6).days)
 end
 
 3.times do
-  MoneyRecord.create(amount: rand(-111.0...100.0).round(2), category_id: category_two.id, adjusted_date: Date.today - rand(0...6).days)
+  MoneyRecord.create(description: Faker::Lorem.sentence, amount: rand(-111.0...100.0).round(2), category_id: category_two.id, adjusted_date: Date.today - rand(0...6).days)
 end
 
 3.times do
-  MoneyRecord.create(amount: rand(-111.0...100.0).round(2), category_id: category_three.id, adjusted_date: Date.today - rand(0...6).days)
+  MoneyRecord.create(description: Faker::Lorem.sentence, amount: rand(-111.0...100.0).round(2), category_id: category_three.id, adjusted_date: Date.today - rand(0...6).days)
 end

@@ -7,6 +7,7 @@ gem 'bourbon', "~> 4.2.0"
 gem 'bitters', '~> 1.2.0'
 gem 'chromedriver-helper'
 gem 'coffee-rails', '~> 4.1.0'
+gem 'faker'
 gem 'formal'
 gem 'google-webfonts-rails'
 gem 'haml-rails'
