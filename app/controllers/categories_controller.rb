@@ -13,12 +13,20 @@ class CategoriesController < ApplicationController
 
   expose :records_by_date do
     dates = current_user.money_records.map(&:adjusted_date).uniq.sort.reverse
-    category_ids = current_user.categories.map(&:id)
+    category_ids = active_categories.map(&:id)
 
     dates.each_with_object( [] ) do |date, records|
       records << MoneyRecord.where(adjusted_date: date, category_id: category_ids)
     end
+  end
 
+  expose :archived_records_by_date do
+    dates = current_user.money_records.map(&:adjusted_date).uniq.sort.reverse
+    category_ids = archived_categories.map(&:id)
+
+    dates.each_with_object( [] ) do |date, records|
+      records << MoneyRecord.where(adjusted_date: date, category_id: category_ids)
+    end
   end
 
   def example

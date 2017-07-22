@@ -20,10 +20,16 @@ $medium-categories-screen: 600px;
       }
 
       .selected-category{
-        min-height: 300px;
-        overflow-y: scroll;
-        max-height: 500px;
         max-width: 69%;
+        .table-container{
+          overflow-y: scroll;
+          min-height: 300px;
+          max-height: 500px;
+
+          .tables{
+            margin-top: 0;
+          }
+        }
       }
 
       .misc{
