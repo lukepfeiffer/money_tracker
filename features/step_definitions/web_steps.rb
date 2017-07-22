@@ -14,16 +14,6 @@ When /^I select "(.+)" from "(.+)"$/ do |value, select_tag|
   select value, from: select_tag
 end
 
-# When /^I fill in start range$/ do
-#   val = (DateTime.now - 1.day).strftime("%m/%d/%Y")
-#   fill_in "start_date", with: val
-# end
-
-# When /^I fill in end range$/ do
-#   val = DateTime.now.strftime("%m/%d/%Y")
-#   fill_in "end_date", with: val
-# end
-
 Given /^I am on the root path$/ do
   visit root_path
 end

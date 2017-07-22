@@ -1,16 +1,16 @@
 Feature: Category
 
-  # Need to rewrite to match new functionality
-  # @js
-  # Scenario: User Creates category
-  #   Given 1 user
-  #   And I sign in as a user
-  #   When I press "Add Category"
-  #   And I fill in "category_name" with "FooBarBaz"
-  #   And I fill in "category_amount" with "20"
-  #   And I press "Create"
-  #   Then I should see "FooBarBaz"
-  #   And I should see "20"
+  Need to rewrite to match new functionality
+  @js
+  Scenario: User Creates category
+    Given 1 user
+    And I sign in as a user
+    When I click link with "modal-trigger" class
+    And I fill in "category_name" with "FooBarBaz"
+    And I fill in "category_amount" with "20"
+    And I press "Create"
+    Then I should see "FooBarBaz"
+    And I should see "20"
 
   Scenario: User views category index page
     Given 1 user
