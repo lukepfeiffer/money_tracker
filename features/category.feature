@@ -17,7 +17,7 @@ Feature: Category
     And 1 category
     And that category belongs to that user
     And I sign in as a user
-    Then I should see "FooBarBaz"
+    Then I should see "Foo Bar Baz"
     And I should see "20"
 
   Scenario: User views archived categories
@@ -35,8 +35,7 @@ Feature: Category
     And that user has 1 archived_category
     When I sign in as a user
     And I follow "Archived"
-    Then I should see "ArchivedName"
-    And I should see "Archived Description"
+    Then I should see "Archived Name"
     And I should see "40"
     And I should not see "Some description"
     And I should not see "20"

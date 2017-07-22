@@ -1,6 +1,7 @@
 .item{data: {id: category.id}}
   .top-container
     %h1= category.name.titleize
+    .description= category.description
   .bottom-container
     - if is_negative?(category.amount)
       %p.red-record.balance= number_to_currency(category.amount)
