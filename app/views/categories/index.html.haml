@@ -5,8 +5,8 @@
       .list
         = render partial: 'category_container', collection: active_categories, as: :category
       .misc
-        %span.left= render "new_category_modal"
-        %span.right
+        .left= render "new_category_modal"
+        .right
           %b Total:
           = current_user.total_money
     %ul.selected-category
@@ -24,7 +24,11 @@
               %td= records_array.first.adjusted_date.strftime("%-m/%d/%y")
               %td= records_array.first.category.name
               %td= records_array.first.description.truncate(20)
-              %td= records_array.first.amount
+              %td
+                - if is_negative_amount?(records_array.first)
+                  %span.red-record.text= records_array.first.amount
+                - else
+                  %span.blue-record.text= records_array.first.amount
 
             - records_array[1..-1].each do |record|
               %tr.no_upper_border
