@@ -13,8 +13,8 @@
           %dt= f.label :name
           %dd= f.text_field :name, class: 'small-field', placeholder: 'Category Name'
 
-          %dt= f.label :amount
-          %dd= f.number_field :amount, class: 'number-field', step: '0.01', placeholder: '60.00'
+          %dt= amount_label(f, current_user.use_paycheck?)
+          %dd= amount_field(f, current_user.use_paycheck?)
 
           %dt= f.label :description
           %dd= f.text_area :description, placeholder: 'Optional'

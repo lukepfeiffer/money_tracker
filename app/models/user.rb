@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :categories
   has_many :money_records, through: :categories
+  has_many :paychecks
 
   before_save :encrypt_password
 

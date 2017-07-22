@@ -39,4 +39,18 @@ Feature: Category
     And I should see "40"
     And I should not see "Some description"
     And I should not see "20"
-    And I should not see "FooBarBaz"
+    And I should not see "Foo Bar Baz"
+
+  # Paycheck default amount is $500
+  Scenario: User creates category using paycheck amount
+    Given 1 paycheck_user
+    And that user has 1 paycheck
+    And I sign in as a user
+    When I click link with "modal-trigger" class
+    And I fill in "category_name" with "FooBarBaz"
+    And I fill in "category_description" with "This is a description"
+    And I fill in "category_paycheck_percentage" with "30"
+    And I press "Create"
+    Then I should see "Foo Bar Baz"
+    And I should see "This is a description"
+    And I should see "150"
