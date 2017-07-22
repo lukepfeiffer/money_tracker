@@ -14,7 +14,7 @@ Feature: Category
 
   Scenario: User views category index page
     Given 1 user
-    And 1 category
+    And that user has 1 category
     And that category belongs to that user
     And I sign in as a user
     Then I should see "Foo Bar Baz"
@@ -22,7 +22,7 @@ Feature: Category
 
   Scenario: User views archived categories
     Given 1 user
-    And 1 category
+    And that user has 1 category
     And that category belongs to that user
     And I sign in as a user
     When I follow "Archive"
