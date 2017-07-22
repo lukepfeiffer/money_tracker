@@ -12,12 +12,7 @@ class CategoriesController < ApplicationController
   end
 
   expose :records_by_date do
-    dates = current_user.money_records.map(&:adjusted_date).uniq.sort.reverse
-    category_ids = active_categories.map(&:id)
-
-    dates.each_with_object( [] ) do |date, records|
-      records << MoneyRecord.where(adjusted_date: date, category_id: category_ids)
-    end
+    get_records_by_date
   end
 
   expose :archived_records_by_date do
@@ -66,6 +61,16 @@ class CategoriesController < ApplicationController
     )
   end
 
+  def show
+    category = Category.find(params[:id])
+    if belongs_to_current_user(category)
+      get_records_by_date = get_records_by_date(category)
+      render partial: 'category_table', locals: {records_by_date: get_records_by_date}
+    else
+      redirect_to categories_path(notice: "You do not have access!")
+    end
+  end
+
   def unarchive
     category = Category.find(params[:id])
     category.update(archived_at: nil)
@@ -79,6 +84,24 @@ class CategoriesController < ApplicationController
   end
 
   private
+
+  def belongs_to_current_user(category)
+    category.user_id == current_user.id ? true : false
+  end
+
+  def get_records_by_date(category = nil)
+    if category.present?
+      dates = category.money_records.map(&:adjusted_date).uniq.sort.reverse
+      category_ids = category.id
+    else
+      dates = current_user.money_records.map(&:adjusted_date).uniq.sort.reverse
+      category_ids = active_categories.map(&:id)
+    end
+
+    dates.each_with_object( [] ) do |date, records|
+      records << MoneyRecord.where(adjusted_date: date, category_id: category_ids)
+    end
+  end
 
   def get_money_record_amount
     if params[:category][:paycheck_percentage].present?
