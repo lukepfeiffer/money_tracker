@@ -5,7 +5,9 @@
       .list
         = render partial: 'category_container', collection: active_categories, as: :category
       .misc
-        .left= render "new_category_modal"
+        .left
+          = render "new_category_modal"
+          = render "paychecks/new_paycheck_modal" if current_user.use_paycheck?
         .right
           %b Total:
           = current_user.total_money

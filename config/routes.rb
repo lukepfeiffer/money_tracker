@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   resources :money_records
+  resources :paychecks
   resources :categories do
     collection do
       get 'archived'

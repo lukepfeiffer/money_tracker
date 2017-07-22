@@ -1,6 +1,6 @@
 .modal
   %label{:for => "modal-1"}
-    %a.button-link.modal-trigger Add Category
+    %a.create_category.button-link.modal-trigger Add Category
 
   %input#modal-1.modal-state{:type => "checkbox"}/
   .modal-fade-screen
@@ -20,5 +20,5 @@
           %dd= f.text_area :description, placeholder: 'Optional'
 
         %fieldset.actions
-          = f.submit 'Create'
+          = f.submit 'Create', class: "create-category"
           %button.danger.cancel.hidden Cancel

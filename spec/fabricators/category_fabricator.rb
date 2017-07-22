@@ -16,3 +16,9 @@ Fabricator(:other_category, from: :category) do
   name "OtherName"
   amount "60"
 end
+
+Fabricator(:paycheck_category, from: :category) do
+  description "Paycheck description"
+  name "PaycheckCategory"
+  paycheck_percentage "20"
+end

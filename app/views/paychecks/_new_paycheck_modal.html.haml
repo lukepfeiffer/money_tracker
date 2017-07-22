@@ -1,0 +1,21 @@
+.modal
+  %label{:for => "modal-2"}
+    %a.add_paycheck.button-link.modal-trigger Add paycheck
+
+  %input#modal-2.modal-state{:type => "checkbox"}/
+  .modal-fade-screen
+    .modal-inner
+      .modal-close{:for => "modal-1"}
+      %h1 Create new paycheck
+      = form_for paycheck, html: {id: 'new'} do |f|
+        %fieldset
+
+          %dt= f.label :amount
+          %dd= f.number_field :amount, class: 'number-field', step: '0.01', placeholder: '25.00'
+
+          %dt= f.label :date_received
+          %dt= f.date_field :date_received
+
+        %fieldset.actions
+          = f.submit 'Create', class: 'create-paycheck'
+          %button.danger.cancel.hidden Cancel

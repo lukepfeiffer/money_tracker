@@ -5,10 +5,10 @@ Feature: Category
   Scenario: User Creates category
     Given 1 user
     And I sign in as a user
-    When I click link with "modal-trigger" class
+    When I click link with "create_category" class
     And I fill in "category_name" with "FooBarBaz"
     And I fill in "category_amount" with "20"
-    And I press "Create"
+    And I click link with "create-category" class
     Then I should see "FooBarBaz"
     And I should see "20"
 
@@ -26,7 +26,7 @@ Feature: Category
     And that category belongs to that user
     And I sign in as a user
     When I follow "Archive"
-    Then I should not see "FooBarBaz"
+    Then I should not see "Foo Bar Baz"
     And I should not see "20"
 
   Scenario: User views archived 
@@ -46,11 +46,21 @@ Feature: Category
     Given 1 paycheck_user
     And that user has 1 paycheck
     And I sign in as a user
-    When I click link with "modal-trigger" class
+    When I click link with "create_category" class
     And I fill in "category_name" with "FooBarBaz"
     And I fill in "category_description" with "This is a description"
     And I fill in "category_paycheck_percentage" with "30"
-    And I press "Create"
+    And I click link with "create-category" class
     Then I should see "Foo Bar Baz"
     And I should see "This is a description"
     And I should see "150"
+
+  # Default category percentage is 20
+  Scenario: User autopopulates amounts of categories
+    Given 1 paycheck_user
+    And that user has 1 paycheck_category
+    And I sign in as a user
+    When I click link with "add_paycheck" class
+    And I fill in "paycheck_amount" with "400"
+    And I click link with "create-paycheck" class
+    Then I should see "80"
