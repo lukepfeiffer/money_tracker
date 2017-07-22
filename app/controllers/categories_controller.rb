@@ -1,42 +1,33 @@
 class CategoriesController < ApplicationController
 
   expose :category
-  expose :money_record
   expose :paycheck
+
   expose :active_categories do
     current_user.categories.active
   end
+
   expose :archived_categories do
     current_user.categories.archived
   end
 
-  expose :money_records do
-    current_user.money_records.first(10)
-  end
-
   expose :records_by_date do
-    records = []
     dates = current_user.money_records.map(&:adjusted_date).uniq.sort.reverse
     category_ids = current_user.categories.map(&:id)
 
-    dates.each do |date|
+    dates.each_with_object( [] ) do |date, records|
       records << MoneyRecord.where(adjusted_date: date, category_id: category_ids)
     end
-
-    records
 
   end
 
   def example
-    @archive_link = true
   end
 
   def index
-    @archive_link = true
   end
 
   def archived
-    @edit_link = false
   end
 
   def create
@@ -46,8 +37,12 @@ class CategoriesController < ApplicationController
     category.user_id = current_user.id
 
     if category.save
-      MoneyRecord.create(amount: amount, category_id: category.id, adjusted_date: DateTime.now, description: "Intitial category creation")
-      redirect_to categories_path
+      MoneyRecord.create(
+        amount: amount, category_id:
+        category.id, adjusted_date: DateTime.now,
+        description: "Intitial category creation"
+      )
+      redirect_to categories_path(notice: "Category was created!")
     else
       render :index
     end
