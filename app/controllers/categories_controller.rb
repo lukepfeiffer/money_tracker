@@ -15,6 +15,15 @@ class CategoriesController < ApplicationController
 
   expose :records_by_date do
     records = []
+    dates = current_user.money_records.map(&:adjusted_date).uniq.sort.reverse
+    category_ids = current_user.categories.map(&:id)
+
+    dates.each do |date|
+      records << MoneyRecord.where(adjusted_date: date, category_id: category_ids)
+    end
+
+    records
+
   end
 
   def example
@@ -42,7 +51,7 @@ class CategoriesController < ApplicationController
     category = Category.new(category_params)
     category.user_id = current_user.id
     if category.save
-      MoneyRecord.create(amount: category.amount, category_id: category.id, adjusted_date: DateTime.now)
+      MoneyRecord.create(amount: category.amount, category_id: category.id, adjusted_date: DateTime.now, description: "Intitial category creation")
       redirect_to categories_path
     else
       render :index

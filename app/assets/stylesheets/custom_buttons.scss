@@ -1,0 +1,12 @@
+$light-gray: #d6d6d6;
+$dark-gray: #414042;
+.load_more{
+  background-color: $light-gray;
+  border-radius: 0.3125rem;
+  color: $dark-gray;
+
+  &:hover, &:focus{
+    background-color: darken($light-gray, 5%);
+    color: darken($dark-gray, 5%);
+  }
+}

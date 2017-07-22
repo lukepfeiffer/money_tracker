@@ -19,13 +19,23 @@
             %th Description
             %th Amount
         %tbody
-          - MoneyRecord.all.each do |record|
+          - records_by_date.each do |records_array|
             %tr.tables-row
-              %td= record.adjusted_date.strftime("%-m/%d/%y")
-              %td= record.category.name
-              %td= record.description.truncate(20)
-              %td
-                - if is_negative_amount?(record)
-                  %span.red-record.text= record.amount
-                - else
-                  %span.blue-record.text= record.amount
+              %td= records_array.first.adjusted_date.strftime("%-m/%d/%y")
+              %td= records_array.first.category.name
+              %td= records_array.first.description.truncate(20)
+              %td= records_array.first.amount
+
+            - records_array[1..-1].each do |record|
+              %tr.no_upper_border
+                %td
+                %td= record.category.name
+                %td= record.description.truncate(20)
+                %td
+                  - if is_negative_amount?(record)
+                    %span.red-record.text= record.amount
+                  - else
+                    %span.blue-record.text= record.amount
+          %tr.entire_length
+            %td{colspan: '4'}
+              %button.load_more Load More

@@ -8,15 +8,15 @@
   $light-gray: #DDD !default;
   $medium-screen: 40em !default;
   $large-screen: 53.75em !default;
-  $base-font-color: $dark-gray !default;
+  $base-font-color: #585759 !default;
   $table-border-color: $base-border-color;
   $table-border: 1px solid $table-border-color;
-  $table-background: lighten($table-border-color, 12%);
-  $table-header-background: lighten($table-background, 10%);
+  $table-background: #fff;
+  $table-header-background: #F9F6F3;
   $table-hover-background: darken($table-background, 5%);
   $table-stripe-background: darken($table-background, 2%);
   $table-stripe-background-hover: darken($table-stripe-background, 5%);
-  $table-padding: 0.75em 1em;
+  $table-padding: 1.25em 1em;
 
   border: $table-border;
   border-collapse: separate;
@@ -24,6 +24,7 @@
   border-radius: $base-border-radius;
   border-spacing: 0;
   width: 100%;
+  color: $base-font-color;
 
   tbody {
     background-color: $table-background;
@@ -32,9 +33,9 @@
       background-color: $table-hover-background;
     }
     tr:nth-child(even) {
-      background-color: $table-stripe-background;
+      background-color: $table-background;
       &:hover > td {
-        background-color: $table-stripe-background-hover;
+        background-color: $table-hover-background;
       }
     }
   }
@@ -60,10 +61,12 @@
   }
 
   thead {
+    color: #717171;
+    background-color: $table-background;
+
     th {
-      background-color: $table-header-background;
       border-bottom: 0;
-      border-left: 1px solid $table-border-color;
+      border-left: none;
       padding: $table-padding;
       text-align: left;
 
@@ -81,26 +84,30 @@
       border-left: 1px solid $table-border-color;
       border-top: 1px solid $table-border-color;
       padding: $table-padding;
+      border-left: none;
 
       &:first-child {
         border-left: 0;
       }
+    }
+  }
 
-      button {
-        display: inline-block;
-        font-size: 0.7em;
-        line-height: $base-line-height;
-        margin-bottom: 0.3em;
-        margin-right: 0.5em;
-        outline: none;
-        padding: 0.3em 1em;
-        width: 100%;
+  .no_upper_border{
+    td{
+      border-top: none;
+      border-top: 1px dashed #ccc;
+    }
 
-        @include media($medium-screen) {
-          margin-bottom: 0;
-          width: auto;
-        }
-      }
+    td:first-child{
+      border: none;
+    }
+  }
+
+  .entire_length{
+    text-align: center;
+
+    td{
+      padding: 10px;
     }
   }
 }

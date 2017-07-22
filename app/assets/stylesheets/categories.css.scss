@@ -10,12 +10,16 @@
       margin-right: 10px;
 
       .list{
+        min-height: 300px;
         overflow-y: scroll;
-        max-height: 400px;
+        max-height: 500px;
       }
     }
 
     .selected-category{
+      min-height: 300px;
+      overflow-y: scroll;
+      max-height: 500px;
       width: 60vw;
     }
 
