@@ -7,7 +7,7 @@ $(document).ready(function(){
 
     $.ajax({
       type: "get",
-      url: "categories/" + categoryId,
+      url: "/categories/" + categoryId,
       success: function(response){
         $(".records_for").replaceWith(newH1);
         $(".table-container").replaceWith(response);
