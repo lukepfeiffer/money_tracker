@@ -6,8 +6,12 @@ When /^I sign in as a user$/ do
   click_button 'Sign in'
 end
 
-When /^I click link with "(.+)" class$/ do |text|
-  find(".#{text}").click
+When /^I click link with "(.+)" class$/ do |selector|
+  find(".#{selector}").click
+end
+
+When /^I click the first "(.+)"$/ do |selector|
+  first(selector).click
 end
 
 When /^I select "(.+)" from "(.+)"$/ do |value, select_tag|

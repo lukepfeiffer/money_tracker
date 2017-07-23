@@ -23,20 +23,6 @@ Feature: Money record
     Then I should see "50.44"
     And I should not see "30.88"
 
-  Scenario: User views active money_records in correct_category
-    Given 1 user
-    And that user has 1 category
-    And that category has 1 money_record
-    And that user has 1 other_category
-    And that other_category has 1 other_money_record
-    When I sign in as a user
-    And I follow "History"
-    And I click link with "show-category-filter" class
-    And I select "FooBarBaz" from "category_id"
-    And I press "Search"
-    Then I should see "50.44"
-    And I should not see "40.22"
-
   @js
   Scenario: User views active money_records in date range
     Given 1 user

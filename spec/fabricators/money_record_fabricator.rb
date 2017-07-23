@@ -1,6 +1,7 @@
 Fabricator :money_record do
   adjusted_date DateTime.now
   amount "50.44"
+  description "Default"
 end
 
 Fabricator(:archived_money_record, from: :money_record) do

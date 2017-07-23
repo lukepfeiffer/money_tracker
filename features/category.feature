@@ -64,3 +64,15 @@ Feature: Category
     And I fill in "paycheck_amount" with "400"
     And I click link with "create-paycheck" class
     Then I should see "80"
+
+  @javascript
+  Scenario: Filter money records by categories
+    Given 1 user
+    And that user has 1 category
+    And that category has 1 money_record
+    And that user has 1 other_category
+    And that other_category has 1 other_money_record
+    And I sign in as a user
+    When I click the first ".item"
+    Then I should see "50.44"
+    And I should not see "40.22"
