@@ -11,17 +11,12 @@ class CategoriesController < ApplicationController
     current_user.categories.archived
   end
 
-  expose :records_by_date do
+  expose :active_records_by_date do
     get_records_by_date
   end
 
   expose :archived_records_by_date do
-    dates = current_user.money_records.map(&:adjusted_date).uniq.sort.reverse
-    category_ids = archived_categories.map(&:id)
-
-    dates.each_with_object( [] ) do |date, records|
-      records << MoneyRecord.where(adjusted_date: date, category_id: category_ids)
-    end
+    get_records_by_date(nil, true)
   end
 
   def example
@@ -89,14 +84,19 @@ class CategoriesController < ApplicationController
     category.user_id == current_user.id ? true : false
   end
 
-  def get_records_by_date(category = nil)
+  def get_records_by_date(category = nil, archived = false)
     if category.present?
       dates = category.money_records.map(&:adjusted_date).uniq.sort.reverse
       category_ids = category.id
+    elsif archived
+      dates = current_user.get_money_records_dates(archived)
+      category_ids = archived_categories.map(&:id)
     else
-      dates = current_user.money_records.map(&:adjusted_date).uniq.sort.reverse
+      dates = current_user.get_money_records_dates
       category_ids = active_categories.map(&:id)
     end
+
+    dates = dates.uniq.sort.reverse
 
     dates.each_with_object( [] ) do |date, records|
       records << MoneyRecord.where(adjusted_date: date, category_id: category_ids)

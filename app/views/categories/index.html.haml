@@ -13,4 +13,4 @@
           = current_user.total_money
     %ul.selected-category
       %h1.records_for All Records
-      = render 'category_table', collection: records_by_date, as: :record
+      = render 'category_table', records_by_date: active_records_by_date

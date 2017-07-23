@@ -6,4 +6,4 @@
         = render partial: 'category_container', collection: archived_categories, as: :category
     %ul.selected-category
       %h1.records_for Archived Records
-      = render 'category_table', collection: archived_records_by_date, as: :record
+      = render 'category_table', records_by_date: archived_records_by_date
