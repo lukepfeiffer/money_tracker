@@ -9,7 +9,22 @@
     - else
       %p.blue-record.balance= number_to_currency(category.amount)
       %p.sub-text Availible Funds
+    %button.transaction.small Add Funds
     - if category.active?
-      %button.danger.small{ data: {url: category_path(category.id)} } Archive
+      %button.archive.danger.small{ data: {url: category_path(category.id)} } Archive
     - else
       %button.restore.small{ data: {url: unarchive_categories_path(id: category.id)} } Restore
+
+    = form_for money_record, html: {class: "new_record hidden_form"} do |f|
+      %fieldset
+        = f.label :amount
+        = f.number_field :amount, class: 'number-field', step: '0.01', placeholder: '60.00'
+
+        = f.hidden_field :category_id, value: category.id
+
+        = f.label :description
+        = f.text_field :description
+
+      %fieldset.actions
+        = f.submit "Save", class: "save"
+        %button.cancel.danger Cancel

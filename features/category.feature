@@ -95,3 +95,16 @@ Feature: Category
     Then I should not see "Archived Name"
     When I follow "Active"
     Then I should see "Archived Name"
+
+  @javascript
+  Scenario: Add money record to category
+    Given 1 user
+    And that user has 1 category
+    And I sign in as a user
+    When I click the first ".transaction"
+    And I fill in "money_record_amount" with "30"
+    And I fill in "money_record_description" with "Made money"
+    And I press "Save"
+    Then I should see "50"
+    And I should see "30"
+    And I should see "Made money"

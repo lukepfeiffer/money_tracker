@@ -5,7 +5,7 @@ class Category < ActiveRecord::Base
   scope :active, -> {where(archived_at: nil)}
   scope :archived, -> {where.not(archived_at: nil)}
 
-  validate :validate_paycheck_percentage
+  validate :validate_paycheck_percentage, on: :create
   validates_presence_of :name, :user_id
 
   def validate_paycheck_percentage

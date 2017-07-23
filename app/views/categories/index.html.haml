@@ -10,7 +10,7 @@
           = render "paychecks/new_paycheck_modal" if current_user.use_paycheck?
         .right
           %b Total:
-          = current_user.total_money
+          = number_to_currency(current_user.total_money)
     %ul.selected-category
       %h1.records_for All Records
       = render 'category_table', records_by_date: active_records_by_date

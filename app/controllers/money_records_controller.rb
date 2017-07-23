@@ -79,19 +79,17 @@ class MoneyRecordsController < ApplicationController
 
   def create
     money_record = MoneyRecord.new(money_record_params)
-    money_record.category_id = params[:category_id]
-    money_record.adjusted_date = DateTime.now
-    category = Category.find(params[:category_id])
-    adjust_category_amount(category, money_record)
-    if money_record.save
-      render partial: 'categories/category_container', locals: {categories: category}
-    else
-      head :no_content
-    end
+    money_record.adjusted_date = Date.today
+    money_record.save
+
+    category = Category.find(params[:money_record][:category_id])
+    adjust_category_amount(category, money_record.amount)
+
+    render partial: 'categories/category_table', locals: {records_by_date: get_records_by_date}
   end
 
-  def adjust_category_amount(category, money_record)
-    category.update(amount: category.amount + money_record.amount)
+  def adjust_category_amount(category, amount)
+    category.update(amount: category.amount + amount)
   end
 
   def filter_dates
@@ -105,7 +103,8 @@ class MoneyRecordsController < ApplicationController
     params.require(:money_record).permit(
       :amount,
       :adjusted_date,
-      :category_id
+      :category_id,
+      :description
     )
   end
 end
