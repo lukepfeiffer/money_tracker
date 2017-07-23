@@ -100,7 +100,7 @@ describe MoneyRecord do
     end
 
     # Not currently working
-    xit 'returns records based on start date, end date, and category' do
+    it 'returns records based on start date, end date, and category' do
       actual_records = MoneyRecord.filter(user1, Date.today - 1.week, Date.today + 1.week, category_one)
       expect(actual_records).to include(c1_record_one)
       expect(actual_records).to include(c1_record_two)

@@ -68,6 +68,30 @@ Feature: Category
     And that user has 1 other_category
     And that other_category has 1 other_money_record
     And I sign in as a user
-    When I click the first ".item"
+    When I click the first ".top-container"
     Then I should see "50.44"
     And I should not see "40.22"
+
+  @javascript
+  Scenario: Archive Category
+    Given 1 user
+    And that user has 1 category
+    And that user has 1 other_category
+    And I sign in as a user
+    When I click the first ".danger"
+    Then I should not see "Foo Bar Baz"
+    And I should see "Other Name"
+    When I follow "Archived"
+    Then I should see "Foo Bar Baz"
+
+  @javascript
+  Scenario: Restore Category
+    Given 1 user
+    And that user has 1 category
+    And that user has 1 archived_category
+    And I sign in as a user
+    And I follow "Archived"
+    When I click the first ".restore"
+    Then I should not see "Archived Name"
+    When I follow "Active"
+    Then I should see "Archived Name"

@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   end
 
   def total_money
-    transactions = categories.each_with_object([]) do |category, records|
+    transactions = categories.active.each_with_object([]) do |category, records|
       category.money_records.each do |record|
         records << record
       end

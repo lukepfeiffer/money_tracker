@@ -35,5 +35,13 @@ describe Category do
       expect(actual).to include(archived)
       expect(actual).to_not include(active)
     end
+
+    it 'returns true for active category' do
+      expect(active.active?).to be true
+    end
+
+    it 'returns false for archived category' do
+      expect(archived.active?).to be false
+    end
   end
 end

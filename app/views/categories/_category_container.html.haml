@@ -1,5 +1,5 @@
-.item{data: {id: category.id, name: category.name}}
-  .top-container
+.item
+  .top-container{data: {id: category.id, name: category.name}}
     %h1= category.name.titleize
     .description= category.description
   .bottom-container
@@ -9,3 +9,7 @@
     - else
       %p.blue-record.balance= number_to_currency(category.amount)
       %p.sub-text Availible Funds
+    - if category.active?
+      %button.danger.small{ data: {url: category_path(category.id)} } Archive
+    - else
+      %button.restore.small{ data: {url: unarchive_categories_path(id: category.id)} } Restore

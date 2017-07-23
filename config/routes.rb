@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   resources :categories do
     collection do
       get 'archived'
-      get 'unarchive'
       get 'example'
       delete 'unarchive'
     end

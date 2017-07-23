@@ -13,4 +13,8 @@ class Category < ActiveRecord::Base
       errors.add(:paycheck_percentage, "Must have a paycheck percentage!")
     end
   end
+
+  def active?
+    archived_at == nil ? true : false
+  end
 end

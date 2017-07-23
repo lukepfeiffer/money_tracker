@@ -9,7 +9,6 @@
   width: 100%;
 
   &:hover{
-    cursor: pointer;
     background-color: darken(#fff, 1%);
     border: 1px solid #ccc;
   }
@@ -21,8 +20,14 @@
 
   .top-container{
     h1{
-      font-size: 18px;
+      color: $blue;
+      cursor: pointer;
+      font-size: 22px;
       font-weight: normal;
+
+      &:hover{
+        color: darken($blue, 5%);
+      }
     }
   }
 

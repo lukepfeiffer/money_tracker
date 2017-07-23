@@ -47,7 +47,7 @@ end
 
 
 puts "Creating PaycheckUser"
-user2= User.create(email: "paycheck@example.com", password: "password")
+user2= User.create(email: "paycheck@example.com", password: "password", use_paycheck: true)
 
 puts "Creating Paycheck Categories"
 paycheck_category_one = Category.create(name: "Paycheck Category 1", user_id: user2.id, paycheck_percentage: 25, amount: 0)

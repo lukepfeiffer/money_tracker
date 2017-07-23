@@ -3,6 +3,12 @@ module CategoriesHelper
     amount < 0 ? true : false
   end
 
+  def render_archive_link(category)
+    if category.archived_at == nil
+    "<button class='danger small'> Archive </button>"
+    end
+  end
+
   def amount_label(form, use_paycheck)
     if use_paycheck
       form.label :paycheck_percentage
