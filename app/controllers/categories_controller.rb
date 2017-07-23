@@ -32,17 +32,20 @@ class CategoriesController < ApplicationController
     amount = get_money_record_amount
     category = Category.new(category_params)
     category.amount = amount
-    category.user_id = current_user.id
 
-    if category.save
-      MoneyRecord.create(
-        amount: amount, category_id:
-        category.id, adjusted_date: DateTime.now,
-        description: "Intitial category creation"
-      )
-      redirect_to categories_path(notice: "Category was created!")
-    else
-      render :index
+    respond_to do |format|
+      format.js do
+        if category.save
+          MoneyRecord.create(
+            amount: amount, category_id:
+            category.id, adjusted_date: DateTime.now,
+            description: "Intitial category creation"
+          )
+          redirect_to categories_path(notice: "Category was created!")
+        else
+          render partial: "create_errors", locals: {category: category}
+        end
+      end
     end
   end
 

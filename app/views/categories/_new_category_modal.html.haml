@@ -6,12 +6,15 @@
   .modal-fade-screen
     .modal-inner
       .modal-close{:for => "modal-1"}
+      #errors_div
       %h1 Create new category
-      = form_for category, html: {id: 'new'} do |f|
+      = form_for category, remote: true, html: {id: 'new'} do |f|
         %fieldset
 
           %dt= f.label :name
           %dd= f.text_field :name, class: 'small-field', placeholder: 'Category Name'
+
+          %dd= f.hidden_field :user_id, value: current_user.id
 
           %dt= amount_label(f, current_user.use_paycheck?)
           %dd= amount_field(f, current_user.use_paycheck?)
