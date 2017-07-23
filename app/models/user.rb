@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   def get_money_records_dates(archived = false)
     filtered_categories = archived ? categories.archived : categories.active
 
-    dates = filtered_categories.each_with_object([]) do |category, dates|
+    filtered_categories.each_with_object([]) do |category, dates|
       category.money_records.each do |record|
         dates << record.adjusted_date
       end
@@ -33,15 +33,13 @@ class User < ActiveRecord::Base
   end
 
   def total_money
-    records = []
-
-    categories.each do |category|
+    transactions = categories.each_with_object([]) do |category, records|
       category.money_records.each do |record|
         records << record
       end
     end
 
-    MoneyRecord.sum(records)
+    MoneyRecord.sum(transactions)
   end
 
   private
