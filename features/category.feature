@@ -42,6 +42,7 @@ Feature: Category
     Given 1 paycheck_user
     And that user has 1 paycheck
     And I sign in as a user
+    Then I should see "Amount left in paycheck: $500.00"
     When I click link with "create_category" class
     And I fill in "category_name" with "FooBarBaz"
     And I fill in "category_description" with "This is a description"

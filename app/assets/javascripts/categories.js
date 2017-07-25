@@ -58,15 +58,28 @@ $(document).ready(function(){
     $(this).closest(".hidden_form").toggle()
   });
 
+  var toCurrency = function(string) {
+    return '$' + string.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+  }
+
+  var toFloatFromCurrency = function(string) {
+    return parseFloat(string.substring(1, string.length).replace(/,/g, ""));
+  }
+
+  // Create new record
   $(".item").on("submit", ".new_record", function(event){
     event.preventDefault();
-    var form = $(this);
-    var amount = $("#money_record_amount").val();
-    var balanceHTML = $(this).parent().children(".balance")
-    var balanceText = balanceHTML.text();
-    var balance = parseFloat(balanceText.substring(1, balanceText.length).replace(/,/g, "")) + parseFloat(amount);
-    var newBalance = '$' + balance.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+    var form = $(this)
+    var amount = parseFloat($("#money_record_amount").val());
 
+    var balanceHTML = $(this).parent().children(".balance")
+    var currentBalance = toFloatFromCurrency( balanceHTML.text() );
+    var newBalance = toCurrency( currentBalance + amount );
+
+    var paycheckHTML = $(".record");
+    var currentPaycheckAmount = toFloatFromCurrency(paycheckHTML.text());
+    var newPaycheckAmount = toCurrency(currentPaycheckAmount - amount);
+    var paycheckClasses = $(".record").attr("class");
 
     $.ajax({
       type: "post",
@@ -76,6 +89,7 @@ $(document).ready(function(){
         $(".table-container").replaceWith(response);
         balanceHTML.text(newBalance);
         $(".hidden_form").hide();
+        paycheckHTML.text(newPaycheckAmount);
       }
     });
   });

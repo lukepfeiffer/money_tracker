@@ -82,14 +82,26 @@ class MoneyRecordsController < ApplicationController
     money_record.adjusted_date = Date.today
     money_record.save
 
-    category = Category.find(params[:money_record][:category_id])
-    adjust_category_amount(category, money_record.amount)
+    if current_user.use_paycheck?
+      category = Category.find(params[:money_record][:category_id])
+      adjust_category_amount(category, money_record.amount) if current_user.use_paycheck?
+
+      paycheck = current_user.paychecks.last
+      adjust_paycheck_amount_left(paycheck, money_record.amount)
+
+    end
 
     render partial: 'categories/category_table', locals: {records_by_date: get_records_by_date}
   end
 
   def adjust_category_amount(category, amount)
     category.update(amount: category.amount + amount)
+  end
+
+  def adjust_paycheck_amount_left(paycheck, amount)
+    if amount > 0
+      paycheck.update(amount_left: paycheck.amount_left - amount)
+    end
   end
 
   def filter_dates

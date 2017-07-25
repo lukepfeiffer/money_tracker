@@ -2,6 +2,7 @@ class PaychecksController < ApplicationController
   def create
     paycheck = Paycheck.new(paycheck_params)
     paycheck.user_id = current_user.id
+    paycheck.amount_left = params[:paycheck][:amount]
 
     if paycheck.save
       update_categories_amounts(paycheck.amount, paycheck.date_received)

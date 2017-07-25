@@ -3,6 +3,9 @@
     %ul.categories
       %h1 Categories
       .list
+        - if current_user.use_paycheck?
+          Amount left in paycheck:
+          = last_paycheck_amount
         = render partial: 'category_container', collection: active_categories, as: :category
       .misc
         .left
