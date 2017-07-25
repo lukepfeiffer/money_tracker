@@ -45,7 +45,7 @@ class CategoriesController < ApplicationController
           flash.keep(:notice)
           render js: "window.location= '#{categories_path}'"
         else
-          render partial: "create_errors", locals: {category: category}
+          render partial: "shared/create_errors", locals: {model: category}
         end
       end
     end
