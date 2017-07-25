@@ -1,7 +1,7 @@
 Feature: Category
 
-  Need to rewrite to match new functionality
-  @js
+  #Need to rewrite to match new functionality
+  @javascript
   Scenario: User Creates category
     Given 1 user
     And I sign in as a user
@@ -9,7 +9,7 @@ Feature: Category
     And I fill in "category_name" with "FooBarBaz"
     And I fill in "category_amount" with "20"
     And I click link with "create-category" class
-    Then I should see "FooBarBaz"
+    Then I should see "Foo Bar Baz"
     And I should see "20"
 
   Scenario: User views category index page
@@ -37,6 +37,7 @@ Feature: Category
     And I should not see "50.44"
 
   # Paycheck default amount is $500
+  @javascript
   Scenario: User creates category using paycheck amount
     Given 1 paycheck_user
     And that user has 1 paycheck
@@ -51,6 +52,7 @@ Feature: Category
     And I should see "150"
 
   # Default category percentage is 20
+  @javascript
   Scenario: User autopopulates amounts of categories
     Given 1 paycheck_user
     And that user has 1 paycheck_category

@@ -41,22 +41,14 @@ class CategoriesController < ApplicationController
             category.id, adjusted_date: DateTime.now,
             description: "Intitial category creation"
           )
-          redirect_to categories_path(notice: "Category was created!")
+          flash[:notice] = 'Category was created!'
+          flash.keep(:notice)
+          render js: "window.location= '#{categories_path}'"
         else
           render partial: "create_errors", locals: {category: category}
         end
       end
     end
-  end
-
-  def category_params
-    params.require(:category).permit(
-      :name,
-      :amount,
-      :user_id,
-      :description,
-      :paycheck_percentage
-    )
   end
 
   def show
@@ -82,6 +74,15 @@ class CategoriesController < ApplicationController
   end
 
   private
+  def category_params
+    params.require(:category).permit(
+      :name,
+      :amount,
+      :user_id,
+      :description,
+      :paycheck_percentage
+    )
+  end
 
   def belongs_to_current_user(category)
     category.user_id == current_user.id ? true : false
@@ -89,7 +90,7 @@ class CategoriesController < ApplicationController
 
   def get_money_record_amount
     if params[:category][:paycheck_percentage].present?
-      current_user.paychecks.last.amount * params[:category][:paycheck_percentage].to_d
+      current_user.paychecks.last.amount * (params[:category][:paycheck_percentage].to_d/100)
     else
       params[:category][:amount]
     end
