@@ -15,9 +15,9 @@
             %td= records_array.first.description.truncate(20)
             %td
               - if is_negative_amount?(records_array.first)
-                %span.red-record.text= records_array.first.amount
+                %span.red-record.text= number_to_currency records_array.first.amount
               - else
-                %span.blue-record.text= records_array.first.amount
+                %span.blue-record.text= number_to_currency records_array.first.amount
 
           - records_array[1..-1].each do |record|
             %tr.no_upper_border
@@ -26,9 +26,9 @@
               %td= record.description.truncate(20)
               %td
                 - if is_negative_amount?(record)
-                  %span.red-record.text= record.amount
+                  %span.red-record.text= number_to_currency record.amount
                 - else
-                  %span.blue-record.text= record.amount
+                  %span.blue-record.text= number_to_currency record.amount
         %tr.entire_length
           %td{colspan: '4'}
             %button.load_more Load More
