@@ -18,6 +18,33 @@ describe Category do
     end
   end
 
+  describe '#amount_from_params' do
+    context 'paycheck user' do
+      let!(:user) { Fabricate(:paycheck_user) }
+      let!(:category) { Fabricate(:category, paycheck_percentage: 25, user_id: user.id) }
+      let!(:paycheck) { Fabricate(:paycheck, amount: 100, user_id: user.id) }
+      let(:params) { { category: {paycheck_percentage: category.paycheck_percentage} } }
+
+      it 'returns correct amount' do
+        amount = category.amount_from_params(params)
+        expected_amount = paycheck.amount * (0.25)
+        expect(amount).to eq(expected_amount)
+      end
+    end
+
+    context 'non_paycheck_user' do
+      let!(:user) { Fabricate(:user) }
+      let!(:category) { Fabricate(:category, user_id: user.id) }
+      let!(:params) { { category: {amount: 200.22} } }
+
+      it 'returns correct amount for non-paycheck user' do
+        amount = category.amount_from_params(params)
+        expected_amount = params[:category][:amount]
+        expect(amount).to eq(expected_amount)
+      end
+    end
+  end
+
   describe "#validate" do
     let!(:user) { Fabricate(:paycheck_user) }
 

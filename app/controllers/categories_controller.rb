@@ -29,7 +29,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    amount = get_money_record_amount
+    amount = category.amount_from_params(params)
     category = Category.new(category_params)
     category.amount = amount
 
@@ -80,13 +80,5 @@ class CategoriesController < ApplicationController
       :description,
       :paycheck_percentage
     )
-  end
-
-  def get_money_record_amount
-    if params[:category][:paycheck_percentage].present?
-      current_user.paychecks.last.amount * (params[:category][:paycheck_percentage].to_d/100)
-    else
-      params[:category][:amount]
-    end
   end
 end

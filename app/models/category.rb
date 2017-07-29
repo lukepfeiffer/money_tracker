@@ -24,6 +24,14 @@ class Category < ActiveRecord::Base
     user_id == user.id ? true : false
   end
 
+  def amount_from_params(params)
+    if params[:category][:paycheck_percentage].present?
+      user.paychecks.last.amount * (params[:category][:paycheck_percentage].to_d/100)
+    else
+      params[:category][:amount]
+    end
+  end
+
   private
 
   def nil_or_less_than_zero?
