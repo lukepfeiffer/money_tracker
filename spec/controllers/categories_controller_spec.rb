@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe CategoriesController, type: :controller do
   describe 'Archiving' do
-    let(:user) { Fabricate(:user) }
-    let(:archived_category) { Fabricate(:archived_category, user_id: user.id) }
-    let(:active_category) { Fabricate(:category, user_id: user.id) }
+    let!(:user) { Fabricate(:user) }
+    let!(:archived_category) { Fabricate(:archived_category, user_id: user.id) }
+    let!(:active_category) { Fabricate(:category, user_id: user.id) }
 
     it 'unarchives category' do
       get :unarchive, {id: archived_category.id }

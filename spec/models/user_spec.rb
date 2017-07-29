@@ -37,6 +37,5 @@ describe User do
     it 'returns active category sum' do
       expect(user.total_money).to eq(60)
     end
-
   end
 end

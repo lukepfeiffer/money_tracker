@@ -111,4 +111,30 @@ describe Category do
       expect(archived.active?).to be false
     end
   end
+
+  describe '#percent_too_high' do
+    let!(:user) { Fabricate(:paycheck_user) }
+    context "percent is too high" do
+      let!(:category1) { Fabricate(:paycheck_category, user_id: user.id, paycheck_percentage: 30) }
+      let!(:category2) { Fabricate(:paycheck_category, user_id: user.id, paycheck_percentage: 30) }
+      let!(:category3) { Fabricate(:paycheck_category, user_id: user.id, paycheck_percentage: 30) }
+
+      it 'returns true' do
+        new_category = Category.new(user_id: user.id, paycheck_percentage: 30)
+        actual = new_category.percent_too_high?
+        expect(actual).to be true
+      end
+    end
+
+    context "percent is not too high" do
+      let!(:category1) { Fabricate(:paycheck_category, user_id: user.id, paycheck_percentage: 30) }
+      let!(:category2) { Fabricate(:paycheck_category, user_id: user.id, paycheck_percentage: 30) }
+
+      it 'returns false' do
+        new_category = Category.new(user_id: user.id, paycheck_percentage: 30)
+        actual = new_category.percent_too_high?
+        expect(actual).to be false
+      end
+    end
+  end
 end
