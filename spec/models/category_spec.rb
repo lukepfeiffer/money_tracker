@@ -2,6 +2,22 @@ require 'rails_helper'
 
 describe Category do
 
+  describe "#belongs_to?" do
+    let(:user1) { Fabricate(:user) }
+    let(:user2) { Fabricate(:user, email: "email@example2.com") }
+    let(:category) { Fabricate(:category, user_id: user1.id) }
+
+    it 'returns true' do
+      actual = category.belongs_to?(user1)
+      expect(actual).to be true
+    end
+
+    it 'returns false' do
+      actual = category.belongs_to?(user2)
+      expect(actual).to be false
+    end
+  end
+
   describe "#validate" do
     let!(:user) { Fabricate(:paycheck_user) }
 

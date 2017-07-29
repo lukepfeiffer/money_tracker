@@ -1,7 +1,11 @@
 .item
+
   .top-container{data: {id: category.id, name: category.name}}
     %h1= category.name.titleize
-    .description= category.description
+    .description
+      = category.description
+      = "#{number_to_percentage(category.paycheck_percentage, precision: 0)} of paycheck" if current_user.use_paycheck?
+
   .bottom-container
     - if is_negative?(category.amount)
       %p.red-record.balance= number_to_currency(category.amount)
@@ -9,6 +13,7 @@
     - else
       %p.blue-record.balance= number_to_currency(category.amount)
       %p.sub-text Availible Funds
+
     %button.transaction.small Add Funds
     - if category.active?
       %button.archive.danger.small{ data: {url: category_path(category.id)} } Archive

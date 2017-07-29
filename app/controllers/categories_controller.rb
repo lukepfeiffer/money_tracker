@@ -51,7 +51,7 @@ class CategoriesController < ApplicationController
 
   def show
     category = Category.find(params[:id])
-    if belongs_to_current_user(category)
+    if category.belongs_to?(current_user)
       get_records_by_date = get_records_by_date(category)
       render partial: 'category_table', locals: {records_by_date: get_records_by_date}
     else
@@ -82,10 +82,6 @@ class CategoriesController < ApplicationController
     )
   end
 
-  def belongs_to_current_user(category)
-    category.user_id == current_user.id ? true : false
-  end
-
   def get_money_record_amount
     if params[:category][:paycheck_percentage].present?
       current_user.paychecks.last.amount * (params[:category][:paycheck_percentage].to_d/100)
@@ -93,5 +89,4 @@ class CategoriesController < ApplicationController
       params[:category][:amount]
     end
   end
-
 end

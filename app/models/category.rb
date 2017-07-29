@@ -20,6 +20,10 @@ class Category < ActiveRecord::Base
     archived_at == nil ? true : false
   end
 
+  def belongs_to?(user)
+    user_id == user.id ? true : false
+  end
+
   private
 
   def nil_or_less_than_zero?

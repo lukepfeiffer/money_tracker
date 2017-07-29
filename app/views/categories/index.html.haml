@@ -3,9 +3,6 @@
     %ul.categories
       %h1 Categories
       .list
-        - if current_user.use_paycheck?
-          Amount left in paycheck:
-          = last_paycheck_amount
         = render partial: 'category_container', collection: active_categories, as: :category
       .misc
         .left
@@ -14,6 +11,9 @@
         .right
           %b Total:
           = number_to_currency(current_user.total_money)
+      - if current_user.use_paycheck?
+        Amount left in paycheck:
+        = last_paycheck_amount
     %ul.selected-category
       %h1.records_for All Records
       = render 'category_table', records_by_date: active_records_by_date
