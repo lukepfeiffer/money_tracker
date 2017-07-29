@@ -39,6 +39,10 @@ class Category < ActiveRecord::Base
     end
   end
 
+  def adjust_amount(added_amount)
+    update(amount: amount + added_amount)
+  end
+
   private
 
   def nil_or_less_than_zero?

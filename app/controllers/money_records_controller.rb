@@ -12,14 +12,12 @@ class MoneyRecordsController < ApplicationController
   end
 
   expose :active_records do
-    records = []
     categories = current_user.categories.active
-    categories.each do |category|
+    categories.each_with_object( [] ) do |category, records|
       category.money_records.each do |record|
         records << record
       end
     end
-    records
   end
 
   expose :filter_active_records do
@@ -82,13 +80,12 @@ class MoneyRecordsController < ApplicationController
     money_record.adjusted_date = Date.today
     money_record.save
 
+    category = Category.find(params[:money_record][:category_id])
+    category.adjust_amount(params[:money_record][:amount].to_d)
+
     if current_user.use_paycheck?
-      category = Category.find(params[:money_record][:category_id])
-      adjust_category_amount(category, money_record.amount) if current_user.use_paycheck?
-
       paycheck = current_user.paychecks.last
-      adjust_paycheck_amount_left(paycheck, money_record.amount)
-
+      paycheck.adjust_amount_left(money_record.amount)
     end
 
     render partial: 'categories/category_table', locals: {records_by_date: get_records_by_date}
@@ -96,12 +93,6 @@ class MoneyRecordsController < ApplicationController
 
   def adjust_category_amount(category, amount)
     category.update(amount: category.amount + amount)
-  end
-
-  def adjust_paycheck_amount_left(paycheck, amount)
-    if amount > 0
-      paycheck.update(amount_left: paycheck.amount_left - amount)
-    end
   end
 
   def filter_dates

@@ -2,6 +2,17 @@ require 'rails_helper'
 
 describe Category do
 
+  describe "#adjust_amount_left" do
+    let!(:user) { Fabricate(:user) }
+    let!(:category) { Fabricate(:category, amount: 200, user_id: user.id) }
+    let(:added_amount) { 30 }
+
+    it 'updates category with new amount' do
+      category.adjust_amount(added_amount)
+      expect(category.amount).to eq(230)
+    end
+  end
+
   describe "#belongs_to?" do
     let(:user1) { Fabricate(:user) }
     let(:user2) { Fabricate(:user, email: "email@example2.com") }
