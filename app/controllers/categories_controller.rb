@@ -12,11 +12,14 @@ class CategoriesController < ApplicationController
   end
 
   expose :active_records_by_date do
-    get_records_by_date
+    archived = false
+    get_records_by_date(archived)
   end
 
   expose :archived_records_by_date do
-    get_records_by_date(nil, true)
+    category = nil
+    archived = true
+    get_records_by_date(category, archived)
   end
 
   def example
