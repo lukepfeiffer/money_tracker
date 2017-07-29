@@ -1,5 +1,4 @@
 class MoneyRecordsController < ApplicationController
-
   require 'will_paginate/collection'
 
   expose :category
@@ -53,17 +52,16 @@ class MoneyRecordsController < ApplicationController
   expose :active_categories do
     current_user.categories.active.order(created_at: 'DESC')
   end
+
   expose :archived_categories do
     current_user.categories.archived.order(created_at: 'DESC')
   end
 
   def index
-    if current_user.nil?
-      redirect_to :root
-    end
     if params[:category_id].present?
       @category = Category.find(params[:category_id])
     end
+
     filter_dates
   end
 
@@ -89,10 +87,6 @@ class MoneyRecordsController < ApplicationController
     end
 
     render partial: 'categories/category_table', locals: {records_by_date: get_records_by_date}
-  end
-
-  def adjust_category_amount(category, amount)
-    category.update(amount: category.amount + amount)
   end
 
   def filter_dates
