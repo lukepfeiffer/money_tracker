@@ -11,11 +11,12 @@ $medium-categories-screen: 600px;
       .categories{
         min-width: 30%;
         margin-right: 10px;
+        min-height: 200px;
 
         .list{
-          min-height: 300px;
+          min-height: 200px;
           overflow-y: scroll;
-          max-height: 400px;
+          max-height: 500px;
         }
       }
 
@@ -63,7 +64,7 @@ $medium-categories-screen: 600px;
 
     .item{
       width: 49.70%;
-      height: 125px;
+      height: 185px;
       margin-right: 5px;
 
       h1{
