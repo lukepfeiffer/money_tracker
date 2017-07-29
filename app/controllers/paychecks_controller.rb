@@ -3,9 +3,11 @@ class PaychecksController < ApplicationController
     paycheck = Paycheck.new(paycheck_params)
     paycheck.user_id = current_user.id
     paycheck.amount_left = params[:paycheck][:amount]
+    category_id = current_user.categories.active.first.id
 
     if paycheck.save
-      update_categories_amounts(paycheck.amount, paycheck.date_received)
+      category_service = Concerns::CategoryService.new(category_id, nil, paycheck)
+      category_service.update_categories_amount
       redirect_to categories_path(notice: "Paycheck created!")
     else
       redirect_to categories_path(notice: "Paycheck could not be saved")
@@ -19,14 +21,5 @@ class PaychecksController < ApplicationController
       :amount,
       :date_received
     )
-  end
-
-  def update_categories_amounts(paycheck_amount, paycheck_date)
-    date = paycheck_date.present? ? paycheck_date : Date.today
-    current_user.categories.active.each do |category|
-      amount = paycheck_amount * (category.paycheck_percentage/100)
-      category.update(amount: category.amount + amount)
-      MoneyRecord.create(amount: amount, category_id: category.id, description: "From paycheck", adjusted_date: date)
-    end
   end
 end
