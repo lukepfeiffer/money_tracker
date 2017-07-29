@@ -51,6 +51,7 @@ Feature: Category
     Then I should see "Foo Bar Baz"
     And I should see "This is a description"
     And I should see "150"
+    And I should see "Amount left in paycheck: $350.00"
 
   # Default category percentage is 20
   @javascript

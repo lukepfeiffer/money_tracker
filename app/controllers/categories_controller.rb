@@ -30,6 +30,7 @@ class CategoriesController < ApplicationController
 
   def create
     amount = get_money_record_amount
+    paycheck = category.user.paychecks.last
     category = Category.new(category_params)
     category.amount = amount
 
@@ -41,6 +42,7 @@ class CategoriesController < ApplicationController
             category.id, adjusted_date: DateTime.now,
             description: "Intitial category creation"
           )
+          paycheck.update(amount_left: paycheck.amount - amount) if current_user.use_paycheck?
           flash[:notice] = 'Category was created!'
           flash.keep(:notice)
           render js: "window.location= '#{categories_path}'"

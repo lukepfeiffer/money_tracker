@@ -57,6 +57,8 @@ p_archived_one = Category.create(name: "Paycheck Category 1", user_id: user2.id,
 p_archived_two = Category.create(name: "Paycheck Category 2", user_id: user2.id, paycheck_percentage: 30, amount: 0, archived_at: DateTime.now - 1.day)
 p_archived_three = Category.create(name: "Paycheck Category 3", user_id: user2.id, paycheck_percentage: 35, amount: 0, archived_at: DateTime.now - 2.days)
 
+puts "Create paychecks"
+Paycheck.create(date_received: Date.today, amount: 500, user_id: user2.id, amount_left: 500)
 puts "Creating paycheck money records"
 3.times do
   MoneyRecord.create(description: Faker::Lorem.sentence, amount: rand(-111.0...100.0).round(2), category_id: paycheck_category_one.id, adjusted_date: Date.today - rand(0...6).days)
