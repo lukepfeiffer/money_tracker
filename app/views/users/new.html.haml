@@ -1,17 +1,27 @@
 #registration
-  .left
-    .content
+  .logo-container
+    .logo
+      %a{:href => "javascript:void(0)"}
+        %img{:alt => "Logo Image", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png"}/
+  .container
+    .sub-container.left
       %h1 Sign Up
       = form_for user do |f|
         %fieldset
-          %dt= f.label :email
-          %dd= f.text_field :email
+          %dd= f.text_field :email, placeholder: "Email"
 
-          %dt= f.label :password
-          %dd= f.password_field :password
+          %dd= f.password_field :password, placeholder: "Password"
 
-          %dt= f.label :password_confirmation
-          %dd= f.password_field :password_confirmation
+          %dd= f.password_field :password_confirmation, placeholder: "Password Confirmation"
 
         %fieldset.actions
           = f.submit 'Sign Up'
+    .sub-container.right
+      %h1 What is the MoneyTracker?
+      %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fermentum nisi a quam sagittis, ut volutpat mi euismod. Nunc consectetur elit diam, quis porta felis commodo quis. Proin gravida felis hendrerit, egestas lectus non, pulvinar sapien. Etiam venenatis sed tortor et porttitor. Fusce accumsan nibh in lorem ornare, sed fringilla nulla consectetur. Donec hendrerit nisi quis porta vulputate. Maecenas purus quam, pharetra nec nisl et, ornare commodo purus.
+
+      %p Nunc nec nunc vitae ante tincidunt varius. Proin efficitur neque ut leo dictum suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla velit libero, ullamcorper nec velit vel, mattis laoreet nisl. Nulla ut efficitur est, non aliquam ex. Morbi commodo eu eros nec congue. Quisque maximus dui eget tellus ornare porta. Aenean vel dolor et diam efficitur egestas quis sit amet diam. Praesent interdum augue non fermentum pretium. Nulla non vehicula eros. In lorem magna, placerat tempus tincidunt nec, commodo non magna. Fusce vitae felis eget felis posuere faucibus ac at elit.
+
+      %p Morbi libero metus, iaculis a congue eget, malesuada in ipsum. Phasellus consequat, dui vel pellentesque cursus, nulla purus congue purus, quis gravida leo ex ut eros. Curabitur bibendum faucibus nisi, ut porttitor dui rhoncus et. Duis augue dui, tincidunt nec volutpat eget, dictum vitae turpis. Mauris eleifend arcu vel pellentesque iaculis. Etiam tristique justo vitae purus bibendum molestie. Vivamus ornare justo sed mi aliquet luctus. In hac habitasse platea dictumst. Aenean venenatis erat erat, quis blandit mauris volutpat eget. Mauris consequat sem orci, convallis bibendum nulla euismod ut. Curabitur a fermentum lacus, id mollis diam.
+
+= render 'pages/footer'

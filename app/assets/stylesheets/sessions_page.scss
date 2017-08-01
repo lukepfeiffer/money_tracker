@@ -1,8 +1,9 @@
-.super-container{
-  background-image: url("http://orig12.deviantart.net/e26b/f/2010/238/7/7/nature_places_27_by_stock_gallery.jpg");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+$large-home-screen: 1052px;
+$medium-home-screen: 600px;
+
+.super-container, .logo-container{
   .logo{
+    padding-top: 10px;
     text-align: center;
 
     a{
@@ -10,26 +11,65 @@
       margin-right: auto;
     }
   }
+}
 
-  #sign_in{
-    margin-bottom: 10px;
-    padding-top: 10vw;
-    padding-bottom: 10vw;
+@media only screen and (min-device-width: $large-home-screen){
+  .super-container{
+    background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/geometric-tunnel_wjd0nkzzh__F0000.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    #sign_in{
+      margin-bottom: 0;
+      padding-top: 9vw;
+      padding-bottom: 9vw;
 
-    .container{
-      width: 30%;
-      margin-left: auto;
-      margin-right: auto;
-      background-color: #fff;
-      padding: 25px;
-      border-radius: 10px;
+      .container{
+        border: 1px solid #ccc;
+        width: 30%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 10px;
 
-      input[type=submit]{
-        width: 100%;
+        input[type=submit]{
+          width: 100%;
+        }
+
+        dd{
+          margin-left: 0;
+        }
       }
+    }
+  }
+}
 
-      dd{
-        margin-left: 0;
+@media only screen and (min-device-width: $medium-home-screen) and (max-device-width: $large-home-screen){
+}
+
+@media only screen and (max-device-width: $medium-home-screen){
+  .super-container{
+    background: none;
+    #sign_in{
+      margin-bottom: 0;
+      padding-top: 10vw;
+      padding-bottom: 10vw;
+
+      .container{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #fff;
+        padding: 80px 25px;
+        border-radius: 10px;
+
+        input[type=submit]{
+          width: 100%;
+        }
+
+        dd{
+          margin-left: 0;
+        }
       }
     }
   }

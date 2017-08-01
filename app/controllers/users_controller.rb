@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    @hide_nav = true
   end
 
   def create

@@ -1,17 +1,28 @@
-%footer.default
+%footer.default.footer
   .outer-menu
     .table
       %ul.social-media
-        %li Follow me:
+        %li Connect:
         %li
-          = link_to "https://github.com/lukepfeiffer" do
+          = link_to "https://github.com/lukepfeiffer", target: "_blank" do
             %i.fa.fa-github
         %li
-          = link_to "http://lukerpfeiffer.com" do
+          = link_to "http://lukerpfeiffer.com", target: "_blank" do
             %i.fa.fa-globe
         %li
-          = link_to "https://www.linkedin.com/in/lukerpfeiffer/" do
-            %i.fa.fa-linkedin-square
+          = link_to "https://www.facebook.com/luke.pfeiffer.7", target: "_blank" do
+            %i.fa.fa-facebook-official
         %li
-          = link_to "https://www.facebook.com/luke.pfeiffer.7" do
-            %i.fa.fa-facebook-square
+          = link_to "https://www.linkedin.com/in/lukerpfeiffer/", target: "_blank" do
+            %i.fa.fa-linkedin
+
+  .footer-links
+    %ul
+      %li
+        %h3= link_to "About", root_path
+    %ul
+      %li
+        %h3= link_to "Contact", root_path
+    %ul
+      %li
+        %h3= link_to "Other Products", root_path
