@@ -19,34 +19,12 @@ class MoneyRecordsController < ApplicationController
     end
   end
 
-  expose :filter_active_records do
-    filter_dates
-    @category = params[:category_id].present? ? Category.find(params[:category_id].to_i) : nil
-    MoneyRecord.filter(current_user, @start_date, @end_date, @category)
-  end
-
   expose :filtered_money_records do
-    if params[:active] == 'true'
-      paginate_and_order(active_records)
-    elsif params[:filter] == 'all'
-      paginate_and_order(money_records)
-    elsif params[:category_id].blank? && params[:start_date].blank? && params[:end_date].blank?
-      paginate_and_order(money_records)
-    elsif params[:filter].include?('other')
-      paginate_and_order(filter_active_records)
-    elsif params[:filter].nil?
-      paginate_and_order(money_records)
-    end
+    filter_records_by_date(filter_records)
   end
 
-  def paginate_and_order(records)
-    if params[:active] == 'true' || params[:category_id].blank?
-      records.paginate(page: params[:page], per_page: 15)
-    elsif records == MoneyRecord.last
-      records = []
-    else
-      records.paginate(page: params[:page], per_page: 15).order(adjusted_date: 'DESC')
-    end
+  def filter_records
+    MoneyRecord.filter(current_user, @start_date, @end_date, @category)
   end
 
   expose :active_categories do

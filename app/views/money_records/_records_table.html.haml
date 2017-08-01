@@ -1,18 +1,11 @@
 %tr.table-row
-  = form_for record, html: {class: 'edit_form'} do |f|
-    %td
-      .text= record.adjusted_date.strftime("%-m/%d/%y %I:%M %p")
-      .field= f.date_field :adjusted_date
-    %td
-      .text= record.category.name
-      .field= f.select :category_id, options_for_select(active_categories.collect { |category| [category.name.titleize, category.id]})
-    %td
-      - if is_negative_amount?(record)
-        %p.red-record.text= record.amount
-      - else
-        %p.blue-record.text= record.amount
-      .field= f.number_field :amount, class: 'number-field', step: '0.01'
-    %td
-      %button.warning.small-button Edit
-      .field= f.submit 'Save', class: 'save buttons small-button'
-    %td
+  %td
+    .text= record.adjusted_date.strftime("%-m/%d/%y")
+  %td
+    .text= record.category.name
+  %td
+    - if is_negative_amount?(record)
+      %p.red-record.text= record.amount
+    - else
+      %p.blue-record.text= record.amount
+  %td= record.description.truncate(30)

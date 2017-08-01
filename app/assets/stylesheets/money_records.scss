@@ -12,6 +12,13 @@
   }
 }
 
+.records-table{
+  max-height: 500px;
+  overflow-y: scroll;
+  tbody{
+  }
+}
+
 .blue-record{
   color: $blue-record-color;
 }

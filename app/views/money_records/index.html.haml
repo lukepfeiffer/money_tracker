@@ -3,44 +3,10 @@
     .history-filters
       = render "custom_filter_modal"
 
-    %h1 Records
     %h2= @category.name if @category
     %h2 #{@start_date.strftime("%-m/%d/%y")} - #{@end_date.strftime("%-m/%d/%y")}
     .records-table
-      %table.tables
-        %thead
-          %tr
-            %th Date
-            %th Category
-            %th Amount
-            %th Actions
-            %th Total
-        %tbody
-          - if filtered_money_records.blank?
-            %tr.table-row
-              = form_for filtered_money_records, html: {class: 'edit_form'} do |f|
-                %td
-                  = filtered_money_records.adjusted_date.strftime("%-m/%d/%y %I:%M %p")
-                %td= filtered_money_records.category.name
-                - if filtered_money_records.amount < 0
-                  %td.red-record= filtered_money_records.amount
-                - elsif filtered_money_records.amount >= 0
-                  %td.blue-record= filtered_money_records.amount
-                %td
-                  %button.left.edit Edit
-                %td
-          - elsif filtered_money_records
-            = render partial: 'records_table', collection: filtered_money_records, as: :record
-          %tr
-            %td
-            %td
-            %td
-            %td
-            - if !filtered_money_records.count
-              %td= filtered_money_records.amount
-            - else
-              %td= number_to_currency(MoneyRecord.sum(filtered_money_records), format: "%n %u")
-    = will_paginate filtered_money_records
+      = render 'categories/category_table', records_by_date: filtered_money_records
   - else
     %h1 No Records
 

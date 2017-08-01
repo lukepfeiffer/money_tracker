@@ -7,12 +7,12 @@ class MoneyRecord < ActiveRecord::Base
 
   def self.filter(user, start_date, end_date, category)
     if category.present?
-      records = category.money_records.where(adjusted_date: start_date...end_date)
+      records = category.money_records.where(adjusted_date: start_date..end_date)
     else
       categories = user.categories.active
 
       categories.active.each_with_object([]) do |category, records|
-        category.money_records.where(adjusted_date: start_date...end_date).each do |money_record|
+        category.money_records.where(adjusted_date: start_date..end_date).each do |money_record|
           records << money_record
         end
       end
