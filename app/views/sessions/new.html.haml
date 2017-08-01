@@ -1,0 +1,16 @@
+.super-container
+  .logo
+    %a{:href => "javascript:void(0)"}
+      %img{:alt => "Logo Image", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png"}/
+  #sign_in
+    .container
+      = form_tag sessions_path do
+        %fieldset
+          %dd= text_field_tag :email, nil, placeholder: "Email"
+          %dd= password_field_tag :password, nil, placeholder: "Password"
+
+        %fieldset.actions
+          = submit_tag 'Sign in'
+      = link_to "Not registered? Sign up now!", new_user_path
+
+= render 'pages/footer'

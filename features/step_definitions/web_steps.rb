@@ -1,6 +1,6 @@
 When /^I sign in as a user$/ do
   # must have user in the database!!!
-  visit "/users/new"
+  visit "/sessions/new"
   fill_in 'email', with: User.last.email
   fill_in 'password', with: 'password'
   click_button 'Sign in'

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :sessions
   resources :money_records
   resources :paychecks
+  resources :sessions_path, only: [:new]
   resources :categories do
     collection do
       get 'archived'

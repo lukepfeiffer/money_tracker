@@ -1,0 +1,36 @@
+.super-container{
+  background-image: url("http://orig12.deviantart.net/e26b/f/2010/238/7/7/nature_places_27_by_stock_gallery.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  .logo{
+    text-align: center;
+
+    a{
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  #sign_in{
+    margin-bottom: 10px;
+    padding-top: 10vw;
+    padding-bottom: 10vw;
+
+    .container{
+      width: 30%;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 10px;
+
+      input[type=submit]{
+        width: 100%;
+      }
+
+      dd{
+        margin-left: 0;
+      }
+    }
+  }
+}

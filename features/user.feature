@@ -1,12 +1,12 @@
 Feature: User
   Scenario: User Signs up
     Given I am on the home page
-    And I follow "Sign Up"
+    And I go to the "/users/new" page
     When I fill in "user_email" with "new@email.com"
     And I fill in "user_password" with "password"
     And I fill in "user_password_confirmation" with "password"
     And I press "Sign Up"
-    Then I should be on the "/" page
+    Then I should be on the "/sessions/new" page
 
 #   Scenario: User edits self
 #     Given 1 user
@@ -27,7 +27,6 @@ Feature: User
   Scenario: User Signs In
     Given 1 user
     And I am on the home page
-    And I follow "Sign Up"
     When I fill in "email" with "email@example.com"
     And I fill in "password" with "password"
     And I press "Sign in"
@@ -37,4 +36,4 @@ Feature: User
     Given 1 user
     And I sign in as a user
     When I follow "Sign Out"
-    Then I should see "Sign Up"
+    Then I should be on the "/sessions/new" page

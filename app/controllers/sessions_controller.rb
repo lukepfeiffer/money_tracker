@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    @hide_nav = true
   end
 
   def create

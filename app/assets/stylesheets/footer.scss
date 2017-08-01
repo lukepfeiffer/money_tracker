@@ -1,0 +1,34 @@
+footer.default{
+  .outer-menu{
+    height: 84px;
+
+    .table {
+      display: table;   /* Allow the centering to work */
+      margin: 0 auto;
+      width: 70%;
+
+      ul.social-media{
+        list-style: none;
+        padding-top: 20px;
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+
+        li{
+          display: inline;
+          font-size: 25px;
+          font-weight: 200;
+          color: #717171;
+          .fa{
+            font-size: 30px;
+            color: #666666;
+
+            &:hover{
+              color: #2d5bff;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}

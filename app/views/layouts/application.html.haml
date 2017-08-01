@@ -3,26 +3,25 @@
   = stylesheet_link_tag    'application', media: 'all'
   = javascript_include_tag 'application'
   = csrf_meta_tags
-  = google_webfonts_init({              |
-      google: ['Varela Round', 'serif'] |
-    })                                  |
+  %link{href: "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", rel: "stylesheet"}
 
 %body#main
-  %header.navigation{:role => "banner"}
-    .navigation-wrapper
-      %a.logo{:href => "javascript:void(0)"}
-        %img{:alt => "Logo Image", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png"}/
-      %a#js-mobile-menu.navigation-menu-button{:href => "javascript:void(0)"} MENU
-      %nav{:role => "navigation"}
-        %ul#js-navigation-menu.navigation-menu.show
-          - if current_user.present?
-            %li.nav-link= link_to 'Active', categories_path
-            %li.nav-link= link_to 'Archived', archived_categories_path
-            %li.nav-link= link_to 'History', money_records_path(filter: 'all')
-            %li.nav-link= link_to 'Contact', root_path
-            %li.nav-link= link_to 'Sign Out', log_out_path
-          - else
-            %li.nav-link= link_to 'Home', root_path, class: 'navigation-menu-button right'
-            %li.nav-link= link_to 'Contact', contact_path, class: 'navigation-menu-button right'
-            %li.nav-link= link_to 'Sign Up', new_user_path, class: 'navigation-menu-button right', id: 'cancel'
+  - unless @hide_nav
+    %header.navigation{:role => "banner"}
+      .navigation-wrapper
+        %a.logo{:href => "javascript:void(0)"}
+          %img{:alt => "Logo Image", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png"}/
+        %a#js-mobile-menu.navigation-menu-button{:href => "javascript:void(0)"} MENU
+        %nav{:role => "navigation"}
+          %ul#js-navigation-menu.navigation-menu.show
+            - if current_user.present?
+              %li.nav-link= link_to 'Active', categories_path
+              %li.nav-link= link_to 'Archived', archived_categories_path
+              %li.nav-link= link_to 'History', money_records_path(filter: 'all')
+              %li.nav-link= link_to 'Contact', root_path
+              %li.nav-link= link_to 'Sign Out', log_out_path
+            - else
+              %li.nav-link= link_to 'Home', root_path, class: 'navigation-menu-button right'
+              %li.nav-link= link_to 'Contact', contact_path, class: 'navigation-menu-button right'
+              %li.nav-link= link_to 'Sign Up', new_session_path, class: 'navigation-menu-button right', id: 'cancel'
   = yield
