@@ -22,9 +22,6 @@ class CategoriesController < ApplicationController
     get_records_by_date(category, archived)
   end
 
-  def example
-  end
-
   def index
   end
 
