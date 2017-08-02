@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def confirm_email
-    user = User.find_by_confirm_token(params[:id])
+    user = User.find_by(confirm_token: params[:token])
     if user.present?
       user.email_activate
       flash[:success] = "You have been confirmed, sign in!"
@@ -32,6 +32,7 @@ class UsersController < ApplicationController
     end
   end
 
+  private
 
   def user_params
     params.require(:user).permit(

@@ -26,6 +26,16 @@ describe User do
     end
   end
 
+  describe "#email_active" do
+    let!(:user) { Fabricate(:unconfirmed_user, confirm_token: "some_token") }
+
+    it 'updates user to be email activated' do
+      user.email_activate
+      expect(User.last.confirmed_email).to be true
+      expect(User.last.confirm_token).to be_falsey
+    end
+  end
+
   describe "#total_money" do
     let!(:user) { Fabricate(:user) }
     let!(:active_category) { Fabricate(:category, user_id: user.id) }

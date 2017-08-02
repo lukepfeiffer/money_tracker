@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user.present? && user.confirmed_email?
       session[:user_id] = user.id
       flash[:success] = "Sign in successful!"
-      redirect_to categories_path(notice: "Sign in successful")
+      redirect_to categories_path
     elsif user.present?
       flash[:danger] = "User has not been confirmed yet!"
       redirect_to root_path

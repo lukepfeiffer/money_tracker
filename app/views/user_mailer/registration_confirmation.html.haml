@@ -3,5 +3,5 @@
   .body
     %p Thanks for registering! To confirm registration click the link below.
 
-    %p= link_to confirm_email_users_url(@user.confirm_token), confirm_email_users_url(@user.confirm_token)
+    %p= link_to confirm_email_users_url(token: @user.confirm_token), confirm_email_users_url(token: @user.confirm_token)
     %p Not you? Ignore this email.

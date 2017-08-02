@@ -7,6 +7,12 @@ Feature: User
     And I fill in "user_password_confirmation" with "password"
     And I press "Sign Up"
     Then I should be on the "/sessions/new" page
+    And I should see "Created succesfully, we sent you an email to confirm your account."
+
+  Scenario: User signs in before confirming 
+    Given 1 unconfirmed_user
+    And I sign in as a user
+    Then I should see "User has not been confirmed yet!"
 
 #   Scenario: User edits self
 #     Given 1 user
@@ -31,6 +37,8 @@ Feature: User
     And I fill in "password" with "password"
     And I press "Sign in"
     Then I should be on the "/categories" page
+    And I should see "Sign in successful!"
+
 
   Scenario: User Signs out
     Given 1 user
