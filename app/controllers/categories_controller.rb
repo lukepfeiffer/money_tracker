@@ -39,7 +39,7 @@ class CategoriesController < ApplicationController
           category_service = Concerns::CategoryService.new(category.id, amount, current_user.paychecks.last)
           category_service.create_money_record
           category_service.update_paycheck if current_user.use_paycheck?
-          flash[:notice] = 'Category was created!'
+          flash[:success] = 'Category was created!'
           flash.keep(:notice)
           render js: "window.location= '#{categories_path}'"
         else
@@ -55,6 +55,7 @@ class CategoriesController < ApplicationController
       get_records_by_date = get_records_by_date(category)
       render partial: 'category_table', locals: {records_by_date: get_records_by_date}
     else
+      flash[:danger] = "You do not have access!"
       redirect_to categories_path(notice: "You do not have access!")
     end
   end

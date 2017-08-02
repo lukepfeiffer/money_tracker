@@ -8,9 +8,11 @@ class PaychecksController < ApplicationController
     if paycheck.save
       category_service = Concerns::CategoryService.new(category_id, nil, paycheck)
       category_service.update_categories_amount
-      redirect_to categories_path(notice: "Paycheck created!")
+      flash[:success] = "Paycheck created!"
+      redirect_to categories_path
     else
-      redirect_to categories_path(notice: "Paycheck could not be saved")
+      flash[:danger] = "Paycheck could not be saved"
+      redirect_to categories_path
     end
   end
 

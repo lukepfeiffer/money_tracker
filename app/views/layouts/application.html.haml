@@ -24,4 +24,8 @@
               %li.nav-link= link_to 'Home', root_path, class: 'navigation-menu-button right'
               %li.nav-link= link_to 'Contact', contact_path, class: 'navigation-menu-button right'
               %li.nav-link= link_to 'Sign Up', new_session_path, class: 'navigation-menu-button right', id: 'cancel'
+
+  .flash-messages
+    - flash.each do |key, value|
+      %div{ class: "alert alert-#{key}" }= value
   = yield

@@ -5,11 +5,16 @@ class SessionsController < ApplicationController
 
   def create
     user = User.authenticate(params[:email], params[:password])
-    if user
+    if user.present? && user.confirmed_email?
       session[:user_id] = user.id
-      redirect_to categories_path
+      flash[:success] = "Sign in successful!"
+      redirect_to categories_path(notice: "Sign in successful")
+    elsif user.present?
+      flash[:danger] = "User has not been confirmed yet!"
+      redirect_to root_path
     else
-      redirect_to new_user_path
+      flash[:danger] = "Email or password did not match"
+      redirect_to root_path
     end
   end
 
