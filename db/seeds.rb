@@ -8,7 +8,7 @@
 #
 
 puts "Creating User"
-user = User.create(email: "email@example.com", password: "password")
+user = User.create(email: "email@example.com", password: "password", confirmed_email: true)
 
 puts "Creating Categories"
 category_one = Category.create(name: "Category 1", user_id: user.id, amount: 20)
@@ -47,7 +47,7 @@ end
 
 
 puts "Creating PaycheckUser"
-user2= User.create(email: "paycheck@example.com", password: "password", use_paycheck: true)
+user2= User.create(email: "paycheck@example.com", password: "password", use_paycheck: true, confirmed_email: true)
 
 puts "Creating Paycheck Categories"
 paycheck_category_one = Category.create(name: "Paycheck Category 1", user_id: user2.id, paycheck_percentage: 25, amount: 0)

@@ -10,15 +10,16 @@ class Concerns::CategoryService
   end
 
   def update_categories_amount
+    new_amount = 0
     date = paycheck.date_received.present? ? paycheck.date_received : Date.today
-    user.categories.active.each_with_object( [] ) do |category, amounts|
+    user.categories.active.each do |category|
       cat_amount = paycheck.amount * (category.paycheck_percentage/100)
       category.update(amount: category.amount + cat_amount)
-      MoneyRecord.create(amount: amount, category_id: category.id, description: "From paycheck", adjusted_date: date)
-      self.amount += cat_amount
+      MoneyRecord.create(amount: cat_amount, category_id: category.id, description: "From paycheck", adjusted_date: date)
+      new_amount += cat_amount
     end
 
-    update_paycheck if user.use_paycheck?
+    update_paycheck(new_amount) if user.use_paycheck?
   end
 
   def create_money_record
@@ -28,7 +29,7 @@ class Concerns::CategoryService
     )
   end
 
-  def update_paycheck
+  def update_paycheck(amount)
     paycheck.update(amount_left: paycheck.amount_left - amount)
   end
 end

@@ -63,6 +63,7 @@ Feature: Category
     And I fill in "paycheck_amount" with "400"
     And I click link with "create-paycheck" class
     Then I should see "320"
+    And I should see "80"
 
   @javascript
   Scenario: Filter money records by categories

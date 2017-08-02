@@ -38,7 +38,7 @@ class CategoriesController < ApplicationController
         if category.save
           category_service = Concerns::CategoryService.new(category.id, amount, current_user.paychecks.last)
           category_service.create_money_record
-          category_service.update_paycheck if current_user.use_paycheck?
+          category_service.update_paycheck(current_user.money_records.last.amount) if current_user.use_paycheck?
           flash[:success] = 'Category was created!'
           flash.keep(:notice)
           render js: "window.location= '#{categories_path}'"
