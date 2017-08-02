@@ -25,6 +25,7 @@ gem 'will_paginate'
 group :development, :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+  gem 'dotenv-rails'
   gem 'fabrication'
   gem 'pry-rails'
   gem 'rspec-rails'

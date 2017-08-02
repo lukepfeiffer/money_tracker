@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
 
-  resources :users
+  resources :users do
+    collection do
+      get :confirm_email
+    end
+  end
   resources :sessions
   resources :money_records
   resources :paychecks

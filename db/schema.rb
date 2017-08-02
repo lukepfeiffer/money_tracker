@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725153038) do
+ActiveRecord::Schema.define(version: 20170802014257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 20170725153038) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "use_paycheck"
+    t.boolean  "confirmed_email", default: false
+    t.string   "confirm_token"
   end
 
 end
