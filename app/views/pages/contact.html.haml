@@ -1,2 +1,30 @@
 #contact
-  = render 'pages/footer'
+  .logo-container
+    .logo
+      %a{href: root_path}
+        %img{:alt => "Logo Image", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png"}/
+  .main-contact
+    %h1 Comments, questions, concerns?
+    %p
+      %b Email:
+      = link_to "lukerpfeiffer@ufl.edu", "mailto:lukerpfeiffer@ufl.edu", class: "contact-link"
+    %p
+      %b github:
+      = link_to "lukepfeiffer", "https://github.com/lukepfeiffer", target: "_blank", class: "contact-link"
+
+    %h1 Alternatively, fill out this form to get in touch.
+    = form_tag "/email_admin" do
+      %fieldset
+        %dt= label_tag :your_email
+        = text_field_tag "user[from]", nil, placeholder: "email@example.com"
+
+        %dt= label_tag :subject
+        = text_field_tag "user[subject]"
+
+        %dt= label_tag :body
+        %input#body-editor{type: "hidden", name: "user[body]"}
+        %trix-editor{input: "body-editor"}
+
+      %fieldset.actions
+        = submit_tag "Send email"
+= render 'pages/footer'

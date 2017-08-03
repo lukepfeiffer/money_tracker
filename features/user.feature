@@ -1,4 +1,13 @@
 Feature: User
+  Scenario: Non user sends contact email
+    Given I am on the home page
+    And I follow "Contact"
+    When I fill in "user_from" with "email@example.com"
+    And I fill in "user_subject" with "This is a subject"
+    And I fill in the trix editor with id of "body-editor" with "This is the body"
+    And I press "Send email"
+    Then I should see "Successfully sent email!"
+
   Scenario: User Signs up
     Given I am on the home page
     And I go to the "/users/new" page

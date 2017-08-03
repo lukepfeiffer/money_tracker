@@ -6,6 +6,10 @@ When /^I sign in as a user$/ do
   click_button 'Sign in'
 end
 
+When /^I fill in the trix editor with id of "(.+)" with "(.+)"$/ do |id, value|
+  find(:xpath, "//*[@id='#{id}']", visible: false).set(value)
+end
+
 When /^I click link with "(.+)" class$/ do |selector|
   find(".#{selector}").click
 end

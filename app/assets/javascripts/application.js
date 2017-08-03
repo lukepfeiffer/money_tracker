@@ -16,3 +16,4 @@
 //= require money_records
 //= require_tree .
 //= require nav
+//= require trix
