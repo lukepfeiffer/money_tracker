@@ -1,7 +1,7 @@
 .super-container
   .logo
-    %a{:href => "javascript:void(0)"}
-      %img{:alt => "Logo Image", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png"}/
+    %a{href: root_path}
+      = image_tag 'logo.jpg'
   #sign_in
     .container
       = form_tag sessions_path do
