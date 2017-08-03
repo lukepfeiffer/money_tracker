@@ -20,6 +20,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    user = User.find(params[:id])
+    authenticated_user = User.authenticate(user.email, params[:current_password])
+
+    if authenticated_user.present?
+      authenticated_user.update(user_params)
+      flash[:notice] = "User successfully updated!"
+      redirect_to edit_user_path(authenticated_user.id)
+    else
+      flash[:danger] = "Password did not match current user!"
+      render :edit
+    end
+  end
+
   def confirm_email
     user = User.find_by(confirm_token: params[:token])
     if user.present?

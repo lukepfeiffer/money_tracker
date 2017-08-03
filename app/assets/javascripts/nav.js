@@ -29,4 +29,16 @@ $(document).ready(function() {
       }
     });
   });
+
+  $('.navigation').on('click', '#js-navigation-menu', function(){
+    $(".submenu").css("display", "block");
+  });
+
+  $("html").on("click", 'body', function(event){
+    if( !$(event.target).is('.js-nav-anchor') ) {
+      if($('.submenu').is(":visible")) {
+        $(".submenu").css("display", "none");
+      }
+    };
+  });
 });

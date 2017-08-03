@@ -132,7 +132,7 @@ header.navigation {
 
       &:focus,
       &:hover {
-        background-color: darken($navigation-background, 10%);
+        color: darken(#fff, 10%);
       }
     }
   }
@@ -193,11 +193,6 @@ header.navigation {
         position: absolute;
         right: $navigation-submenu-padding / 2;
       }
-    }
-
-    &:focus > .submenu,
-    &:hover > .submenu {
-      display: block;
     }
 
     @include media($horizontal-bar-mode) {
