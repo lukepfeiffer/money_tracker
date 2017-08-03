@@ -11,6 +11,7 @@ class PagesController < ApplicationController
   end
 
   def contact
+    @hide_nav = true
   end
 
 end
