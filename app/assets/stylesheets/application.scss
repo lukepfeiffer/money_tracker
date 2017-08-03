@@ -36,9 +36,11 @@ body#main{
   margin-right: auto;
 }
 
-.logo{
-  img{
-    width: 15%;
+.super-container, #contact, #registration{
+  .logo{
+    img{
+      width: 15%;
+    }
   }
 }
 
