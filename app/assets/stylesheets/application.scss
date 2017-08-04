@@ -2,22 +2,21 @@
 @import "base/base";
 @import "neat";
 @import "base/base";
-@import "nav";
-@import "table";
-@import "users";
+@import "alerts";
+@import "categories";
+@import "custom_buttons";
+@import "footer";
 @import "forms";
+@import "items";
+@import "modal";
+@import "money_records";
+@import "nav";
 @import "panels";
 @import "pagination";
-@import "sessions_page";
+@import "static_pages";
+@import "table";
 @import "trix";
-@import "footer";
-@import "contact";
-@import "items";
-@import "alerts";
-@import "modal";
-@import "categories";
-@import "money_records";
-@import "custom_buttons";
+@import "users";
 
 body#main{
   margin: 0;
@@ -36,7 +35,7 @@ body#main{
   margin-right: auto;
 }
 
-.super-container, #contact, #registration{
+.super-container, #contact, #registration, #products, #about{
   .logo{
     img{
       width: 15%;

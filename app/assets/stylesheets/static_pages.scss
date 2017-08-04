@@ -1,0 +1,213 @@
+$large-home-screen: 1052px;
+$medium-home-screen: 600px;
+
+#contact{
+  background-color: #fff;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+
+  .main-contact{
+    h1{
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 20px;
+      font-size: 20px;
+      width: 50%;
+    }
+
+    .contact-link{
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .button_row{
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+
+  .button_group{
+    margin-bottom: 0;
+  }
+
+  trix-editor{
+    min-height: 200px;
+    background-color: #fff;
+    margin-bottom: 10px;
+  }
+}
+
+.super-container, .logo-container{
+  .logo{
+    padding-top: 10px;
+    text-align: center;
+
+    a{
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+// Sessions page
+@media only screen and (min-device-width: $large-home-screen){
+  .super-container{
+    background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/geometric-tunnel_wjd0nkzzh__F0000.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    #sign_in{
+      margin-bottom: 0;
+      padding-top: 9vw;
+      padding-bottom: 9vw;
+
+      .container{
+        border: 1px solid #ccc;
+        width: 30%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 10px;
+
+        input[type=submit]{
+          width: 100%;
+        }
+
+        dd{
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-device-width: $medium-home-screen) and (max-device-width: $large-home-screen){
+}
+
+@media only screen and (max-device-width: $medium-home-screen){
+  .super-container{
+    background: none;
+    #sign_in{
+      margin-bottom: 0;
+      padding-top: 10vw;
+      padding-bottom: 10vw;
+
+      .container{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #fff;
+        padding: 80px 25px;
+        border-radius: 10px;
+
+        input[type=submit]{
+          width: 100%;
+        }
+
+        dd{
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+
+#registration{
+  background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/geometric-tunnel_wjd0nkzzh__F0000.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+
+  .container{
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-flow: row wrap;
+    justify-content: flex-start;
+
+    dd{
+      margin-left: 0;
+    }
+
+    .sub-container.left{
+      border: 1px solid #ccc;
+      width: 40%;
+      margin-right: 30px;
+      margin-left: 15px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      height: 260px;
+    }
+
+
+    @media only screen and (min-device-width: 1000px){
+      .sub-container.right{
+        width: 55%;
+      }
+
+      .sub-container.left{
+        width: 40%;
+      }
+    }
+
+    @media only screen and (max-device-width: 1000px){
+      .sub-container.left{
+        width: 100%;
+        height: 450px;
+
+        h1{
+          font-size: 30px;
+        }
+      }
+
+      .sub-container.right{
+        width: 100%;
+        padding: 10px;
+      }
+
+      form{
+        input[type=password], input[type=text]{
+          padding: 15px;
+          font-size: 30px;
+        }
+
+        input[type=submit]{
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}
+
+#about{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  margin-bottom: 0;
+
+  .subsection{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    h1.large{
+      font-size: 25px;
+      text-align: center;
+    }
+
+    .last{
+      margin-bottom: 0;
+    }
+  }
+}

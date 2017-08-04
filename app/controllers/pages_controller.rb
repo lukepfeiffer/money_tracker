@@ -14,6 +14,14 @@ class PagesController < ApplicationController
     @hide_nav = true
   end
 
+  def about
+    @hide_nav = true
+  end
+
+  def products
+    @hide_nav = true
+  end
+
   def email_admin
     body = params[:user][:body]
     from = params[:user][:from]
