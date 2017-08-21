@@ -17,6 +17,13 @@ Fabricator(:other_category, from: :category) do
   amount "60"
 end
 
+
+Fabricator(:cycle_category, from: :category) do
+  description "Cycle Category"
+  name "CycleCategory"
+  amount "1000"
+end
+
 Fabricator(:paycheck_category, from: :category) do
   description "Paycheck description"
   name "PaycheckCategory"

@@ -78,6 +78,7 @@ class CategoriesController < ApplicationController
       :name,
       :amount,
       :user_id,
+      :cycle_date,
       :description,
       :paycheck_percentage
     )

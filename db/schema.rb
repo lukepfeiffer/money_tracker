@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170802014257) do
+ActiveRecord::Schema.define(version: 20170821161117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20170802014257) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "paycheck_percentage"
+    t.date     "cycle_date"
+    t.decimal  "amount_due"
   end
 
   create_table "money_records", force: :cascade do |t|
@@ -54,6 +56,7 @@ ActiveRecord::Schema.define(version: 20170802014257) do
     t.boolean  "use_paycheck"
     t.boolean  "confirmed_email", default: false
     t.string   "confirm_token"
+    t.boolean  "auto_populate"
   end
 
 end

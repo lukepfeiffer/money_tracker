@@ -13,6 +13,18 @@ describe Category do
     end
   end
 
+  describe "#reset_cycle" do
+    let!(:user) { Fabricate(:paycheck_user_no_autopopulate) }
+    let!(:category) { Fabricate(:cycle_category, user_id: user.id, amount_due: 200, cycle_date: Date.yesterday) }
+
+    it 'resets amount category amount' do
+      category.reset_cycle
+      expect(category.amount).to eq(0)
+      expect(category.amount_due).to eq(200)
+      expect(category.cycle_date).to eq(Date.yesterday + 1.month)
+    end
+  end
+
   describe "#belongs_to?" do
     let(:user1) { Fabricate(:user) }
     let(:user2) { Fabricate(:user, email: "email@example2.com") }
@@ -60,12 +72,6 @@ describe Category do
     let!(:user) { Fabricate(:paycheck_user) }
 
     context "#validate paycheck percentage when user is set to use paychecks" do
-
-      it 'returns an error' do
-        category =  Category.new(name: "Category", description: "Description", user_id: user.id)
-        expect(category.save).to be false
-        expect(category.errors.messages[:paycheck_percentage]).to include("Must have a paycheck percentage!")
-      end
 
       it 'saves correctly' do
         category =  Category.new(name: "Category", description: "Description", user_id: user.id, paycheck_percentage: "30")
