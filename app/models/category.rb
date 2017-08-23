@@ -9,7 +9,7 @@ class Category < ActiveRecord::Base
   validates_presence_of :name, :user_id
 
   def validate_paycheck_percentage
-    if user.use_paycheck?
+    if user.use_paycheck? && user.auto_populate?
       errors.add(:paycheck_percentage, "Must be greater than 0!") if nil_or_less_than_zero?
       errors.add(:paycheck_percentage, "All active categories percents can not be more than 100!") if self.percent_too_high?
     end
@@ -27,10 +27,8 @@ class Category < ActiveRecord::Base
   end
 
   def percent_too_high?
-    unless nil_or_less_than_zero? || user.auto_populate?
       categories = user.categories.active
       (categories.sum(:paycheck_percentage).to_i + self.paycheck_percentage) > 100
-    end
   end
 
   def belongs_to?(user)
@@ -52,8 +50,6 @@ class Category < ActiveRecord::Base
   private
 
   def nil_or_less_than_zero?
-    unless user.auto_populate?
-      paycheck_percentage.nil? || paycheck_percentage < 1
-    end
+    paycheck_percentage.nil? || paycheck_percentage < 1
   end
 end

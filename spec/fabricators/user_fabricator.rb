@@ -6,7 +6,7 @@ end
 
 Fabricator(:paycheck_user_no_autopopulate, from: :user) do
   use_paycheck true
-  auto_populate true
+  auto_populate false
 end
 
 Fabricator(:unconfirmed_user, from: :user) do
@@ -16,4 +16,5 @@ end
 
 Fabricator(:paycheck_user, from: :user) do
   use_paycheck true
+  auto_populate true
 end

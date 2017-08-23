@@ -52,9 +52,10 @@ class UsersController < ApplicationController
     params.require(:user).permit(
       :email,
       :password,
-      :password_confirmation,
       :password_salt,
-      :password_hash
+      :password_hash,
+      :auto_populate,
+      :password_confirmation
     )
   end
 end

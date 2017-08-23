@@ -19,14 +19,14 @@ describe CategoriesHelper do
       let(:user) { Fabricate(:paycheck_user) }
       it 'returns correct label' do
         form_for(Category.new) do |f|
-          label = helper.amount_label(f, true)
+          label = helper.amount_label(f, true, true)
           expect(label).to eq("<label for=\"category_paycheck_percentage\">Paycheck percentage</label>")
         end
       end
 
       it 'returns correct field' do
         form_for(Category.new) do |f|
-          field = helper.amount_field(f, true)
+          field = helper.amount_field(f, true, true)
           expect(field).to eq("<input class=\"number-field\" step=\"0.01\" placeholder=\"25.00\" type=\"number\" name=\"category[paycheck_percentage]\" id=\"category_paycheck_percentage\" />")
         end
       end
@@ -37,14 +37,14 @@ describe CategoriesHelper do
 
       it 'returns correct label' do
         form_for(Category.new) do |f|
-          label = helper.amount_label(f, false)
+          label = helper.amount_label(f, false, false)
           expect(label).to eq("<label for=\"category_amount\">Amount</label>")
         end
       end
 
       it 'returns correct field' do
         form_for(Category.new) do |f|
-          field = helper.amount_field(f, false)
+          field = helper.amount_field(f, false, false)
           expect(field).to eq("<input class=\"number-field\" step=\"0.01\" placeholder=\"60.00\" type=\"number\" name=\"category[amount]\" id=\"category_amount\" />")
         end
       end

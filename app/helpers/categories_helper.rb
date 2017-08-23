@@ -30,16 +30,16 @@ module CategoriesHelper
     end
   end
 
-  def amount_label(form, use_paycheck)
-    if use_paycheck
+  def amount_label(form, use_paycheck, auto_populate)
+    if use_paycheck && auto_populate
       form.label :paycheck_percentage
     else
       form.label :amount
     end
   end
 
-  def amount_field(form, use_paycheck)
-    if use_paycheck
+  def amount_field(form, use_paycheck, auto_populate)
+    if use_paycheck && auto_populate
       form.number_field :paycheck_percentage, class: 'number-field', step: '0.01', placeholder: '25.00'
     else
       form.number_field :amount, class: 'number-field', step: '0.01', placeholder: '60.00'

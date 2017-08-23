@@ -16,8 +16,8 @@
 
           %dd= f.hidden_field :user_id, value: current_user.id
 
-          %dt= amount_label(f, current_user.use_paycheck?)
-          %dt= amount_field(f, current_user.use_paycheck?)
+          %dt= amount_label(f, current_user.use_paycheck?, current_user.auto_populate?)
+          %dt= amount_field(f, current_user.use_paycheck?, current_user.auto_populate?)
 
           %dt= f.label :description
           %dt= f.text_area :description, placeholder: 'Optional'

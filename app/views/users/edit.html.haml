@@ -8,11 +8,28 @@
           %dt= f.label :email
           = f.text_field :email
 
-          %dt= f.label :current_password
-          = password_field_tag :current_password
-
           %dt= f.label :use_paycheck
           = f.check_box :use_paycheck
 
+          %dt
+            %label
+              Auto populate categories from paycheck?
+              %sup 1
+          = f.check_box :auto_populate
+
+          %dt
+            %label
+              Current password
+              %sup 2
+          = password_field_tag :current_password
+
         %fieldset.actions
           = f.submit "Save"
+
+
+      %p
+        %sup 1
+        This will automatically update categories based on paycheck percentages on categories. Recommended If you live on a very strict budget. Not recommended if you have monthly bills i.e. rent.
+      %p
+        %sup 2
+        Must authenticate in order to update self.
