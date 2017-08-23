@@ -34,6 +34,14 @@ Feature: Category
     And I should see "20"
     And I should see "$200.00"
 
+  @javascript
+  Scenario: User resets recurring bill
+    Given 1 user
+    And that user has 1 cycle_category
+    And I sign in as a user
+    When I press "Reset cycle?"
+    Then I should see this date: "Date.today + 1.month"
+
   Scenario: User views archived categories
     Given 1 user
     And that user has 1 category

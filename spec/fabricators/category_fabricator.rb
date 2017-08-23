@@ -21,7 +21,9 @@ end
 Fabricator(:cycle_category, from: :category) do
   description "Cycle Category"
   name "CycleCategory"
-  amount "1000"
+  amount "200"
+  amount_due "1000"
+  cycle_date Date.yesterday
 end
 
 Fabricator(:paycheck_category, from: :category) do
