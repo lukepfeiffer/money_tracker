@@ -1,6 +1,5 @@
 Feature: Category
 
-  #Need to rewrite to match new functionality
   @javascript
   Scenario: User Creates category
     Given 1 user
@@ -19,6 +18,21 @@ Feature: Category
     And I sign in as a user
     Then I should see "Foo Bar Baz"
     And I should see "20"
+
+  @javascript
+  Scenario: User creates recurring bill
+    Given 1 user
+    And I sign in as a user
+    When I click link with "create_category" class
+    And I fill in "category_name" with "FooBarBaz"
+    And I fill in "category_amount" with "20"
+    And I check "recurring_bill"
+    And I fill in "category_amount_due" with "200.00"
+    And I fill in "#category_cycle_date" with this date: "Date.tomorrow"
+    And I click link with "create-category" class
+    Then I should see "Foo Bar Baz"
+    And I should see "20"
+    And I should see "$200.00"
 
   Scenario: User views archived categories
     Given 1 user

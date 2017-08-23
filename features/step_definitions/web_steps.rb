@@ -6,6 +6,20 @@ When /^I sign in as a user$/ do
   click_button 'Sign in'
 end
 
+Then /^I should see this date: "(.+)"$/ do |date|
+  date_object = eval(date)
+  expect(page).to have_content(date_object.strftime("%-m/%d/%y"))
+end
+
+When /^I fill in "(.+)" with this date: "(.+)"$/ do |selector, date|
+  date_object = eval(date)
+  find(selector).set(date_object.to_s)
+end
+
+When /^I check "(.+)"$/ do |selector|
+  check(selector)
+end
+
 When /^I fill in the trix editor with id of "(.+)" with "(.+)"$/ do |id, value|
   find(:xpath, "//*[@id='#{id}']", visible: false).set(value)
 end

@@ -3,16 +3,19 @@
   .top-container{data: {id: category.id, name: category.name}}
     %h1= category.name.titleize
     .description
-      = category.description
+      %p= category.description
       = "#{number_to_percentage(category.paycheck_percentage, precision: 0)} of paycheck" if current_user.use_paycheck?
 
   .bottom-container
     - if is_negative?(category.amount)
       %p.red-record.balance= number_to_currency(category.amount)
-      %p.sub-text Availible Funds
     - else
       %p.blue-record.balance= number_to_currency(category.amount)
-      %p.sub-text Availible Funds
+    %p.sub-text Availible Funds
+
+    - if category.cycle_date.present?
+      %p.cycle_date= "Due on: #{category.cycle_date.strftime("%-m/%d/%y")}"
+      %p.amount_due= "Amount due: #{number_to_currency(category.amount_due)}"
 
     %button.transaction.small Add Funds
     - if category.active?

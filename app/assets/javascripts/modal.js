@@ -23,4 +23,9 @@ $(function() {
   $(".modal-inner").on("click", function(e) {
     e.stopPropagation();
   });
+
+
+  $(".modal").on("change", "#recurring_bill", function(){
+    $(".hidden").toggle();
+  });
 });

@@ -40,7 +40,7 @@ class CategoriesController < ApplicationController
           category_service.create_money_record
           category_service.update_paycheck(current_user.money_records.last.amount) if current_user.use_paycheck?
           flash[:success] = 'Category was created!'
-          flash.keep(:notice)
+          flash.keep(:success)
           render js: "window.location= '#{categories_path}'"
         else
           render partial: "shared/create_errors", locals: {model: category}
@@ -78,6 +78,7 @@ class CategoriesController < ApplicationController
       :name,
       :amount,
       :user_id,
+      :amount_due,
       :cycle_date,
       :description,
       :paycheck_percentage
