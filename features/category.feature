@@ -40,7 +40,7 @@ Feature: Category
     And that user has 1 cycle_category
     And I sign in as a user
     When I press "Reset cycle?"
-    Then I should see this date: "Date.today + 1.month"
+    Then I should see this date: "Date.yesterday + 1.month"
 
   Scenario: User views archived categories
     Given 1 user

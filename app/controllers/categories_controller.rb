@@ -60,6 +60,17 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def edit
+    respond_to do |format|
+      format.json do
+        if category.cycle_date.present?
+          category.reset_cycle
+          render json: {category: {date: category.cycle_date.strftime("%-m/%d/%y"), amount_due: category.amount_due} }
+        end
+      end
+    end
+  end
+
   def unarchive
     category = Category.find(params[:id])
     category.update(archived_at: nil)

@@ -93,4 +93,20 @@ $(document).ready(function(){
       }
     });
   });
+
+
+  // Reset cycle
+  $(".bottom-container").on("click", ".reset", function(event){
+    event.preventDefault();
+    button = $(this);
+    url = button.data("url");
+    $.ajax({
+      type: "get",
+      url: url,
+      success: function(response){
+        button.parent().children(".cycle_date").text("Due on: " + response.category.date);
+        button.parent().children(".amount_due").text("Amount due: " + response.category.amount_due);
+      }
+    });
+  });
 });

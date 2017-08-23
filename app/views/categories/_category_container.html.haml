@@ -18,7 +18,10 @@
       %p.amount_due= "Amount due: #{number_to_currency(category.amount_due)}"
 
     %button.transaction.small Add Funds
-    %button.reset.small{ date: {url: edit_category_path(category.id, format: :json)} } Reset cycle?
+
+    - if category.cycle_date.present?
+      %button.reset.small{ data: {url: edit_category_path(category.id, format: :json)} } Reset cycle?
+
     - if category.active?
       %button.archive.danger.small{ data: {url: category_path(category.id)} } Archive
     - else
