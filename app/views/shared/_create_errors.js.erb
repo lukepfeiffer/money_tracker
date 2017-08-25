@@ -1,1 +1,1 @@
-$("#errors_div").html("<%= model.errors.full_messages %>")
+$("#errors_div").html("<%= model.errors.full_messages.to_sentence %>")
