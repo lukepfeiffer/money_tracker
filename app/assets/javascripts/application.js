@@ -17,3 +17,5 @@
 //= require_tree .
 //= require nav
 //= require trix
+//= require Chart.bundle
+//= require chartkick

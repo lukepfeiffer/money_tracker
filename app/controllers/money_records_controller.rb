@@ -23,6 +23,26 @@ class MoneyRecordsController < ApplicationController
     filter_records_by_date(filter_records)
   end
 
+  expose :records_to_hash do
+    hash_map = {}
+
+    records = get_records_by_date()
+
+    records.each do |records_array|
+      amount = 0;
+      date = Date.today
+
+      records_array.each do |record|
+        date = record.adjusted_date
+        amount += record.amount
+      end
+
+      hash_map.merge!(:"#{date}" => amount)
+    end
+
+    hash_map
+  end
+
   def filter_records
     MoneyRecord.filter(current_user, @start_date, @end_date, @category)
   end
