@@ -5,6 +5,7 @@ gem 'adequate_exposure'
 gem 'bcrypt-ruby', require: 'bcrypt'
 gem 'bourbon', "~> 4.2.0"
 gem 'bitters', '~> 1.2.0'
+gem 'chartkick'
 gem 'chromedriver-helper'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'faker'
